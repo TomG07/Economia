@@ -1,0 +1,34 @@
+{
+    "lixeiro": {
+        "salario": 200,
+        "exp": 5
+    },
+    "porteiro": {
+        "salario": 400,
+        "exp": 15
+    },
+    "guarda": {
+        "salario": 620,
+        "exp": 25
+    },
+    "policial": {
+        "salario": 750,
+        "exp": 26
+    },
+    "bombeiro": {
+        "salario": 900,
+        "exp": 45
+    },
+    "advogado": {
+        "salario": 1500,
+        "exp": 75
+    },
+    "medico": {
+        "salario": 2000,
+        "exp": 115
+    },
+    "prefeito": {
+        "salario": 4500,
+        "exp": 200
+    }
+}
