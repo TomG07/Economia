@@ -1,6 +1,7 @@
 const Discord = require("discord.js");
 module.exports = {
     name: "atm",
+    aliases: ["saldo", "carteira", "diamantes"],
     run: async (client, message, args) => {
         let member = message.mentions.members.first() || message.member;
         const userdb = await client.db.findById({ _id: member.user.id });
