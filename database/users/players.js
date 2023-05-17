@@ -4,9 +4,9 @@ const documentSave = new Schema({
     eco: {
         coins: { type: Number, default: 0 },
         xp: { type: Number, default: 0 },
-        job: { type: String, default: "null" },
+        job: { type: String, default: null },
         marry: {
-            userId: { type: String, default: "null" },
+            userId: { type: String, default: null },
             marryDate: { type: Number, default: 0 },
         },
         timers: {
