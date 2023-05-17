@@ -1,5 +1,5 @@
 const Discord = require("discord.js");
-const jobs = require("../../util/jobs.json")
+const jobs = require("../../util/jobs.json");
 module.exports = {
     name: "jobs",
     run: async (client, message, args) => {
