@@ -3,6 +3,7 @@ const jobs = require("../../util/jobs.json")
 module.exports = {
     name: "jobs",
     run: async (client, message, args) => {
+        await message.channel.sendTyping()
         const userdb = await client.db.findById({ _id: message.author.id });
         if (!userdb) return message.reply({ content: `Você não utilizou o comando: \n**++registrar**.` });       
         const empregos = Object.entries(jobs);
