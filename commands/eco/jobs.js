@@ -27,7 +27,7 @@ module.exports = {
                                 .setLabel(`Emprego de ${key}`)
                                 .setDescription(`Requer ${value.exp}XP! de experiência.`)
                                 .setEmoji("💰")
-                                .setValue(`${key}`)
+                                .setValue(`${key}-${value.exp}-${value.salario}`)
                         }))
                 )]
         }).then((int) => {
@@ -37,7 +37,7 @@ module.exports = {
                 if (i.user.id !== message.author.id) return;
                 if (i.customId === "jobs") {
                     let x = i.values[0];
-                    i.followUp({ content: `${x}`, ephemeral: false });
+                    i.followUp({ content: `${i.user}, Você foi contradado como **${x.split("-")[0]}** e agora seu salário é de **${x.splite("-")[2]} diamantes.**`, ephemeral: false });
                 }
             });
         });
