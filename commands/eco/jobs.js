@@ -2,6 +2,7 @@ const Discord = require("discord.js");
 const jobs = require("../../util/jobs.json");
 module.exports = {
     name: "jobs",
+    aliases: ["empregos"],
     run: async (client, message, args) => {
         await message.channel.sendTyping()
         const userdb = await client.db.findById({ _id: message.author.id });
