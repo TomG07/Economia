@@ -11,6 +11,8 @@ module.exports = {
         if (!userdb) return message.reply({ content: `Você não utilizou o comando: \n**++registrar**.` });
         const twouserdb = await client.db.findById({ _id: member.user.id });
         if (!twouserdb) return message.reply({ content: `Esse jogador **${member.user.username}** não utilizou o \n**++registrar**.` })
+        if (userdb.eco.marry.userId !== null) return message.reply({ content: `Você já se encontra casado(a).` });
+        if (twouserdb.eco.marry.userId !== null) return message.reply({ content: `O usuário já se encontra casado(a).` });
         message.reply({
             content: `:ring: | ${member} aceita o **pedido de casamento** de ${message.author}?`,
             components: [
