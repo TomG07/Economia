@@ -43,7 +43,7 @@ module.exports = {
                     if (userdb.eco.xp < x.split("-")[1]) return i.followUp({ content: `${i.user}, Você não possui **${x.split("-")[1]} de experiêcia**, continue realizando suas tarefas para conseguir mais xp.`, ephemeral: true });
                     if (userdb.eco.job === x.split("-")[0]) return i.followUp({ content: `${i.user}, Você já se encontra nesse emprego.`, ephemeral: true });
                     i.followUp({ content: `${i.user}, Você foi contradado como **${x.split("-")[0]}** e agora seu salário é de **${x.split("-")[2]} diamantes.**`, ephemeral: false });
-                    await client.db.updateOne({ _id: message.author.id }, { $set: { "eco.job": x.split("-")[0], }, });
+                    await client.db.updateOne({ _id: i.user.id }, { $set: { "eco.job": x.split("-")[0], }, });
                 }
             });
         });
