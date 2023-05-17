@@ -9,6 +9,9 @@ module.exports = async (client) => {
           files = require(`../commands/${subfolder}/${files}`);
           if (!files?.name) return;
           client.commands.set(files?.name, files);
+          if (files?.aliases && Array.isArray(files?.aliases)) {
+              files?.aliases.forEach(x => client.aliases.set(x, files?.name))
+           } 
         });
       });
     });
