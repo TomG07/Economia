@@ -11,7 +11,7 @@ module.exports = {
                     .setColor("#303136")
                     .addFields({
                         name: "Pessoal",
-                        valeu: "`saldo`, `daily`, `empregos`"
+                        value: "`saldo`, `daily`, `empregos`"
                     }, {
                         name: "Social",
                         value: "`casar`, `gf`, `divorciar`, `trabalhar`"
