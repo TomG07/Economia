@@ -5,7 +5,7 @@ const client = new Discord.Client({
         Discord.GatewayIntentBits.GuildMessages,
         Discord.GatewayIntentBits.MessageContent
     ]
-});
+});//jj
 module.exports = client;
 client.commands = new Discord.Collection();
 require('./handlers/commandsManager')(client);
