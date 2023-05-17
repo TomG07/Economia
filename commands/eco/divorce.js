@@ -2,6 +2,9 @@ const Discord = require("discord.js");
 module.exports = {
     name: "divorce",
     run: async (client, message, args) => {
+        const userdb = await client.db.findById({ _id: message.author.id });
+        if (!userdb) return message.reply({ content: `Você não utilizou o comando: \n**++registrar**.` });
+        if (userdb.eco.marry.userId == null) return message.reply({ content: `Você se encontra solteiro(a), se case utilizando o comando: \n**++registrar**.` });
         let member = message.mentions.members.first();
         message.reply({
             content: `:broken_heart: | ${member} aceita o **pedido de divorcio** de ${message.author}?`,

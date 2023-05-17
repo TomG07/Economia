@@ -4,9 +4,9 @@ module.exports = {
     run: async (client, message, args) => {
         const userdb = await client.db.findById({ _id: message.author.id });
         if (!userdb) return message.reply({ content: `Você não utilizou o comando: \n**++registrar**.` });
-        if (Date.now() < userdb.eco.timers.workCooldown) return message.reply({ content: `Você se encontra em modo de recarga, tente novamente ${~~(userdb.eco.timers.workCooldown / 1000 )}.` });
+        if (Date.now() < userdb.eco.timers.workCooldown) return message.reply({ content: `Você se encontra em modo de recarga, tente novamente ${~~(userdb.eco.timers.workCooldown / 1000)}.` });
         if (userdb.eco.job == null) return message.reply({ content: `Você não tem um **emprego** utilize o comando: \n**++empregos**.` })
-        let coins = Math.floor(Math.random() * 700) + 900;
+        let coins = Math.floor(Math.random() * 100) + 250;
         message.reply({
             embeds: [
                 new Discord.EmbedBuilder()
@@ -25,5 +25,6 @@ module.exports = {
                 )
             ]
         });
+        await client.db.updateOne({ _id: message.author.id }, { $inc: { "eco.coins": coins, "eco.xp": 1, }, $set: { "eco.timers.workCooldown": Date.now() + 3600000, }, });
     }
 }

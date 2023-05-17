@@ -2,13 +2,11 @@ const Discord = require("discord.js");
 module.exports = {
     name: "gf",
     run: async (client, message, args) => {
-        // const userdb = await client.userdb.findById({ _id: message.author.id });
-        /* if (!userdb) {
-             const newDocument = new client.userdb({ _id: message.author.id });
-             await newDocument.save();
-             return message.reply({ content: `${message.author}, Uma nova conta foi gerada para você com sucesso, utiize novamente esse comando para resgatar seu premio.` });
-         }*/
-        let coins = Math.floor(Math.random() * 200) + 500;
+        const userdb = await client.db.findById({ _id: message.author.id });
+        if (!userdb) return message.reply({ content: `Você não utilizou o comando: \n**++registrar**.` });
+        if (Date.now() < userdb.eco.timers.gfCooldown) return message.reply({ content: `Você se encontra em modo de recarga, tente novamente ${~~(userdb.eco.timers.gfCooldown / 1000)}.` });
+        if (userdb.eco.marry.userId == null) return message.reply({ content: `Você se encontra solteiro(a), se case utilizando o comando: \n**++registrar**.` });
+        let coins = Math.floor(Math.random() * 150) + 300;
         message.reply({
             embeds: [
                 new Discord.EmbedBuilder()
@@ -27,5 +25,6 @@ module.exports = {
                 )
             ]
         });
+        await client.db.updateOne({ _id: message.author.id }, { $inc: { "eco.coins": coins, "eco.xp": 1, }, $set: { "eco.timers.gfCooldown": Date.now() + 3600000, }, });
     }
 }
