@@ -12,7 +12,7 @@ module.exports = {
             embeds: [
                 new Discord.EmbedBuilder()
                     .setTitle("Trabalho concluído!")
-                    .setDescription(`:coin: | ${message.author}, ganhou **${coins} diamantes** + '1XP!' de experiência ao concluir seu trabalho de **lixeiro**.`)
+                    .setDescription(`:coin: | ${message.author}, ganhou **${coins} diamantes** + '1XP!' de experiência ao concluir seu trabalho de **${userdb.eco.job}**.`)
                     .setColor("#303136")
                     .setFooter({ text: `${message.author.tag}`, iconURL: `${message.author.displayAvatarURL()}` })
             ],

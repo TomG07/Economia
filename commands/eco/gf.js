@@ -11,7 +11,7 @@ module.exports = {
             embeds: [
                 new Discord.EmbedBuilder()
                     .setTitle("Sapequinha")
-                    .setDescription(`:coin: | ${message.author}, ganhou **${coins} diamantes** + '1XP!' de experiência ao fazer **GF** com {null}.`)
+                    .setDescription(`:coin: | ${message.author}, ganhou **${coins} diamantes** + '1XP!' de experiência ao fazer **GF** com <@${userdb.eco.marry.userId}>.`)
                     .setColor("#303136")
                     .setFooter({ text: `${message.author.tag}`, iconURL: `${message.author.displayAvatarURL()}` })
             ],
