@@ -6,6 +6,10 @@ module.exports = {
         if (!member) return message.reply({ content: `Mencione a pessoa que vc quer casar!` });
         if (member.user.bot) return message.reply({ content: `Você não pode se casar com um bot.` });
         if (member.user.id === message.author.id) return message.reply({ content: `Você não pode se casar consigo mesmo!` });
+        const userdb = await client.db.findById({ _id: message.author.id });
+        if (!userdb) return message.reply({ content: `Você não utilizou o comando: \n**++registrar**.` });
+        const twouserdb = await client.db.findById({ _id: member.user.id });
+        if (!twouserdb) return message.reply({ content: `Esse jogador **${member.user.username}** não utilizou o \n**++registrar**.` })
         message.reply({
             content: `:ring: | ${member} aceita o **pedido de casamento** de ${message.author}?`,
             components: [
