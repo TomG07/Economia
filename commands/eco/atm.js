@@ -24,7 +24,7 @@ module.exports = {
                         value: `**${userdb.eco.xp}**XP!`
                     }, {
                         name: ":ring: Estado Civil",
-                        value: `${userdb.eco.marry.userId ? `Casado(a).` : "Solteiro(a)"}`
+                        value: `${userdb.eco.marry.userId ? `Casado(a) com <@${userdb.eco.marry.userId}> <t:${~~(userdb.eco.marry.marryDate / 1000)}:R>.` : "Solteiro(a)"}`
                     })
             ]
         });
