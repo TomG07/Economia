@@ -2,12 +2,10 @@ const Discord = require("discord.js");
 module.exports = {
     name: "work",
     run: async (client, message, args) => {
-        // const userdb = await client.userdb.findById({ _id: message.author.id });
-        /* if (!userdb) {
-             const newDocument = new client.userdb({ _id: message.author.id });
-             await newDocument.save();
-             return message.reply({ content: `${message.author}, Uma nova conta foi gerada para você com sucesso, utiize novamente esse comando para resgatar seu premio.` });
-         }*/
+        const userdb = await client.db.findById({ _id: message.author.id });
+        if (!userdb) return message.reply({ content: `Você não utilizou o comando: \n**++registrar**.` });
+        if (Date.now() < userdb.timers.workCooldown) return message.reply({ content: `Você se encontra em modo de recarga, tente novamente ${~~(userdb.timers.workCooldown / 1000 )}.` });
+        if (!userdb.eco.job) return message.reply({ content: `Você não tem um **emprego** utilize o comando: \n**++empregos**.` })
         let coins = Math.floor(Math.random() * 700) + 900;
         message.reply({
             embeds: [
