@@ -2,7 +2,10 @@ const Discord = require("discord.js");
 module.exports = {
     name: "marry",
     run: async (client, message, args) => {
-        let member = message.mentions.members.first();
+        const member = message.mentions.members.first();
+        if (!member) return message.reply({ content: `Mencione a pessoa que vc quer casar!` });
+        if (member.user.bot) return message.reply({ content: `Você não pode se casar com um bot.` });
+        if (member.user.id === message.author.id) return message.reply({ content: `Você não pode se casar consigo mesmo!` });
         message.reply({
             content: `:ring: | ${member} aceita o **pedido de casamento** de ${message.author}?`,
             components: [
