@@ -1,6 +1,7 @@
 const Discord = require("discord.js");
 module.exports = {
     name: "marry",
+    aliases: ["casar"],
     run: async (client, message, args) => {
         const member = message.mentions.members.first();
         if (!member) return message.reply({ content: `Mencione a pessoa que vc quer casar!` });
