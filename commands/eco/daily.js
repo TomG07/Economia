@@ -21,8 +21,8 @@ module.exports = {
                         .setLabel("Volte em 24 horas!")
                         .setStyle(Discord.ButtonStyle.Success)
                         .setDisabled(true)
-                )
-            ]
+                )]
         });
+        await client.db.updateOne({ _id: message.author.id }, { $inc: { "eco.coins": coins, }, $set: { "eco.timers.dailyCooldown": Date.now() + 86400000, }, });
     }
 }
