@@ -3,8 +3,8 @@ module.exports = {
     name: "atm",
     run: async (client, message, args) => {
         let member = message.mentions.members.first() || message.member;
-        //const userdb = await client.userdb.findById({ _id: member.user.id });
-        // if (!userdb) return message.reply({ content: `Esse jogador não coletou o daily.` })
+        const userdb = await client.db.findById({ _id: member.user.id });
+        if (!userdb) return message.reply({ content: `Esse jogador **${member.user.username}** não utilizou o **++registrar**.` })
         let coins = 0;//userdb.profile.coins;
         let xp = 0;
         message.reply({
@@ -17,10 +17,10 @@ module.exports = {
                     .setColor("#303136")
                     .addFields({
                         name: ":gem: Carteira",
-                        value: `**${coins}** diamantes.`
+                        value: `**${userdb.eco.coins}** diamantes.`
                     }, {
                         name: ":star: Experiência",
-                        value: `**${xp}**XP!`
+                        value: `**${userdb.eco.xp}**XP!`
                     }, {
                         name: ":ring: Estado Civil",
                         value: `Solteiro(a)`
