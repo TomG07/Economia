@@ -20,7 +20,7 @@ module.exports = {
                         name: "🔧 Utilidades",
                         value: "`ajuda`, `botinfo`, `verificar`"
                     })
-                .setTimestamp()
+                    .setTimestamp()
             ]
         });
     }

@@ -10,7 +10,7 @@ module.exports = {
                     .setThumbnail(client.user.displayAvatarURL())
                     .setColor("#303136")
                     .addFields({
-                        name:"🛠 Creator",
+                        name: "🛠 Creator",
                         value: `MikaCat (Id: \`1027989059198537728\`)`
                     }, {
                         name: "💻 Minha versão",
@@ -19,13 +19,13 @@ module.exports = {
                         name: "📚 Livraria",
                         value: "`Discord.js`"
                     }, {
-                       name: "⚙ Prefixo",
-                       value: "`++`"
+                        name: "⚙ Prefixo",
+                        value: "`++`"
                     }, {
                         name: "🗂 Total de comandos",
                         value: `${client.commands.size}`
                     })
-                .setTimestamp()
+                    .setTimestamp()
             ]
         });
     }
