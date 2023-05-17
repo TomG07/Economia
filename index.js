@@ -7,10 +7,18 @@ const client = new Discord.Client({
     ]
 });//jj
 module.exports = client;
+const mongoose = require("mongoose");
+mongoose.set("strictQuery", true);
+mongoose.connect("mongodb+srv://mikaradb:uRDZ0k4Ko1qWb0kj@cluster0.6issots.mongodb.net/", { useNewUrlParser: true, useUnifiedTopology: true, });
+const statusdb = mongoose.connection;
+statusdb.on("error", console.error);
+statusdb.on("open", () => {
+    console.log("📚 | Conectada ao banco de dados com sucesso.");
+});
 client.commands = new Discord.Collection();
 require('./handlers/commandsManager')(client);
 require('./handlers/eventsManager')(client);
 client.once(Discord.Events.ClientReady, () => {
-    console.log(`Online em ${client.user.tag}`)
+    console.log(`🌸 | Longin no discord realizado com a conta ${client.user.tag}`)
 });
 client.login("MTA5ODU3NDU0OTE4MTgwNDY0NA.GGC0Az.PTgpnz0pg-sGDlPhwGftAgrCYqlD8Fen5FBhIc");
