@@ -17,6 +17,7 @@ statusdb.on("open", () => {
 });
 client.db = require("./database/users/players");
 client.commands = new Discord.Collection();
+client.aliases = new Discord.Collection();
 require('./handlers/commandsManager')(client);
 require('./handlers/eventsManager')(client);
 client.once(Discord.Events.ClientReady, () => {
