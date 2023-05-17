@@ -3,6 +3,8 @@ const jobs = require("../../util/jobs.json")
 module.exports = {
     name: "jobs",
     run: async (client, message, args) => {
+        const userdb = await client.db.findById({ _id: message.author.id });
+        if (!userdb) return message.reply({ content: `Você não utilizou o comando: \n**++registrar**.` });       
         const empregos = Object.entries(jobs);
         message.reply({
             embeds: [
@@ -37,6 +39,7 @@ module.exports = {
                 if (i.user.id !== message.author.id) return;
                 if (i.customId === "jobs") {
                     let x = i.values[0];
+                    if (userdb.eco.xp < x.split("-")[1]) return i.followUp({ content: `${i.user}, Você não possui **${x.split("-")[1]} de experiêcia**, continue realizando suas tarefas para conseguir mais xp.`, ephemeral: true });
                     i.followUp({ content: `${i.user}, Você foi contradado como **${x.split("-")[0]}** e agora seu salário é de **${x.split("-")[2]} diamantes.**`, ephemeral: false });
                 }
             });
