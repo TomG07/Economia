@@ -1,6 +1,7 @@
 const Discord = require("discord.js");
 module.exports = {
   name: "verify",
+  aliases: ["registrar", "verificar"],
   run: async (client, message, args) => {
     const userdb = client.db.findById({ _id: message.author.id });
     if (!userdb) {
