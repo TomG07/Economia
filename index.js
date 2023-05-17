@@ -15,6 +15,7 @@ statusdb.on("error", console.error);
 statusdb.on("open", () => {
     console.log("📚 | Conectada ao banco de dados com sucesso.");
 });
+client.db = require("./database/users/players");
 client.commands = new Discord.Collection();
 require('./handlers/commandsManager')(client);
 require('./handlers/eventsManager')(client);
