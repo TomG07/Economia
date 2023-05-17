@@ -2,6 +2,7 @@ const Discord = require("discord.js");
 const jobs = require("../../util/jobs.json");
 module.exports = {
     name: "work",
+    aliases: ["trabalhar", "trampo"],
     run: async (client, message, args) => {
         const userdb = await client.db.findById({ _id: message.author.id });
         if (!userdb) return message.reply({ content: `Você não utilizou o comando: \n**++registrar**.` });
