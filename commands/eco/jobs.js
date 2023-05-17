@@ -37,7 +37,7 @@ module.exports = {
                 if (i.user.id !== message.author.id) return;
                 if (i.customId === "jobs") {
                     let x = i.values[0];
-                    i.followUp({ content: `${i.user}, Você foi contradado como **${x.split("-")[0]}** e agora seu salário é de **${x.splite("-")[2]} diamantes.**`, ephemeral: false });
+                    i.followUp({ content: `${i.user}, Você foi contradado como **${x.split("-")[0]}** e agora seu salário é de **${x.split("-")[2]} diamantes.**`, ephemeral: false });
                 }
             });
         });
