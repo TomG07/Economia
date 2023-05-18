@@ -15,7 +15,7 @@ module.exports = {
                         value: "`saldo`, `daily`, `empregos`, `cd`"
                     }, {
                         name: "👥 Social",
-                        value: "`casar`, `gf`, `divorciar`, `trabalhar`"
+                        value: "`casar`, `gf`, `divorciar`, `trabalhar`, `top`"
                     }, {
                         name: "🔧 Utilidades",
                         value: "`ajuda`, `botinfo`, `verificar`"
