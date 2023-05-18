@@ -1,7 +1,7 @@
 const Discord = require("discord.js");
 module.exports = {
   name: "rank",
-  aliases: ["ranking", "top"],
+  aliases: ["ranking", "top", "placar"],
   run: async(client, message, args) => {
      await message.channel.sendTyping();
      let top = await client.db.find({}).sort({ "eco.coins": -1 });
