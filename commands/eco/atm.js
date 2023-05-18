@@ -17,10 +17,10 @@ module.exports = {
                     .setTimestamp()
                     .setColor("#303136")
                     .addFields({
-                        name: ":gem: Carteira",
+                        name: "<:diamante:1108743116778917958> Carteira",
                         value: `**${userdb.eco.coins}** diamantes.`
                     }, {
-                        name: ":star: Experiência",
+                        name: "<:xp:1108743400410329138> Experiência",
                         value: `**${userdb.eco.xp}**XP!`
                     }, {
                         name: ":ring: Estado Civil",

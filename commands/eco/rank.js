@@ -8,7 +8,7 @@ module.exports = {
      let content = "";
      for (let i = 0; i <= 2; i++) {
        let user = await client.users.fetch(`${top[i]._id}`);
-       content += `\> #**${i + 1}**: ${user.username}` + `\n:gem: \`${top[i].eco.coins} diamantes\`` + "\n";
+       content += `\> #**${i + 1}**: ${user.username}` + `\n<:diamante:1108743116778917958> \`${top[i].eco.coins} diamantes\`` + "\n";
      }
     message.reply({
        embeds: [
