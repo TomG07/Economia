@@ -17,6 +17,10 @@ module.exports = {
                         return `\> <:Staff:1107072021231317193> **Trabalhar de ${key}**\nSalário: \`${value.salario}\`\nRequisito: \`${value.exp}XP! de experiência.\` `
                     }).join("\n")}`)
                     .setColor("#303136")
+                    .addFields({
+                        name: `<:xp:1108743400410329138> Atualmente sua experiência é:`,
+                        value: `${userdb.eco.xp}XP!`
+                    })
                     .setThumbnail(message.author.displayAvatarURL({ dynamic: true }))
 
             ], components: [
@@ -30,7 +34,7 @@ module.exports = {
                             return new Discord.StringSelectMenuOptionBuilder()
                                 .setLabel(`Emprego de ${key}`)
                                 .setDescription(`Requer ${value.exp}XP! de experiência.`)
-                                .setEmoji("💰")
+                                .setEmoji("<:join:1108748868310540299>")
                                 .setValue(`${key}-${value.exp}-${value.salario}`)
                         }))
                 )]
