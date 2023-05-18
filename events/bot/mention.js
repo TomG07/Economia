@@ -6,5 +6,8 @@ module.exports = {
     async execute(message) {
         if (!message.guild) return;
         if (message.author.bot) return;
+        if (message.content == `<!@${client.user.id}>` || message.content == `<@${client.user.id}>`) return message.reply({
+            content: `${message.author}, Olá meu prefix é \`++\`, utilize \`+help\` para ver meus comandos.`
+        });     
     }
 }
