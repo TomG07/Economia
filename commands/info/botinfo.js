@@ -25,6 +25,7 @@ module.exports = {
                         name: "🗂 Total de comandos",
                         value: `${client.commands.size}`
                     })
+                .setTimestamp()
             ]
         });
     }
