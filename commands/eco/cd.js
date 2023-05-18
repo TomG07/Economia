@@ -13,7 +13,7 @@ module.exports = {
                .setThumbnail(message.author.displayAvatarURL({ dunamic: true }))
                .setTimestamp()
                .setColor("#303136")
-               .setDescription(`**Daily**: ${Date.now() < timers.dailyCooldown ? `⚡ <t:${~~(timers.dailyCooldown / 1000)}:R>` : "✅ | Colete agora!"}\n**Work**: ${Date.now() < timers.workCooldown ? `⚡ <t:${~~(timers.workCooldown / 1000)}:R>` : "✅ | Colete agora!"}\n**GF**: ${Date.now() < timers.gfCooldown ? `⚡ <t:${~~(timers.gfCooldown / 1000)}:R>` : "✅ | Colete agora!"}`)
+               .setDescription(`**Daily**: ${Date.now() < timers.dailyCooldown ? `<:skipper_cooldown:1108750205202993162> <t:${~~(timers.dailyCooldown / 1000)}:R>` : "<:certo:1108750401764851752> | Colete agora!"}\n**Work**: ${Date.now() < timers.workCooldown ? `<:skipper_cooldown:1108750205202993162> <t:${~~(timers.workCooldown / 1000)}:R>` : "<:certo:1108750401764851752> | Colete agora!"}\n**GF**: ${Date.now() < timers.gfCooldown ? `<:skipper_cooldown:1108750205202993162> <t:${~~(timers.gfCooldown / 1000)}:R>` : "<:certo:1108750401764851752> | Colete agora!"}`)
          ]
       });
    }
