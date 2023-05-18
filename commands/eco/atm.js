@@ -12,7 +12,7 @@ module.exports = {
             embeds: [
                 new Discord.EmbedBuilder()
                     .setAuthor({ name: `${message.author.tag}`, iconURL: `${message.author.displayAvatarURL()}` })
-                    .setTitle("Saldo do jogador")
+                    .setTitle("Saldo do jogador!")
                     .setThumbnail(member.user.displayAvatarURL({ dynamic: true }))
                     .setTimestamp()
                     .setColor("#303136")
@@ -23,7 +23,7 @@ module.exports = {
                         name: "<:xp:1108743400410329138> Experiência",
                         value: `**${userdb.eco.xp}**XP!`
                     }, {
-                        name: ":ring: Estado Civil",
+                        name: "<:AnelDiamante:1108746236657405983> Estado Civil",
                         value: `${userdb.eco.marry.userId ? `Casado(a) com <@${userdb.eco.marry.userId}> <t:${~~(userdb.eco.marry.marryDate / 1000)}:R>.` : "Solteiro(a)"}`
                     })
             ]
