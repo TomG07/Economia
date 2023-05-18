@@ -12,9 +12,9 @@ module.exports = {
             embeds: [
                 new Discord.EmbedBuilder()
                     .setAuthor({ name: `${message.author.tag}`, iconURL: `${message.author.displayAvatarURL()}` })
-                    .setTitle("Empregos!")
+                    .setTitle("Painel de Empregos!")
                     .setDescription(`${empregos.map(([key, value]) => {
-                        return `\> :mortar_board: **Trabalhar de ${key}**\nSalário: \`${value.salario}\`\nRequisito: \`${value.exp}XP! de experiência.\` `
+                        return `\> <:Staff:1107072021231317193> **Trabalhar de ${key}**\nSalário: \`${value.salario}\`\nRequisito: \`${value.exp}XP! de experiência.\` `
                     }).join("\n")}`)
                     .setColor("#303136")
                     .setThumbnail(message.author.displayAvatarURL({ dynamic: true }))
