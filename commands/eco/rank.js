@@ -14,7 +14,7 @@ module.exports = {
        embeds: [
           new Discord.EmbedBuilder()
            .setAuthor({ name: `${message.author.tag}`, iconURL: `${message.author.displayAvatarURL({ dynamic: true })}` })
-           .setTitle("⭐ Top mais rico dod diamantes")
+           .setTitle("⭐ Top mais rico dos diamantes!")
            .setDescription(`${content}`)
            .setColor("#303136")
            .setTimestamp()
