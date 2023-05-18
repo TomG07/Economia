@@ -6,17 +6,18 @@ module.exports = {
         message.reply({
             embeds: [
                 new Discord.EmbedBuilder()
+                    .setAuthor({ name: `${message.author.tag}`, iconURL: `${message.author.displayAvatarURL({ dynamic: true })}` })
                     .setTitle("Veja os meus comandos")
                     .setThumbnail(client.user.displayAvatarURL())
                     .setColor("#303136")
                     .addFields({
-                        name: "Pessoal",
-                        value: "`saldo`, `daily`, `empregos`"
+                        name: "⭐ Pessoal",
+                        value: "`saldo`, `daily`, `empregos`, `cd`"
                     }, {
-                        name: "Social",
+                        name: "👥 Social",
                         value: "`casar`, `gf`, `divorciar`, `trabalhar`"
                     }, {
-                        name: "Utilidades",
+                        name: "🔧 Utilidades",
                         value: "`ajuda`, `botinfo`, `verificar`"
                     })    
             ]
