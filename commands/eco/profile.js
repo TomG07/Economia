@@ -3,6 +3,7 @@ const Canvas = require("canvas");
 Canvas.registerFont("assets/fonts/SourceCodePro-VariableFont_wght.ttf", {
   family: "Source Code Pro",
 });
+const { fillTextWithTwemoji } = require("node-canvas-with-twemoji-and-discord-emoji")
 module.exports = {
   name: "profile",
   aliases: ["perfil"],
@@ -27,8 +28,9 @@ module.exports = {
      let list = [];
      if (userdb.eco.marry.userId !== null) list.push("MARRY");
      if (list.length >= 1) {
+        list = list.replace("MARRY", "<:AnelDiamante:1108746236657405983>");
         context.font = '500 25px "Source Code Pro"';
-        context.fillText(list.join(" "), 223, 432);
+        await fillTextWithTwemoji(context, list.join(" "), 223, 432);
      }
      //attachment  
     const attachment = new Discord.AttachmentBuilder(canvas.toBuffer(), { name: "profile.png" });
