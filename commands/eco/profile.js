@@ -21,19 +21,19 @@ module.exports = {
      const avatar = await Canvas.loadImage(member.user.displayAvatarURL({ extension: 'jpg', size: 4096 }));
      context.drawImage(avatar, 10, 274, 190, 190);
      //BG
-     const background = await Canvas.loadImage("https://media.discordapp.net/attachments/1108841656729485393/1109151756367171634/1684512694256.png");
+     const background = await Canvas.loadImage("https://media.discordapp.net/attachments/1108841656729485393/1109190781241151519/1684521858856.png");
      context.drawImage(background, 0, 0, canvas.width, canvas.height);
      //name
-     context.font = '500 30px "Source Code Pro"';
+     context.font = '500 34px "Source Code Pro"';
      context.fillStyle = "#ffffff";
-     context.fillText(member.user.username, 220, 405);
+     context.fillText(member.user.username, 220, 401);
      //badges
      let list = [];
      if (userdb.eco.marry.userId !== null) list.push("MARRY");
      if (userdb.eco.job !== null) list.push("STAFF");
      if (list.length >= 1) {
-        list = list.join(",").replace("MARRY", "<:AnelDiamante:1108746236657405983>").replace("STAFF", "<:Staff:1107072021231317193>");
-        context.font = '500 32px "Rubik"';
+        list = list.join(",").replace("MARRY", "<:AnelCasal:1109190514009452615>", "<:Staff:1107072021231317193>");
+        context.font = '500 34px "Rubik"';
         await fillTextWithTwemoji(context, list.split(",").join(" "), 223, 438);
      }
      //coins
