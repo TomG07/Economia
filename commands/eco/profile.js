@@ -13,16 +13,19 @@ module.exports = {
   if (!userdb) return message.reply({ content: `Esse jogador **${member.user.username}** não utilizou o \n**++registrar**.` })
      const canvas = Canvas.createCanvas(800, 600);
      const context = canvas.getContext("2d");
-    //avatar
-     const avatar = await Canvas.loadImage(member.user.displayAvatarURL({ format: "jpeg", size: 4096 }));
+     //avatar
+     const avatar = await Canvas.loadImage(member.user.displayAvatarURL({ extension: 'jpg', size: 4096 }));
      context.drawImage(avatar, 10, 274, 190, 190);
-    //BG
+     //BG
      const background = await Canvas.loadImage("https://media.discordapp.net/attachments/1108841656729485393/1109096161568108574/1684499475063.png");
      context.drawImage(background, 0, 0, canvas.width, canvas.height);
      //name
      context.font = '500 30px "Source Code Pro"';
      context.fillStyle = "#ffffff";
      context.fillText(member.user.username, 220, 405);
+     //badges
+     let list = [];
+     if (userdb.eco.marry.userId !== null) list.push("MARRY");
      //attachment  
     const attachment = new Discord.AttachmentBuilder(canvas.toBuffer(), { name: "profile.png" });
     message.reply({ files: [attachment] });
