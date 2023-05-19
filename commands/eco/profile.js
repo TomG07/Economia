@@ -33,6 +33,10 @@ module.exports = {
         context.font = '500 25px "Source Code Pro"';
         await fillTextWithTwemoji(context, list.split(",").join(" "), 223, 432);
      }
+     //coins
+     context.font = '500 25px "Source Code Pro"';
+     context.fillStyle = "#ffffff";
+     await fillTextWithTwemoji(context, `💎 | ${userdb.eco.coins}` , 600, 500);
      //attachment  
     const attachment = new Discord.AttachmentBuilder(canvas.toBuffer(), { name: "profile.png" });
     message.reply({ files: [attachment] });
