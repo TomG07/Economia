@@ -12,6 +12,6 @@
     "discord.js": "^14.11.0",
     "fs": "^0.0.1-security",
     "moongose": "^1.0.0",
-    "canvas": "2.11.2"
+    "canvas": "^2.11.2"
   }
 }
