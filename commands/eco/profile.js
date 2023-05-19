@@ -1,11 +1,7 @@
 const Discord = require("discord.js");
 const Canvas = require("canvas");
-Canvas.registerFont("assets/fonts/SourceCodePro-VariableFont_wght.ttf", {
-  family: "Source Code Pro",
-});
-Canvas.registerFont("assets/fonts/Rubik-VariableFont_wght.ttf", {
-  family: "Rubik",
-});
+Canvas.registerFont("assets/fonts/SourceCodePro-VariableFont_wght.ttf", { family: "Source Code Pro", });
+Canvas.registerFont("assets/fonts/Rubik-VariableFont_wght.ttf", { family: "Rubik", });
 const { fillTextWithTwemoji } = require("node-canvas-with-twemoji-and-discord-emoji")
 module.exports = {
   name: "profile",
