@@ -21,7 +21,7 @@ module.exports = {
      const avatar = await Canvas.loadImage(member.user.displayAvatarURL({ extension: 'jpg', size: 4096 }));
      context.drawImage(avatar, 10, 274, 190, 190);
      //BG
-     const background = await Canvas.loadImage("https://media.discordapp.net/attachments/1108841656729485393/1109096161568108574/1684499475063.png");
+     const background = await Canvas.loadImage("https://media.discordapp.net/attachments/1108841656729485393/1109151756367171634/1684512694256.png");
      context.drawImage(background, 0, 0, canvas.width, canvas.height);
      //name
      context.font = '500 30px "Source Code Pro"';
