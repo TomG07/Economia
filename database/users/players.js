@@ -5,6 +5,7 @@ const documentSave = new Schema({
         coins: { type: Number, default: 0 },
         xp: { type: Number, default: 0 },
         job: { type: String, default: null },
+        badges: { type: Array, default: [] }, 
         marry: {
             userId: { type: String, default: null },
             marryDate: { type: Number, default: 0 },
