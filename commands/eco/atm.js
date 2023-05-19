@@ -3,11 +3,14 @@ module.exports = {
     name: "atm",
     aliases: ["saldo", "carteira", "diamantes"],
     run: async (client, message, args) => {
+        await message.channel.sendTyping();
         let member = message.mentions.members.first() || message.member;
         const userdb = await client.db.findById({ _id: member.user.id });
         if (!userdb) return message.reply({ content: `Esse jogador **${member.user.username}** não utilizou o \n**++registrar**.` })
         let coins = 0;//userdb.profile.coins;
         let xp = 0;
+        let placar = await client.db.find({}).sort({ "eco.coins": -1 });
+        let seachUserRankPosition = placar.findIndex((x) => x._id === member.user.id) + 1;
         message.reply({
             embeds: [
                 new Discord.EmbedBuilder()
@@ -19,6 +22,9 @@ module.exports = {
                     .addFields({
                         name: "<:diamante:1108743116778917958> Carteira",
                         value: `**${userdb.eco.coins}** diamantes.`
+                    }, {
+                        name: "Posição no ranking",
+                        value: `#${seachUserRankPosition}`
                     }, {
                         name: "<:xp:1108743400410329138> Experiência",
                         value: `**${userdb.eco.xp}**XP!`
