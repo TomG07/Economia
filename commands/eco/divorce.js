@@ -27,8 +27,8 @@ module.exports = {
                     if (i.user.id !== member.user.id) return i.followUp({ content: `Essa decisão não é sua!`, ephemeral: true });
                     int.edit({ content: `:sob: :ring: | ${i.user} + ${message.author} se divorciarão.`, components: [] });
                     i.followUp({ content: `:lock: Perdeu acesso ao comando **++gf**.`, ephemeral: true });
-                    await client.db.updateOne({ _id: i.user.id }, { $set: { "eco.marry.userId": null, }, });
-                    await client.db.updateOne({ _id: message.author.id }, { $set: { "eco.marry.userId": null, }, });
+                    await client.db.updateOne({ _id: i.user.id }, { $set: { "eco.marry.userId": null, }, $pull: { "eco.badges": "MARRY" }, });
+                    await client.db.updateOne({ _id: message.author.id }, { $set: { "eco.marry.userId": null, }, $pull: { "eco.badges": "MARRY" }, });
                 }
             });
         });
