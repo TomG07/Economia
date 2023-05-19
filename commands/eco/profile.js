@@ -28,7 +28,7 @@ module.exports = {
      if (userdb.eco.marry.userId !== null) list.push("MARRY");
      if (userdb.eco.job !== null) list.push("STAFF");
      if (list.length >= 1) {
-        list = list.join(",").replace("MARRY", "<:AnelCasal:1109190514009452615>", "<:Staff:1107072021231317193>");
+        list = list.join(",").replace("MARRY", "<:AnelCasal:1109190514009452615>").replace("STAFF", "<:Staff:1107072021231317193>");
         context.font = '500 34px "Rubik"';
         await fillTextWithTwemoji(context, list.split(",").join(" "), 223, 438);
      }
