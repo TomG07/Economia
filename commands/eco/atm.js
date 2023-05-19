@@ -23,7 +23,7 @@ module.exports = {
                         name: "<:diamante:1108743116778917958> Carteira",
                         value: `**${userdb.eco.coins}** diamantes.`
                     }, {
-                        name: "Posição no ranking",
+                        name: "🏆 Posição no ranking",
                         value: `#️⃣${numberToEmojis(seachUserRankPosition)}`
                     }, {
                         name: "<:xp:1108743400410329138> Experiência",
