@@ -12,10 +12,10 @@ module.exports = {
                     .setColor("#303136")
                     .addFields({
                         name: "⭐ Pessoal",
-                        value: "`saldo`, `daily`, `empregos`, `cd`"
+                        value: "`saldo`, `daily`, `empregos`, `cd`, `perfil`, `emblemas`"
                     }, {
                         name: "👥 Social",
-                        value: "`casar`, `gf`, `divorciar`, `trabalhar`, `top`"
+                        value: "`casar`, `gf`, `divorciar`, `trabalhar`, `top`, `pagar`"
                     }, {
                         name: "🔧 Utilidades",
                         value: "`ajuda`, `botinfo`, `verificar`"
