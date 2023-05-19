@@ -16,6 +16,8 @@ module.exports = {
     //BG
      const background = await Canvas.loadImage("https://media.discordapp.net/attachments/1108841656729485393/1108946387258835115/1684463768146.png");
      context.drawImage(background, 0, 0, canvas.width, canvas.height);
-        
+    //attachment   
+    const attachment = new Discord.AttachmentBuilder(canvas.toBuffer(), { name: "profile.png" });
+    message.reply({ files: [attachment] });
   }
 }
