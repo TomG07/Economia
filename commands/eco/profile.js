@@ -27,10 +27,11 @@ module.exports = {
      //badges
      let list = [];
      if (userdb.eco.marry.userId !== null) list.push("MARRY");
+     if (userdb.eco.job !== null) list.push("STAFF");
      if (list.length >= 1) {
-        list = list.replace("MARRY", "<:AnelDiamante:1108746236657405983>");
+        list = list.join(",").replace("MARRY", "<:AnelDiamante:1108746236657405983>").replace("STAFF", "<:Staff:1107072021231317193>");
         context.font = '500 25px "Source Code Pro"';
-        await fillTextWithTwemoji(context, list.join(" "), 223, 432);
+        await fillTextWithTwemoji(context, list.split(",").join(" "), 223, 432);
      }
      //attachment  
     const attachment = new Discord.AttachmentBuilder(canvas.toBuffer(), { name: "profile.png" });
