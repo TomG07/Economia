@@ -24,7 +24,7 @@ module.exports = {
                         value: `**${userdb.eco.coins}** diamantes.`
                     }, {
                         name: "Posição no ranking",
-                        value: `#${seachUserRankPosition}`
+                        value: `#${numberToEmojis(seachUserRankPosition)}`
                     }, {
                         name: "<:xp:1108743400410329138> Experiência",
                         value: `**${userdb.eco.xp}**XP!`
@@ -36,3 +36,12 @@ module.exports = {
         });
     }
 }
+const numbers = [ "0️⃣", "1️⃣", "2️⃣", "3️⃣", "4️⃣", "5️⃣", "6️⃣", "7️⃣", "8️⃣", "9️⃣" ]; 
+function numberToEmojis(number) { 
+     let finalString = "";    
+     String(number).split("").forEach((number) => {
+     finalString += " "+numbers[Number(number)]; 
+});
+     return finalString; 
+};
+
