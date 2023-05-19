@@ -26,6 +26,10 @@ module.exports = {
      //badges
      let list = [];
      if (userdb.eco.marry.userId !== null) list.push("MARRY");
+     if (list.length => 1) {
+        context.font = '500 25px "Source Code Pro"';
+        context.fillText(list.join(" "), 223, 432);
+     }
      //attachment  
     const attachment = new Discord.AttachmentBuilder(canvas.toBuffer(), { name: "profile.png" });
     message.reply({ files: [attachment] });
