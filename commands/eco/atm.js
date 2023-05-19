@@ -1,7 +1,7 @@
 const Discord = require("discord.js");
 module.exports = {
     name: "atm",
-    aliases: ["saldo", "carteira", "diamantes"],
+    aliases: ["saldo", "carteira", "diamantes", "bal"],
     run: async (client, message, args) => {
         await message.channel.sendTyping();
         let member = message.mentions.members.first() || message.member;
