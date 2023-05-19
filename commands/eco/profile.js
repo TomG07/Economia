@@ -3,6 +3,9 @@ const Canvas = require("canvas");
 Canvas.registerFont("assets/fonts/SourceCodePro-VariableFont_wght.ttf", {
   family: "Source Code Pro",
 });
+Canvas.registerFont("assets/fonts/Rubik-VariableFont_wght.ttf", {
+  family: "Rubik",
+});
 const { fillTextWithTwemoji } = require("node-canvas-with-twemoji-and-discord-emoji")
 module.exports = {
   name: "profile",
@@ -30,13 +33,13 @@ module.exports = {
      if (userdb.eco.job !== null) list.push("STAFF");
      if (list.length >= 1) {
         list = list.join(",").replace("MARRY", "<:AnelDiamante:1108746236657405983>").replace("STAFF", "<:Staff:1107072021231317193>");
-        context.font = '500 25px "Source Code Pro"';
+        context.font = '500 25px "Rubik"';
         await fillTextWithTwemoji(context, list.split(",").join(" "), 223, 432);
      }
      //coins
-     context.font = '500 25px "Source Code Pro"';
+     context.font = '500 25px "Rubik"';
      context.fillStyle = "#ffffff";
-     await fillTextWithTwemoji(context, `💎 | ${userdb.eco.coins}` , 600, 500);
+     await fillTextWithTwemoji(context, `💎 ${userdb.eco.coins}` , 620, 520);
      //attachment  
     const attachment = new Discord.AttachmentBuilder(canvas.toBuffer(), { name: "profile.png" });
     message.reply({ files: [attachment] });
