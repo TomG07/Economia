@@ -20,9 +20,9 @@ module.exports = {
      const background = await Canvas.loadImage("https://media.discordapp.net/attachments/1108841656729485393/1109096161568108574/1684499475063.png");
      context.drawImage(background, 0, 0, canvas.width, canvas.height);
      //name
-     context.font("400 30px 'Source Code Pro'")
-     context.fillStyle("#ffffff")
-     context.fillText(member.user.username, 220, 405)
+     context.font = '400 30px "Source Code Pro"';
+     context.fillStyle = "#ffffff";
+     context.fillText(member.user.username, 220, 405);
      //attachment  
     const attachment = new Discord.AttachmentBuilder(canvas.toBuffer(), { name: "profile.png" });
     message.reply({ files: [attachment] });
