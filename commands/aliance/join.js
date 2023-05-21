@@ -19,8 +19,29 @@ module.exports = {
                         .setLabel("Enviar meu servidor!")
                         .setEmoji("<:FlowerPurple:1109899097655222272>")
                         .setStyle(Discord.ButtonStyle.Primary)
-                        .setDisabled(true)
+                        .setDisabled(message.author.id !== "1027989059198537728")
                 )]
+        }).then((int) => {
+            const coletou = int.createMessageComponentCollector({ time: 36000 });
+            coletou.on("collect", async (i) => {
+                await i.deferUpdate();
+                if (i.customId === "join") {
+                    if (i.user.id !== message.author.id) return i.followUp({ content: "Isso não é seu!", ephemeral: true })
+                    const modal = new Discord.ModalBuilder()
+                        .setCustomId('myModal')
+                        .setTitle('Enviar seu servidor');
+                    const linkInput = new Discord.TextInputBuilder()
+                        .setCustomId('inviteinput')
+                        .setLabel("Informe seu convite")
+                        .setMaxLength(25)
+                        .setMinLength(10)
+                        .setStyle(Discord.TextInputStyle.Short)
+                        .setRequired(true);
+                    const submit = new Discord.ActionRowBuilder().addComponents(linkInput);
+                    modal.addComponents(submit);
+                    await i.showModal(modal);
+                }
+            });
         });
     }
 }
