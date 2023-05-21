@@ -64,10 +64,10 @@ module.exports = {
                                         value: `${i.guild.name}`
                                     }, {
                                         name: "<:a_sparklespurple:1105803277230153848> Servidor Id",
-                                        value: `${i.guild.id}`
+                                        value: `\`${i.guild.id}\``
                                     }, {
                                         name: "<:a_sparklespurple:1105803277230153848> Servidor População",
-                                        value: `${i.guild.memberCount}`
+                                        value: `\`${i.guild.memberCount}\``
                                     })
                             ],
                             components: [
@@ -83,7 +83,7 @@ module.exports = {
                                         .setLabel("Reprovar!")
                                         .setEmoji("<:FlowerPurple:1109899097655222272>")
                                         .setStyle(Discord.ButtonStyle.Danger)
-                                        .setDisabled(true)
+                                        .setDisabled(false)
                                 )]
                         })
                     }
