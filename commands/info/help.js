@@ -7,19 +7,16 @@ module.exports = {
             embeds: [
                 new Discord.EmbedBuilder()
                     .setAuthor({ name: `${message.author.tag}`, iconURL: `${message.author.displayAvatarURL({ dynamic: true })}` })
-                    .setTitle("Veja os meus comandos")
+                    .setTitle("Lista dos meus comandos")
                     .setThumbnail(client.user.displayAvatarURL())
-                    .setColor("#303136")
                     .addFields({
-                        name: "⭐ Pessoal",
-                        value: "`saldo`, `daily`, `empregos`, `cd`, `perfil`, `emblemas`"
-                    }, {
-                        name: "👥 Social",
-                        value: "`casar`, `gf`, `divorciar`, `trabalhar`, `top`, `pagar`"
+                        name: "💰 Economia",
+                        value: "`saldo`, `daily`, `empregos`, `cd`, `perfil`, `emblemas`, `casar`, `gf`, `divorciar`, `trabalhar`, `top`, `pagar`"
                     }, {
                         name: "🔧 Utilidades",
                         value: "`ajuda`, `botinfo`, `verificar`"
                     })
+                    .setColor("#9b59b6")
                     .setTimestamp()
             ]
         });
