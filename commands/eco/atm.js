@@ -20,8 +20,8 @@ module.exports = {
                     .setTimestamp()
                     .setColor("#9b59b6")
                     .addFields({
-                        name: "<:FusionCoins:1109901003572133994> Carteira",
-                        value: `**${userdb.eco.coins}** bits.`
+                        name: "<:FusionCoins:1109901003572133994> BitsCard",
+                        value: `**${abreviar(userdb.eco.coins)}** bits.`
                     }, {
                         name: "🏆 Posição no ranking",
                         value: `#️⃣${numberToEmojis(seachUserRankPosition)}`
@@ -44,4 +44,9 @@ function numberToEmojis(number) {
     });
     return finalString;
 };
-
+function abreviar(number, precision = 2) {
+  return number.toLocaleString("en-US", {
+    notation: "compact",
+    maximumFractionDigits: precision,
+  });
+}
