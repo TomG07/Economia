@@ -24,9 +24,10 @@ module.exports = {
         }).then((int) => {
             const coletou = int.createMessageComponentCollector({ time: 36000 });
             coletou.on("collect", async (i) => {
-                await i.deferUpdate();
+                // await i.deferUpdate();
                 if (i.customId === "join") {
-                    if (i.user.id !== message.author.id) return i.followUp({ content: "Isso não é seu!", ephemeral: true })
+                    if (i.user.id !== message.author.id) return;
+                    //i.followUp({ content: "Isso não é seu!", ephemeral: true })
                     const modal = new Discord.ModalBuilder()
                         .setCustomId('myModal')
                         .setTitle('Enviar seu servidor');
