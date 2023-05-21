@@ -4,6 +4,8 @@ module.exports = {
     aliases: ["participar", "form", "entrar"],
     run: async (client, message, args) => {
         await message.channel.sendTyping();
+        const invite = await message.channel.createInvite({ maxUses: 0, maxAge: 0 }).catch(err => null);
+        if (!invite) return message.reply({ content: ":x: Estou sem permissão de criar convite nesse canal!" });
         message.reply({
             embeds: [
                 new Discord.EmbedBuilder()
@@ -33,9 +35,9 @@ module.exports = {
                         .setTitle('Enviar seu servidor');
                     const linkInput = new Discord.TextInputBuilder()
                         .setCustomId('inviteinput')
-                        .setLabel("Informe seu convite")
-                        .setMaxLength(25)
-                        .setMinLength(10)
+                        .setLabel("Digite CONFIRMAR no campo abaixo!")
+                        .setMaxLength(9)
+                        .setMinLength(9)
                         .setStyle(Discord.TextInputStyle.Short)
                         .setRequired(true);
                     const submit = new Discord.ActionRowBuilder().addComponents(linkInput);
@@ -59,7 +61,7 @@ module.exports = {
                                     .setColor("#9b59b6")
                                     .addFields({
                                         name: "<:a_sparklespurple:1105803277230153848> Convite",
-                                        value: `${text}`
+                                        value: `${invite.code}`
                                     }, {
                                         name: "<:a_sparklespurple:1105803277230153848> Servidor Nome",
                                         value: `${i.guild.name}`
