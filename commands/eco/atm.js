@@ -18,10 +18,10 @@ module.exports = {
                     .setTitle("Saldo do jogador!")
                     .setThumbnail(member.user.displayAvatarURL({ dynamic: true }))
                     .setTimestamp()
-                    .setColor("#303136")
+                    .setColor("#9b59b6")
                     .addFields({
-                        name: "<:diamante:1108743116778917958> Carteira",
-                        value: `**${userdb.eco.coins}** diamantes.`
+                        name: "<:FusionCoins:1109901003572133994> Carteira",
+                        value: `**${userdb.eco.coins}** bits.`
                     }, {
                         name: "🏆 Posição no ranking",
                         value: `#️⃣${numberToEmojis(seachUserRankPosition)}`
