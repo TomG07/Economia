@@ -85,7 +85,16 @@ module.exports = {
                                         .setStyle(Discord.ButtonStyle.Danger)
                                         .setDisabled(false)
                                 )]
-                        })
+                        });
+                        client.channels.cache.get("1109971281991970866").send({ 
+                           embeds: [
+                             new Discord.EmbedBuilder()
+                               .setAuthor({ name: `${i.user.username}`, iconURL: `${i.user.displayAvatarURL({ dynamic: true })}` })
+                               .setColor("#303136")
+                               .setDescription(`<a:DiscordLoading:1087183562765254746> O usuário ${i.user} enviou o servidor \`${i.guild.name} - (${i.guild.id})\` para análise.`)
+                               .setTimestamp()                             
+                           ]
+                        });
                     }
                 }
             });
