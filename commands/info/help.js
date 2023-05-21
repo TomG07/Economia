@@ -10,10 +10,10 @@ module.exports = {
                     .setTitle("Lista dos meus comandos")
                     .setThumbnail(client.user.displayAvatarURL())
                     .addFields({
-                        name: "<:FlowerPurple:1085226294683389992> Economia",
+                        name: "<:FlowerPurple:1109899097655222272> Economia",
                         value: "`saldo`, `daily`, `empregos`, `cd`, `perfil`, `emblemas`, `casar`, `gf`, `divorciar`, `trabalhar`, `top`, `pagar`"
                     }, {
-                        name: "<:FlowerPurple:1085226294683389992> Utilidades",
+                        name: "<:FlowerPurple:1109899097655222272> Utilidades",
                         value: "`ajuda`, `botinfo`, `verificar`"
                     })
                     .setColor("#9b59b6")
