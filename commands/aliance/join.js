@@ -47,6 +47,13 @@ module.exports = {
                     } else {
                         const { fields } = cModalInput;
                         const text = fields.getTextInputValue("inviteinput");
+                        let fetchGuild;
+                        try {
+                          fetchGuild = await client.fetchInvite(text);
+                        } catch (err) {
+                          return cModalInput.reply({ content: `Seu convite não é válido.`, ephemeral: true });
+                        }
+                        if (fetchGuild.guild.id !== message.guild.id) return cModalInput.reply({ content: `Seu convite não desse servidor.`, ephemeral: true });                       
                         cModalInput.reply({ content: `Sucesso!`, ephemeral: true });
                         client.channels.cache.get("1102545962565644328").send({
                             embeds: [
@@ -91,7 +98,7 @@ module.exports = {
                              new Discord.EmbedBuilder()
                                .setAuthor({ name: `${i.user.username}`, iconURL: `${i.user.displayAvatarURL({ dynamic: true })}` })
                                .setColor("#303136")
-                               .setDescription(`<a:DiscordLoading:1087183562765254746> O usuário ${i.user} enviou o servidor \`${i.guild.name} - (${i.guild.id})\` para análise.`)
+                               .setDescription(`\> <:Editar:1105250558509596722> O usuário ${i.user} enviou o servidor \`${i.guild.name} - (${i.guild.id})\` para análise.`)
                                .setTimestamp()                             
                            ]
                         });
