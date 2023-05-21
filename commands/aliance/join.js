@@ -48,12 +48,6 @@ module.exports = {
                         const { fields } = cModalInput;
                         const text = fields.getTextInputValue("inviteinput");
                         let fetchGuild;
-                        try {
-                          fetchGuild = await client.fetchInvite(text);
-                        } catch (e) {
-                          return cModalInput.reply({ content: `Seu convite não é válido.`, ephemeral: true });
-                        }
-                        if (fetchGuild.guild.id !== message.guild.id) return cModalInput.reply({ content: `Seu convite não é desse servidor.`, ephemeral: true });                       
                         cModalInput.reply({ content: `Sucesso!`, ephemeral: true });
                         client.channels.cache.get("1102545962565644328").send({
                             embeds: [
