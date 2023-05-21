@@ -12,9 +12,9 @@ module.exports = {
         message.reply({
             embeds: [
                 new Discord.EmbedBuilder()
-                    .setTitle("Trabalho concluído!")
-                    .setDescription(`<:diamante:1108743116778917958> | ${message.author}, ganhou **${jobs[`${userdb.eco.job}`].salario} diamantes** + <:xp:1108743400410329138> '1XP!' de experiência ao concluir seu trabalho de **${userdb.eco.job}**.`)
-                    .setColor("#303136")
+                    .setTitle("💼 Trabalho concluído!")
+                    .setDescription(`\> ${message.author}, ganhou <:FusionCoins:1109901003572133994> **${jobs[`${userdb.eco.job}`].salario} bits** + <:xp:1108743400410329138> '1XP!' de experiência ao concluir seu trabalho de **${userdb.eco.job}**.`)
+                    .setColor("#9b59b6")
                     .setFooter({ text: `${message.author.tag}`, iconURL: `${message.author.displayAvatarURL()}` })
             ],
             components: [
@@ -22,7 +22,8 @@ module.exports = {
                     new Discord.ButtonBuilder()
                         .setCustomId("work")
                         .setLabel("Volte em 1 hora!")
-                        .setStyle(Discord.ButtonStyle.Success)
+                        .setEmoji("<:FlowerPurple:1109899097655222272>")
+                        .setStyle(Discord.ButtonStyle.Primary)
                         .setDisabled(true)
                 )
             ]
