@@ -45,8 +45,8 @@ function numberToEmojis(number) {
     return finalString;
 };
 function abreviar(number, precision = 2) {
-  return number.toLocaleString("en-US", {
-    notation: "compact",
-    maximumFractionDigits: precision,
-  });
+    return number.toLocaleString("en-US", {
+        notation: "compact",
+        maximumFractionDigits: precision,
+    });
 }

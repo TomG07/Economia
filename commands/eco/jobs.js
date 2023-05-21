@@ -16,13 +16,12 @@ module.exports = {
                     .setDescription(`${empregos.map(([key, value]) => {
                         return `\> <:Staff:1107072021231317193> **Trabalhar de ${key}**\nSalário: \`${value.salario}\`\nRequisito: \`${value.exp}XP! de experiência.\` `
                     }).join("\n")}`)
-                    .setColor("#303136")
+                    .setColor("#9b59b6")
                     .addFields({
                         name: `<:xp:1108743400410329138> Atualmente sua experiência é:`,
                         value: `${userdb.eco.xp}XP!`
                     })
                     .setThumbnail(message.author.displayAvatarURL({ dynamic: true }))
-
             ], components: [
                 new Discord.ActionRowBuilder().addComponents(
                     new Discord.StringSelectMenuBuilder()
@@ -48,11 +47,11 @@ module.exports = {
                     if (userdb.eco.xp < x.split("-")[1]) return i.followUp({ content: `${i.user}, Você não possui **${x.split("-")[1]} de experiêcia**, continue realizando suas tarefas para conseguir mais xp.`, ephemeral: true });
                     if (userdb.eco.job === x.split("-")[0]) return i.followUp({ content: `${i.user}, Você já se encontra nesse emprego.`, ephemeral: true });
                     if (userdb.eco.job !== null) {
-                        await client.db.updateOne({ _id: i.user.id }, { $set: { "eco.job": x.split("-")[0], }, });                 
-                        i.followUp({ content: `${i.user}, Você foi contradado como **${x.split("-")[0]}** e agora seu salário é de **${x.split("-")[2]} diamantes.**`, ephemeral: false });              
+                        await client.db.updateOne({ _id: i.user.id }, { $set: { "eco.job": x.split("-")[0], }, });
+                        i.followUp({ content: `${i.user}, Você foi contradado como **${x.split("-")[0]}** e agora seu salário é de **${x.split("-")[2]} diamantes.**`, ephemeral: false });
                     } else {
-                        await client.db.updateOne({ _id: i.user.id }, { $set: { "eco.job": x.split("-")[0], }, $push: { "eco.badges": "STAFF", }, });                  
-                        i.followUp({ content: `${i.user}, Você foi contradado como **${x.split("-")[0]}** e agora seu salário é de **${x.split("-")[2]} diamantes** e você ganhou um novo emblema <:Staff:1107072021231317193>, utilize o comando:\n\`++perfil\``, ephemeral: false });                   
+                        await client.db.updateOne({ _id: i.user.id }, { $set: { "eco.job": x.split("-")[0], }, $push: { "eco.badges": "STAFF", }, });
+                        i.followUp({ content: `${i.user}, Você foi contradado como **${x.split("-")[0]}** e agora seu salário é de **${x.split("-")[2]} diamantes** e você ganhou um novo emblema <:Staff:1107072021231317193>, utilize o comando:\n\`++perfil\``, ephemeral: false });
                     }
                 }
             });
