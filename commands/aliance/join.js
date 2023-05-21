@@ -69,7 +69,22 @@ module.exports = {
                                         name: "<:a_sparklespurple:1105803277230153848> Servidor População",
                                         value: `${i.guild.memberCount}`
                                     })
-                            ]
+                            ],
+                            components: [
+                                new Discord.ActionRowBuilder().addComponents(
+                                    new Discord.ButtonBuilder()
+                                        .setCustomId(`a-${i.guild.id}-${i.user.id}`)
+                                        .setLabel("Aprovar!")
+                                        .setEmoji("<:FlowerPurple:1109899097655222272>")
+                                        .setStyle(Discord.ButtonStyle.Success)
+                                        .setDisabled(true),
+                                    new Discord.ButtonBuilder()
+                                        .setCustomId(`r-${i.guild.id}-${i.user.id}`)
+                                        .setLabel("Reprovar!")
+                                        .setEmoji("<:FlowerPurple:1109899097655222272>")
+                                        .setStyle(Discord.ButtonStyle.Danger)
+                                        .setDisabled(true)
+                                )]
                         })
                     }
                 }
