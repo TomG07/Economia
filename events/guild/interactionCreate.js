@@ -7,7 +7,11 @@ module.exports = {
     if (interaction.customId === "join") return;
     if (interaction.isModalSubmit() === true) return;
     if (interaction.isButton()){
-      interaction.reply({ content: `${interaction.customId}`, ephemeral: true });
+      if (interaction.customId.startsWith("r")) {
+        let guild = await client.guilds.cache.get(interaction.customId.split("-")[1]);
+         interaction.reply({ content: `${guild.name}`, ephemeral: true });
+      }
+     // interaction.reply({ content: `${interaction.customId}`, ephemeral: true });
     }
   }
 }
