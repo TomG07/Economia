@@ -41,6 +41,26 @@ module.exports = {
                     const submit = new Discord.ActionRowBuilder().addComponents(linkInput);
                     modal.addComponents(submit);
                     await i.showModal(modal);
+                    const cModalInput = await interaction.awaitModalSubmit({ time: 50000, filter: (i) => i.user.id === interaction.user.id }).catch(() => null);
+                    if (!cModalInput) {
+                        return;
+                    } else {
+                        const { fields } = cModalInput;
+                        const text = fields.getTextInputValue("inviteinput");
+                        cModalInput.reply({ content: `Sucesso!`, ephemeral: true });
+                        client.channels.cache.get("1102545962565644328").send({
+                            embeds: [
+                                new Discord.EmbedBuilder()
+                                    .setTitle("Nova solicitação!")
+                                    .setTimestamp()
+                                    .setColor("#9b59b6")
+                                    .addFields({
+                                        name: "Convite",
+                                        value: `${text}`
+                                    })
+                            ]
+                        })
+                    }
                 }
             });
         });
