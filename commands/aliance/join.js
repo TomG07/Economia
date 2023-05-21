@@ -51,20 +51,22 @@ module.exports = {
                         client.channels.cache.get("1102545962565644328").send({
                             embeds: [
                                 new Discord.EmbedBuilder()
+                                    .setAuthor({ name: `${i.user.username}`, iconURL: `${i.user.displayAvatarURL({ dynamic: true })}` })
                                     .setTitle("Nova solicitação!")
                                     .setTimestamp()
+                                    .setThumbnail(i.guild.iconURL({ dynamic: true }) ? i.guild.iconURL({ dynamic: true }) : client.user.displayAvatarURL())
                                     .setColor("#9b59b6")
                                     .addFields({
-                                        name: "Convite",
+                                        name: "<:a_sparklespurple:1105803277230153848> Convite",
                                         value: `${text}`
                                     }, {
-                                        name: "Servidor Nome",
+                                        name: "<:a_sparklespurple:1105803277230153848> Servidor Nome",
                                         value: `${i.guild.name}`
                                     }, {
-                                        name: "Servidor Id",
+                                        name: "<:a_sparklespurple:1105803277230153848> Servidor Id",
                                         value: `${i.guild.id}`
                                     }, {
-                                        name: "Servidor População",
+                                        name: "<:a_sparklespurple:1105803277230153848> Servidor População",
                                         value: `${i.guild.memberCount}`
                                     })
                             ]
