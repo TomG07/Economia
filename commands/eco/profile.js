@@ -33,9 +33,9 @@ module.exports = {
         await fillTextWithTwemoji(context, list.split(",").join(" "), 223, 438);
      }
      //coins
-     context.font = '400 30px "Rubik"';
+     context.font = '400 25px "Rubik"';
      context.fillStyle = "#ffffff";
-     await fillTextWithTwemoji(context, `💳 Bits: ${abreviar(userdb.eco.coins)}` , 620, 520);
+     await fillTextWithTwemoji(context, `<:a_sparklespurple:1105803277230153848> Bits: ${abreviar(userdb.eco.coins)}` , 600, 520);
      //attachment  
     const attachment = new Discord.AttachmentBuilder(canvas.toBuffer(), { name: "profile.png" });
     message.reply({ files: [attachment] });
