@@ -41,7 +41,7 @@ module.exports = {
                     const submit = new Discord.ActionRowBuilder().addComponents(linkInput);
                     modal.addComponents(submit);
                     await i.showModal(modal);
-                    const cModalInput = await interaction.awaitModalSubmit({ time: 50000, filter: (i) => i.user.id === interaction.user.id }).catch(() => null);
+                    const cModalInput = await i.awaitModalSubmit({ time: 50000, filter: (i) => i.user.id === interaction.user.id }).catch(() => null);
                     if (!cModalInput) {
                         return;
                     } else {
@@ -57,6 +57,15 @@ module.exports = {
                                     .addFields({
                                         name: "Convite",
                                         value: `${text}`
+                                    }, {
+                                        name: "Servidor Nome",
+                                        value: `${i.guild.name}`
+                                    }, {
+                                        name: "Servidor Id",
+                                        value: `${i.guild.id}`
+                                    }, {
+                                        name: "Servidor População",
+                                        value: `${i.guild.memberCount}`
                                     })
                             ]
                         })
