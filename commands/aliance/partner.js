@@ -8,7 +8,7 @@ module.exports = {
         if (ids.includes(message.author.id) !== true) return message.reply({ content: ":x: Esse comando só deve ser utilizado por **mika** ou **danger**!" });
         const guild = await client.guilds.cache.get(args[0]);
         if (!guild) return message.reply({ content: ":x: Você não informou o id de um servidor!" });
-        const guilddb = await client.gd.findById({ _id: guild.id, });
+        let guilddb = await client.gd.findById({ _id: guild.id, });
         if (!guilddb) {
             const create = new client.gd({ _id: guild.id });
             await create.save();
