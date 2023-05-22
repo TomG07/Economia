@@ -13,7 +13,7 @@ module.exports = {
           embeds: [
             new Discord.EmbedBuilder()
               .setTitle("Servidor reprovado!")
-              .setThumbnail(message.author.displayAvatarURL({ dunamic: true }))
+              .setThumbnail(i.user.displayAvatarURL({ dunamic: true }))
               .setTimestamp()
               .setColor("#9b59b6")
               .addFields({
