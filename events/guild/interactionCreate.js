@@ -9,22 +9,22 @@ module.exports = {
     if (interaction.isButton()) {
       if (interaction.customId.startsWith("r")) {
         let guild = await client.guilds.cache.get(interaction.customId.split("-")[1]);
-        interaction.message.edit({ components: [] });
+        interaction.message.edit({ content: "<:Check:1106590979529637938> Ticket fechado!", embeds: [], components: [] });
         interaction.reply({
           embeds: [
             new Discord.EmbedBuilder()
-              .setTitle("Servidor reprovado!")
+              .setTitle("<:Remover:1105625912600436776> Servidor reprovado!")
               .setThumbnail(interaction.user.displayAvatarURL({ dunamic: true }))
               .setTimestamp()
               .setColor("#9b59b6")
               .addFields({
-                name: "<:a_sparklespurple:1105803277230153848> Servidor Nome",
+                name: "<:Remover:1105625912600436776> Servidor Nome",
                 value: `${guild.name}`
               }, {
-                name: "<:a_sparklespurple:1105803277230153848> Servidor Id",
+                name: "<:Remover:1105625912600436776> Servidor Id",
                 value: `\`${guild.id}\``
               }, {
-                name: "<:a_sparklespurple:1105803277230153848> Servidor População",
+                name: "<:Remover:1105625912600436776> Servidor População",
                 value: `\`${guild.memberCount}\``
               })
           ], ephemeral: true
