@@ -42,7 +42,7 @@ module.exports = {
                         .setTitle('Enviar seu servidor');
                     const linkInput = new Discord.TextInputBuilder()
                         .setCustomId('inviteinput')
-                        .setLabel("Digite CONFIRMAR no campo abaixo, isso faz vc ciente de nossos termos!")
+                        .setLabel("Digite CONFIRMAR no campo abaixo!")
                         .setMaxLength(9)
                         .setMinLength(9)
                         .setStyle(Discord.TextInputStyle.Short)
