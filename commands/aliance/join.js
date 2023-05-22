@@ -29,22 +29,8 @@ module.exports = {
                 // await i.deferUpdate();
                 if (i.customId === "join") {
                     if (i.user.id !== message.author.id) return;
-                    const newActionRowEmbeds = message.components.map((oldActionRow) => {
-                        const updatedActionRow = new Discord.ActionRowBuilder();
-                        updatedActionRow.addComponents(
-                            oldActionRow.components.map((buttonComponent) => {
-                                const newButton = Discord.ButtonBuilder.from(buttonComponent);
-                                const buttonStyle = buttonComponent.customId === "join"
-                                    ? Discord.ButtonStyle.Primary
-                                    : Discord.ButtonStyle.Secondary;
-                                newButton.setStyle(buttonStyle);
-                                newButton.setDisabled(true);
-                                return newButton;
-                            }),
-                        );
-                        return updatedActionRow;
-                    });
-                    int.edit({ components: newActionRowEmbeds });
+                    int.edit({ components: [] });
+                    coletou.stop();
                     //i.followUp({ content: "Isso não é seu!", ephemeral: true })
                     const modal = new Discord.ModalBuilder()
                         .setCustomId('myModal')
