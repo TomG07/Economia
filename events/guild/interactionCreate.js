@@ -9,11 +9,12 @@ module.exports = {
     if (interaction.isButton()) {
       if (interaction.customId.startsWith("r")) {
         let guild = await client.guilds.cache.get(interaction.customId.split("-")[1]);
+        interaction.message.edit({ components: [] });
         interaction.reply({
           embeds: [
             new Discord.EmbedBuilder()
               .setTitle("Servidor reprovado!")
-              .setThumbnail(i.user.displayAvatarURL({ dunamic: true }))
+              .setThumbnail(interaction.user.displayAvatarURL({ dunamic: true }))
               .setTimestamp()
               .setColor("#9b59b6")
               .addFields({
