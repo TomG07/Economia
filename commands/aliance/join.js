@@ -68,7 +68,7 @@ module.exports = {
                                     .setColor("#9b59b6")
                                     .addFields({
                                         name: "<:a_sparklespurple:1105803277230153848> Convite",
-                                        value: `${invite.code}`
+                                        value: `https://discord.gg/${invite.code}`
                                     }, {
                                         name: "<:a_sparklespurple:1105803277230153848> Servidor Nome",
                                         value: `${i.guild.name}`
