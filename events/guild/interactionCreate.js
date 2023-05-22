@@ -64,13 +64,14 @@ module.exports = {
           ], ephemeral: true
         });
         await client.gd.updateOne({ _id: guild.id, }, { $set: { "g.repUser": `${interaction.customId.split("-")[2]}`, "g.approvedBy": interaction.user.id, "g.approvedDate": Date.now(), } });
-        client.channels.cache.get("1109971281991970866").send({
+        client.channels.cache.get("1110229810694865076").send({
           embeds: [
             new Discord.EmbedBuilder()
               .setAuthor({ name: `${interaction.user.username}`, iconURL: `${interaction.user.displayAvatarURL({ dynamic: true })}` })
-              .setColor("#303136")
+              .setColor("#9b59b6")
               .setDescription(`\> <:Check:1106590979529637938> O mod ${interaction.user} aprovou o servidor \`${guild.name} - (${guild.id})\` em sua análise.`)
               .setTimestamp()
+              .setFooter({ text: "Anxienty todos os direitos reservados!", iconURL: `${client.user.displayAvatarURL()}` })                               
           ]
         });
       }
