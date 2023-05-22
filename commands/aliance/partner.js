@@ -10,7 +10,7 @@ module.exports = {
         if (!guild) return message.reply({ content: ":x: Você não informou o id de um servidor!" });
         const guilddb = await client.gd.findById({ _id: guild.id, });
         if (!guilddb) {
-            const create = new client.gd({ _id: i.guild.id });
+            const create = new client.gd({ _id: guild.id });
             await create.save();
             guilddb = await client.gd.findById({ _id: guild.id, });
         }
