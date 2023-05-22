@@ -29,7 +29,7 @@ module.exports = {
               })
           ], ephemeral: true
         });
-        await client.gb.findOneAndDelete({ _id: guild.id });
+        await client.gd.findOneAndDelete({ _id: guild.id });
         client.channels.cache.get("1109971281991970866").send({
           embeds: [
             new Discord.EmbedBuilder()
