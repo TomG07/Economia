@@ -86,7 +86,7 @@ module.exports = {
                                         .setLabel("Aprovar!")
                                         .setEmoji("<:FlowerPurple:1109899097655222272>")
                                         .setStyle(Discord.ButtonStyle.Success)
-                                        .setDisabled(true),
+                                        .setDisabled(false),
                                     new Discord.ButtonBuilder()
                                         .setCustomId(`r-${i.guild.id}-${i.user.id}`)
                                         .setLabel("Reprovar!")
