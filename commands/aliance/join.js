@@ -5,7 +5,8 @@ module.exports = {
     run: async (client, message, args) => {
         await message.channel.sendTyping();
         if (!message.member.permissions.has(Discord.PermissionFlagsBits.ManageGuild)) return message.reply({ content: `Você não tem a permissão: \`Gerenciar Servidor\`` });
-        let guilddb = (await client.gd.findById({ _id: `${message.guild.id}`, })) || { g: { status: false, partner: false }, }
+        let guilddb = (await client.gd.findById({ _id: `${message.guild.id}`, })) || { g: { status: false, partner: false, blacklist: false }, }
+        if (guilddb.g.blacklist === true) return message.reply({ content: ":x: Servidor na blacklist!" });
         if (message.guild.memberCount < 150 && guilddb.g.partner !== true) return message.reply({ content: ":x: Servidor não possui 150 membros!" });
         if (guilddb.g.status === true) return message.reply({ content: ":x: Servidor já registrado!" });
         const invite = await message.channel.createInvite({ maxUses: 0, maxAge: 0 }).catch(err => null);
