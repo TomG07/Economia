@@ -13,7 +13,7 @@ module.exports = {
         interaction.reply({
           embeds: [
             new Discord.EmbedBuilder()
-              .setTitle("<:Remover:1105625912600436776> Servidor reprovado!")
+              .setTitle("<a:Reizinho:1109791282575966239> Servidor reprovado!")
               .setThumbnail(interaction.user.displayAvatarURL({ dunamic: true }))
               .setTimestamp()
               .setColor("#9b59b6")
@@ -33,9 +33,9 @@ module.exports = {
         client.channels.cache.get("1109971281991970866").send({
           embeds: [
             new Discord.EmbedBuilder()
-              .setAuthor({ name: `${i.user.username}`, iconURL: `${i.user.displayAvatarURL({ dynamic: true })}` })
+              .setAuthor({ name: `${interaction.user.username}`, iconURL: `${interaction.user.displayAvatarURL({ dynamic: true })}` })
               .setColor("#303136")
-              .setDescription(`\> <:Remover:1105625912600436776> O mod ${i.user} reprovou o servidor \`${guild.name} - (${guild.id})\` em sua análise.`)
+              .setDescription(`\> <:Remover:1105625912600436776> O mod ${interaction.user} reprovou o servidor \`${guild.name} - (${guild.id})\` em sua análise.`)
               .setTimestamp()
           ]
         });
