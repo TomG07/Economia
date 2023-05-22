@@ -28,7 +28,26 @@ module.exports = {
             coletou.on("collect", async (i) => {
                 // await i.deferUpdate();
                 if (i.customId === "join") {
-                    if (i.user.id !== message.author.id) return;
+                if (i.user.id !== message.author.id) return;
+                    
+                    const newActionRowEmbeds = message.components.map((oldActionRow) => {
+  const updatedActionRow = new Discord.ActionRowBuilder();
+
+  updatedActionRow.addComponents(
+    oldActionRow.components.map((buttonComponent) => {
+      const newButton = Discord.ButtonBuilder.from(buttonComponent);
+      const buttonStyle = buttonComponent.customId === "join"
+        ? Discord.ButtonStyle.Primary
+        : Discord.ButtonStyle.Secondary;
+      newButton.setStyle(buttonStyle);
+      newButton.setDisabled(true);
+
+      return newButton;
+    }),
+  );
+  return updatedActionRow;
+});
+                    message.edit({ components: [newActionRowEmbeds] });
                     //i.followUp({ content: "Isso não é seu!", ephemeral: true })
                     const modal = new Discord.ModalBuilder()
                         .setCustomId('myModal')
