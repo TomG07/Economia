@@ -63,7 +63,7 @@ module.exports = {
               })
           ], ephemeral: true
         });
-        await client.gd.updateOne({ _id: guild.id, }, { $set: { "g.approvedBy": interaction.user.id, "g.approvedDate": Date.now(), } });
+        await client.gd.updateOne({ _id: guild.id, }, { $set: { "g.repUser": `${interaction.customId.split("-")[2]}`, "g.approvedBy": interaction.user.id, "g.approvedDate": Date.now(), } });
         client.channels.cache.get("1109971281991970866").send({
           embeds: [
             new Discord.EmbedBuilder()
