@@ -17,6 +17,12 @@ module.exports = {
                         name: "<:FlowerPurple:1109899097655222272> Nome do Servidor",
                         value: `\`${message.guild.name}\``
                     }, {
+                        name: "<:FlowerPurple:1109899097655222272> Enviado",
+                        value: `<t:${~~(guilddb.g.sendDate / 1000)}:R>`
+                    }, {
+                        name: "<:FlowerPurple:1109899097655222272> Blacklist",
+                        value: `\`${guilddb.g.blacklist ? "Sim" : "Não"}\``
+                    }, {
                         name: "<:FlowerPurple:1109899097655222272> Representante",
                         value: `<@${guilddb.g.repUser}>`
                     }, {
@@ -26,7 +32,7 @@ module.exports = {
                         name: "<:FlowerPurple:1109899097655222272> Aprovado",
                         value: `<t:${~~(guilddb.g.approvedDate / 1000)}:R>`
                     }, {
-                        name: "<:FlowerPurple:1109899097655222272> Parceuro da Anxienty",
+                        name: "<:FlowerPurple:1109899097655222272> Parceiro da Anxienty",
                         value: `\`${guilddb.g.partner ? "Sim" : "Não"}\``
                     })
             ]
