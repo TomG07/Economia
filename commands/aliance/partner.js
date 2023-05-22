@@ -67,7 +67,7 @@ module.exports = {
                         embeds: [
                             new Discord.EmbedBuilder()
                                 .setAuthor({ name: `${i.user.username}`, iconURL: `${i.user.displayAvatarURL({ dynamic: true })}` })
-                                .setColor("#303136")
+                                .setColor("#9b59b6")
                                 .setDescription(`\> <:PartnerPurble:1106998251019829309> O mod ${i.user} adicionou o servidor \`${guild.name} - (${guild.id})\` aos parceiros.`)
                                 .setTimestamp()
                         ]
@@ -89,7 +89,7 @@ module.exports = {
                         embeds: [
                             new Discord.EmbedBuilder()
                                 .setAuthor({ name: `${i.user.username}`, iconURL: `${i.user.displayAvatarURL({ dynamic: true })}` })
-                                .setColor("#303136")
+                                .setColor("#9b59b6")
                                 .setDescription(`\> <:PartnerPurble:1106998251019829309> O mod ${i.user} removeu o servidor \`${guild.name} - (${guild.id})\` dos parceiros.`)
                                 .setTimestamp()
                         ]
