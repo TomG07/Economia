@@ -54,7 +54,7 @@ module.exports = {
                         const { fields } = cModalInput;
                         const text = fields.getTextInputValue("inviteinput");
                         let fetchGuild;
-                        cModalInput.reply({ content: `Sucesso!`, ephemeral: true });
+                        cModalInput.reply({ content: `<:Check:1106590979529637938> Sucesso!`, ephemeral: true });
                         client.channels.cache.get("1102545962565644328").send({
                             embeds: [
                                 new Discord.EmbedBuilder()
@@ -95,7 +95,7 @@ module.exports = {
                         });
                         const checkDocumentHas = await client.gd.findById({ _id: i.guild.id, })
                         if (!checkDocumentHas) {
-                            const create = new client.gb({ _id: i.guild.id });
+                            const create = new client.gd({ _id: i.guild.id });
                             await create.save();
                         }
                         await client.gd.updateOne({ _id: i.guild.id, }, { $set: { "g.status": true, "g.repUser": i.user.id, "g.sendDate": Date.now(), } });
