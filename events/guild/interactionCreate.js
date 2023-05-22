@@ -8,8 +8,8 @@ module.exports = {
     if (interaction.isModalSubmit() === true) return;
     if (interaction.isButton()) {
       if (interaction.customId.startsWith("r")) {
-        const guild = await client.guilds.cache.get(interaction.customId.split("-")[1]);
-        if (!guild) return;
+        let guild = await client.guilds.cache.get(interaction.customId.split("-")[1]);
+        //if (!guild) return;
         interaction.message.edit({ content: "<:Check:1106590979529637938> Ticket fechado!", embeds: [], components: [] });
         interaction.reply({
           embeds: [
@@ -62,7 +62,7 @@ module.exports = {
               })
           ], ephemeral: true
         });
-        await client.gd.updateOne({ _id: guild.id, }, { $set: { "g.approvedBy": i.user.id, "g.approvedDate": Date.now(), } });
+        await client.gd.updateOne({ _id: guild.id, }, { $set: { "g.approvedBy": interaction.user.id, "g.approvedDate": Date.now(), } });
         client.channels.cache.get("1109971281991970866").send({
           embeds: [
             new Discord.EmbedBuilder()
