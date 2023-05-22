@@ -7,6 +7,7 @@ module.exports = {
         let ids = ["461618792464646145", "1027989059198537728"];
         if (ids.includes(message.author.id) !== true) return message.reply({ content: ":x: Esse comando só deve ser utilizado por **mika** ou **danger**!" });
         const guild = await client.guilds.cache.get(args[0]);
+        if (!guild) return message.reply({ content: ":x: Você não informou o id de um servidor!" });
         const guilddb = await client.gd.findById({ _id: guild.id, });
         if (!guilddb) {
             const create = new client.gd({ _id: i.guild.id });
@@ -36,13 +37,13 @@ module.exports = {
                         .setLabel("Adicionar")
                         .setEmoji("<:FlowerPurple:1109899097655222272>")
                         .setStyle(Discord.ButtonStyle.Success)
-                        .setDisabled(guilddb.g.partner ? true : false),
+                        .setDisabled(guilddb.g.partner),
                     new Discord.ButtonBuilder()
                         .setCustomId("removepartner")
                         .setLabel("Remover")
                         .setEmoji("<:FlowerPurple:1109899097655222272>")
                         .setStyle(Discord.ButtonStyle.Danger)
-                        .setDisabled(guilddb.g.partner ? true : false)
+                        .setDisabled(guilddb.g.partner === false ? true : false)
                 )]
         });
     }
