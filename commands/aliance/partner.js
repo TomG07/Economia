@@ -59,7 +59,7 @@ module.exports = {
                                 .setThumbnail(message.author.displayAvatarURL({ dynamic: true }))
                                 .setFooter({ text: "Anxienty todos os direitos reservados!", iconURL: `${client.user.displayAvatarURL()}` })
                                 .setColor("#9b59b6")
-                                .setDescription(`\> <:Check:1106590979529637938> O servidor \`${guild.name}\` adicionado aos parceiros.`)
+                                .setDescription(`\> <:Check:1106590979529637938> O servidor \`${guild.name}\` foi adicionado aos parceiros.`)
                                 .setTimestamp()
                         ], components: []
                     })
@@ -72,6 +72,29 @@ module.exports = {
                                 .setTimestamp()
                         ]
                     });
+                    await client.gd.updateOne({ _id: i.guild.id, }, { $set: { "g.partner": true, } });
+                } else if (i.customId === "removepartner") {
+                    int.edit({
+                        embeds: [
+                            new Discord.EmbedBuilder()
+                                .setTitle("<:PartnerPurble:1106998251019829309> Parceiros da Anxienty!")
+                                .setThumbnail(message.author.displayAvatarURL({ dynamic: true }))
+                                .setFooter({ text: "Anxienty todos os direitos reservados!", iconURL: `${client.user.displayAvatarURL()}` })
+                                .setColor("#9b59b6")
+                                .setDescription(`\> <:Check:1106590979529637938> O servidor \`${guild.name}\` foi removido dos parceiros.`)
+                                .setTimestamp()
+                        ], components: []
+                    })
+                    client.channels.cache.get("1109971281991970866").send({
+                        embeds: [
+                            new Discord.EmbedBuilder()
+                                .setAuthor({ name: `${i.user.username}`, iconURL: `${i.user.displayAvatarURL({ dynamic: true })}` })
+                                .setColor("#303136")
+                                .setDescription(`\> <:PartnerPurble:1106998251019829309> O mod ${i.user} removeu o servidor \`${guild.name} - (${guild.id})\` dos parceiros.`)
+                                .setTimestamp()
+                        ]
+                    });
+                    await client.gd.updateOne({ _id: i.guild.id, }, { $set: { "g.partner": false, } });
                 }
             });
         });
