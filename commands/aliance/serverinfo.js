@@ -4,7 +4,8 @@ module.exports = {
     aliases: ["server", "si"],
     run: async (client, message, args) => {
         await message.channel.sendTyping();
-        const guilddb = await client.gd.findById({ _id: message.guild.id, });
+        let guild = client.guilds.cache.find(guild => guild.id === args[0]) || message.guild;
+        const guilddb = await client.gd.findById({ _id: guild.id, });
         if (!guilddb) return message.reply({ content: "Servidor não registrado." })
         message.reply({
             embeds: [
