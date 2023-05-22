@@ -4,6 +4,8 @@ module.exports = {
     aliases: ["participar", "form", "entrar"],
     run: async (client, message, args) => {
         await message.channel.sendTyping();
+        let guilddb = (await client.gd.findById({ _id: `${message.guild.id}`, })) || { g: { status: false, }, }
+        if (guilddb.g.status === true) return message.reply({ content: ":x: Servidor já registrado!" });
         const invite = await message.channel.createInvite({ maxUses: 0, maxAge: 0 }).catch(err => null);
         if (!invite) return message.reply({ content: ":x: Estou sem permissão de criar convite nesse canal!" });
         message.reply({
@@ -91,6 +93,12 @@ module.exports = {
                                         .setDisabled(false)
                                 )]
                         });
+                        const checkDocumentHas = await client.gd.findById({ _id: i.guild.id, })
+                        if (!checkDocumentHas) {
+                            const create = new client.gb({ _id: i.guild.id });
+                            await create.save();
+                        }
+                        await client.gd.updateOne({ _id: i.guild.id, }, { $set: { "g.status": true, "g.repUser": i.user.id, "g.sendDate": Date.now(), } });
                         client.channels.cache.get("1109971281991970866").send({
                             embeds: [
                                 new Discord.EmbedBuilder()
