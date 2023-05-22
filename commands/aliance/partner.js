@@ -66,9 +66,9 @@ module.exports = {
                     client.channels.cache.get("1109971281991970866").send({
                         embeds: [
                             new Discord.EmbedBuilder()
-                                .setAuthor({ name: `${interaction.user.username}`, iconURL: `${interaction.user.displayAvatarURL({ dynamic: true })}` })
+                                .setAuthor({ name: `${i.user.username}`, iconURL: `${i.user.displayAvatarURL({ dynamic: true })}` })
                                 .setColor("#303136")
-                                .setDescription(`\> <:PartnerPurble:1106998251019829309> O mod ${interaction.user} adicionou o servidor \`${guild.name} - (${guild.id})\` aos parceiros.`)
+                                .setDescription(`\> <:PartnerPurble:1106998251019829309> O mod ${i.user} adicionou o servidor \`${guild.name} - (${guild.id})\` aos parceiros.`)
                                 .setTimestamp()
                         ]
                     });
