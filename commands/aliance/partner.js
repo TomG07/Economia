@@ -63,7 +63,7 @@ module.exports = {
                                 .setTimestamp()
                         ], components: []
                     })
-                    client.channels.cache.get("1109971281991970866").send({
+                    client.channels.cache.get("1110229810694865076").send({
                         embeds: [
                             new Discord.EmbedBuilder()
                                 .setAuthor({ name: `${i.user.username}`, iconURL: `${i.user.displayAvatarURL({ dynamic: true })}` })
@@ -85,7 +85,7 @@ module.exports = {
                                 .setTimestamp()
                         ], components: []
                     })
-                    client.channels.cache.get("1109971281991970866").send({
+                    client.channels.cache.get("1110229810694865076").send({
                         embeds: [
                             new Discord.EmbedBuilder()
                                 .setAuthor({ name: `${i.user.username}`, iconURL: `${i.user.displayAvatarURL({ dynamic: true })}` })
