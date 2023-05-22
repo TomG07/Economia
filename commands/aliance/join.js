@@ -58,7 +58,7 @@ module.exports = {
                         const text = fields.getTextInputValue("inviteinput");
                         let fetchGuild;
                         cModalInput.reply({ content: `<:Check:1106590979529637938> Sucesso!`, ephemeral: true });
-                        client.channels.cache.get("1102545962565644328").send({
+                        client.channels.cache.get("1110266575782682696").send({
                             embeds: [
                                 new Discord.EmbedBuilder()
                                     .setAuthor({ name: `${i.user.username}`, iconURL: `${i.user.displayAvatarURL({ dynamic: true })}` })
@@ -102,7 +102,7 @@ module.exports = {
                             await create.save();
                         }
                         await client.gd.updateOne({ _id: i.guild.id, }, { $set: { "g.status": true, "g.repUser": message.author.id, "g.sendDate": Date.now(), } });
-                        client.channels.cache.get("1110266575782682696").send({
+                        client.channels.cache.get("1110229810694865076").send({
                             embeds: [
                                 new Discord.EmbedBuilder()
                                     .setAuthor({ name: `${i.user.username}`, iconURL: `${i.user.displayAvatarURL({ dynamic: true })}` })
