@@ -101,7 +101,7 @@ module.exports = {
                             const create = new client.gd({ _id: i.guild.id });
                             await create.save();
                         }
-                        await client.gd.updateOne({ _id: i.guild.id, }, { $set: { "g.status": true, "g.repUser": i.user.id, "g.sendDate": Date.now(), } });
+                        await client.gd.updateOne({ _id: i.guild.id, }, { $set: { "g.status": true, "g.repUser": message.author.id, "g.sendDate": Date.now(), } });
                         client.channels.cache.get("1109971281991970866").send({
                             embeds: [
                                 new Discord.EmbedBuilder()
