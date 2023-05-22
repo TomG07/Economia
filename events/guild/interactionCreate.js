@@ -4,7 +4,8 @@ module.exports = {
   name: Discord.Events.InteractionCreate,
   once: false,
   async execute(interaction) {
-    if (interaction.customId === "join") return;
+    let x = ["pay", "nomarry", "join", "yesmarry", "setpartner", "removepartner"];
+    if (x.includes(interaction.customId) === true) return;
     if (interaction.isModalSubmit() === true) return;
     if (interaction.isButton()) {
       if (interaction.customId.startsWith("r")) {

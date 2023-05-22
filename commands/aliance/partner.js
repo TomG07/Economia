@@ -33,7 +33,7 @@ module.exports = {
             components: [
                 new Discord.ActionRowBuilder().addComponents(
                     new Discord.ButtonBuilder()
-                        .setCustomId("addpartner")
+                        .setCustomId("setpartner")
                         .setLabel("Adicionar")
                         .setEmoji("<:FlowerPurple:1109899097655222272>")
                         .setStyle(Discord.ButtonStyle.Success)
@@ -45,6 +45,35 @@ module.exports = {
                         .setStyle(Discord.ButtonStyle.Danger)
                         .setDisabled(guilddb.g.partner === false ? true : false)
                 )]
+        }).then((int) => {
+            const coletou = int.createMessageComponentCollector({ time: 36000 });
+            coletou.on("collect", async (i) => {
+                await i.deferUpdate();
+                if (i.user.id !== message.author.id) return;
+                coletou.stop();
+                if (i.customId === "setpartner") {
+                    int.edit({
+                        embeds: [
+                            new Discord.EmbedBuilder()
+                                .setTitle("<:PartnerPurble:1106998251019829309> Parceiros da Anxienty!")
+                                .setThumbnail(message.author.displayAvatarURL({ dynamic: true }))
+                                .setFooter({ text: "Anxienty todos os direitos reservados!", iconURL: `${client.user.displayAvatarURL()}` })
+                                .setColor("#9b59b6")
+                                .setDescription(`\> <:Check:1106590979529637938> O servidor \`${guild.name}\` adicionado aos parceiros.`)
+                                .setTimestamp()
+                        ], components: []
+                    })
+                    client.channels.cache.get("1109971281991970866").send({
+                        embeds: [
+                            new Discord.EmbedBuilder()
+                                .setAuthor({ name: `${interaction.user.username}`, iconURL: `${interaction.user.displayAvatarURL({ dynamic: true })}` })
+                                .setColor("#303136")
+                                .setDescription(`\> <:PartnerPurble:1106998251019829309> O mod ${interaction.user} adicionou o servidor \`${guild.name} - (${guild.id})\` aos parceiros.`)
+                                .setTimestamp()
+                        ]
+                    });
+                }
+            });
         });
     }
 }
