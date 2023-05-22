@@ -102,12 +102,13 @@ module.exports = {
                             await create.save();
                         }
                         await client.gd.updateOne({ _id: i.guild.id, }, { $set: { "g.status": true, "g.repUser": message.author.id, "g.sendDate": Date.now(), } });
-                        client.channels.cache.get("1109971281991970866").send({
+                        client.channels.cache.get("1110266575782682696").send({
                             embeds: [
                                 new Discord.EmbedBuilder()
                                     .setAuthor({ name: `${i.user.username}`, iconURL: `${i.user.displayAvatarURL({ dynamic: true })}` })
-                                    .setColor("#303136")
+                                    .setColor("#9b59b6")
                                     .setDescription(`\> <:Editar:1105250558509596722> O usuário ${i.user} enviou o servidor \`${i.guild.name} - (${i.guild.id})\` para análise.`)
+                                    .setFooter({ text: "Anxienty todos os direitos reservados!", iconURL: `${client.user.displayAvatarURL()}` })                               
                                     .setTimestamp()
                             ]
                         });
