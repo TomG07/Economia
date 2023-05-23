@@ -16,7 +16,7 @@ module.exports = {
                     .setColor("#9b59b6")
                     .addFields({
                         name: "<:FlowerPurple:1109899097655222272> Nome do Servidor",
-                        value: `\`${message.guild.name}\``
+                        value: `\`${guild.name}\``
                     }, {
                         name: "<:FlowerPurple:1109899097655222272> Enviado",
                         value: `<t:${~~(guilddb.g.sendDate / 1000)}:R>`
