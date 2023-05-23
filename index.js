@@ -26,6 +26,6 @@ require('./handlers/slashCommandsManager')(client);
 require('./handlers/eventsManager')(client);
 client.once(Discord.Events.ClientReady, () => {
     console.log(`🌸 | Longin no discord realizado com a conta ${client.user.tag}`);
-    client.user.setPresence({ activities: [{ name: `Sonhos! 🌸`, type: Discord.ActivityType.Competing }], status: 'online', });
+    client.user.setPresence({ activities: [{ name: `Anxienty realizando sonhos! 😍`, type: Discord.ActivityType.Competing }], status: 'online', });
 });
 client.login("MTA5ODU3NDU0OTE4MTgwNDY0NA.GGC0Az.PTgpnz0pg-sGDlPhwGftAgrCYqlD8Fen5FBhIc");
