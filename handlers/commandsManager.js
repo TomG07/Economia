@@ -1,12 +1,12 @@
 const Discord = require("discord.js");
 const fs = require("fs");
 module.exports = async (client) => {
-  fs.readdir(`./commands`, (error, folder) => {
+  fs.readdir(`./commands/prefix`, (error, folder) => {
     folder.forEach(subfolder => {
-      fs.readdir(`./commands/${subfolder}/`, (error, files) => {
+      fs.readdir(`./commands/prefix/${subfolder}/`, (error, files) => {
         files.forEach((files) => {
           if (!files?.endsWith('.js')) return;
-          files = require(`../commands/${subfolder}/${files}`);
+          files = require(`../commands/prefix/${subfolder}/${files}`);
           if (!files?.name) return;
           client.commands.set(files?.name, files);
           if (files?.aliases && Array.isArray(files?.aliases)) {
