@@ -17,10 +17,10 @@ module.exports = {
      const avatar = await Canvas.loadImage(member.user.displayAvatarURL({ extension: 'jpg', size: 4096 }));
      context.drawImage(avatar, 10, 274, 190, 190);
      //BG
-     const background = await Canvas.loadImage("https://media.discordapp.net/attachments/1064233152094162994/1109935451072102520/1684699593770.png");
+     const background = await Canvas.loadImage("https://media.discordapp.net/attachments/1062929961754841180/1110636396168876072/1684866657921.png");
      context.drawImage(background, 0, 0, canvas.width, canvas.height);
      //name
-     context.font = '500 34px "Source Code Pro"';
+     context.font = '500 34px "Rubik"';
      context.fillStyle = "#ffffff";
      context.fillText(member.user.username, 220, 401);
      //badges
