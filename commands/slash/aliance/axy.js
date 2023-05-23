@@ -23,6 +23,26 @@ module.exports = {
         const input = interaction.options.getString("mensagem");
         let ids = ["461618792464646145", "1027989059198537728"];
         if (ids.includes(interaction.user.id) !== true) return interaction.reply({ content: ":x: Esse comando só deve ser utilizado por **mika** ou **danger**!", ephemeral: true });
+        interaction.reply({
+            embeds: [
+                new Discord.EmbedBuilder()
+                    .setTitle("<:PartnerPurble:1106998251019829309> Parceiros da Anxienty!")
+                    .setThumbnail(interaction.user.displayAvatarURL({ dynamic: true }))
+                    .setFooter({ text: "Anxienty todos os direitos reservados!", iconURL: `${client.user.displayAvatarURL()}` })
+                    .setColor("#9b59b6")
+                    .setDescription(`\> <:Check:1106590979529637938> O servidor \`${interaction.guild.name}\` foi adicionado ao nosso programa de div.`)
+                    .setTimestamp()
+            ], components: [
+                new Discord.ActionRowBuilder().addComponents(
+                    new Discord.ButtonBuilder()
+                        .setCustomId("wpv")
+                        .setLabel("Testar a mensagem!")
+                        .setEmoji("<:FlowerPurple:1109899097655222272>")
+                        .setStyle(Discord.ButtonStyle.Primary)
+                        .setDisabled(true)
+                )
+            ], ephemeral: true
+        })
         client.channels.cache.get("1110229810694865076").send({
             embeds: [
                 new Discord.EmbedBuilder()
@@ -31,7 +51,7 @@ module.exports = {
                     .setDescription(`\> <:Editar:1105250558509596722> O mod ${interaction.user} setou a **mensagem de DM** no servidor \`${i.guild.name} - (${i.guild.id})\`.`)
                     .setFooter({ text: "Anxienty todos os direitos reservados!", iconURL: `${client.user.displayAvatarURL()}` })
                     .setTimestamp()
-            ], ephemeral: true
+            ]
         });
     }
 }

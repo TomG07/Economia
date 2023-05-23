@@ -62,7 +62,7 @@ module.exports = {
                                 .setDescription(`\> <:Check:1106590979529637938> O servidor \`${guild.name}\` foi adicionado aos parceiros.`)
                                 .setTimestamp()
                         ], components: []
-                    })
+                    });
                     client.channels.cache.get("1110229810694865076").send({
                         embeds: [
                             new Discord.EmbedBuilder()
@@ -85,7 +85,7 @@ module.exports = {
                                 .setDescription(`\> <:Check:1106590979529637938> O servidor \`${guild.name}\` foi removido dos parceiros.`)
                                 .setTimestamp()
                         ], components: []
-                    })
+                    });
                     client.channels.cache.get("1110229810694865076").send({
                         embeds: [
                             new Discord.EmbedBuilder()
