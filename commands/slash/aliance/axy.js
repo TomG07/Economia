@@ -48,7 +48,7 @@ module.exports = {
                 new Discord.EmbedBuilder()
                     .setAuthor({ name: `${interaction.user.username}`, iconURL: `${interaction.user.displayAvatarURL({ dynamic: true })}` })
                     .setColor("#9b59b6")
-                    .setDescription(`\> <:Editar:1105250558509596722> O mod ${interaction.user} setou a **mensagem de DM** no servidor \`${i.guild.name} - (${i.guild.id})\`.`)
+                    .setDescription(`\> <:Editar:1105250558509596722> O mod ${interaction.user} setou a **mensagem de DM** no servidor \`${interaction.guild.name} - (${interaction.guild.id})\`.`)
                     .setFooter({ text: "Anxienty todos os direitos reservados!", iconURL: `${client.user.displayAvatarURL()}` })
                     .setTimestamp()
             ]
