@@ -17,7 +17,5 @@ module.exports = async (client) => {
     });
     client.once(Discord.Events.ClientReady, async () => {
         await client.application.commands.set(SlashsArray);
-        //client.user.setPresence({ activities: [{ name: `Me adicione 🌸`, type: Discord.ActivityType.Competing }], status: 'online', });
-        // client.guilds.cache.forEach(guild => guild.commands.set({},))
     });
 };
