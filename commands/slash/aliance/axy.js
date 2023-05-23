@@ -51,6 +51,11 @@ module.exports = {
                 if (i.user.id !== interaction.user.id) return;
                 coletou.stop();
                 if (i.customId === "wpv") {
+                    try {
+                      await interaction.member.send({ content: `✅ | **Anxienty todos os direitos reservados!**\n\n${input}` });
+                    } catch (err) {
+                      return interaction.channel.send({ content: `🧐 Erro! Seu privado tá fechado?` });
+                    }
                     i.followUp({ content: `:kissing_heart: **Prontinho**! Confira seu privado!`, ephemeral: true });
                 }
             });
