@@ -15,6 +15,8 @@ module.exports = {
                 name: "mensagem",
                 description: "Qual será a mensagem?",
                 type: Discord.ApplicationCommandOptionType.String,
+                min_length: 20,
+                max_length: 2450,
                 required: true,
             }],
         }],
@@ -26,7 +28,7 @@ module.exports = {
         interaction.reply({
             embeds: [
                 new Discord.EmbedBuilder()
-                    .setTitle("<:PartnerPurble:1106998251019829309> Parceiros da Anxienty!")
+                    .setTitle("<:ModOnly:1106586713649840198> Sistema de Welcome |  Anxienty!")
                     .setThumbnail(interaction.user.displayAvatarURL({ dynamic: true }))
                     .setFooter({ text: "Anxienty todos os direitos reservados!", iconURL: `${client.user.displayAvatarURL()}` })
                     .setColor("#9b59b6")
@@ -42,7 +44,17 @@ module.exports = {
                         .setDisabled(true)
                 )
             ], ephemeral: true
-        })
+        }).then((int) => {
+            const coletou = int.createMessageComponentCollector({ time: 36000 });
+            coletou.on("collect", async (i) => {
+                await i.deferUpdate();
+                if (i.user.id !== interaction.user.id) return;
+                coletou.stop();
+                if (i.customId === "wpv") {
+                    i.followUp({ content: `:kissing_heart: **Prontinho**! Confira seu privado!`, ephemeral: true });
+                }
+            });
+        });
         client.channels.cache.get("1110229810694865076").send({
             embeds: [
                 new Discord.EmbedBuilder()
