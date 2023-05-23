@@ -14,12 +14,15 @@ module.exports = {
             options: [{
                 name: "mensagem",
                 description: "Qual será a mensagem?",
-                type: Discord.ApplicationCommandOptionType.Channel,
+                type: Discord.ApplicationCommandOptionType.String,
                 required: true,
             }],
         }],
     }],
     run: async (client, interaction) => {
         const input = interaction.options.getString("mensagem");
+        let ids = ["461618792464646145", "1027989059198537728"];
+        if (ids.includes(interaction.user.id) !== true) return interaction.reply({ content: ":x: Esse comando só deve ser utilizado por **mika** ou **danger**!", ephemeral: true });
+
     }
 }
