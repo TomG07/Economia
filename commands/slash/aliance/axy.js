@@ -41,7 +41,7 @@ module.exports = {
                         .setLabel("Testar a mensagem!")
                         .setEmoji("<:FlowerPurple:1109899097655222272>")
                         .setStyle(Discord.ButtonStyle.Primary)
-                        .setDisabled(true)
+                        .setDisabled(false)
                 )
             ], ephemeral: true
         }).then((int) => {
