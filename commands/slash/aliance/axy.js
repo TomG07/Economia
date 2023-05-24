@@ -27,7 +27,7 @@ module.exports = {
                 name: "servidor",
                 description: "Qual o ID do servidor?",
                 type: Discord.ApplicationCommandOptionType.String,
-                min_length: 20,
+                min_length: 18,
                 max_length: 20,
                 required: true,
             }],

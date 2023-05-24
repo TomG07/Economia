@@ -8,7 +8,11 @@ const documentSave = new Schema({
         partner: { type: Boolean, default: false },
         approvedBy: { type: String, default: null },
         approvedDate: { type: Number, default: 0 },
-        blacklist: { type: Boolean, default: false }
+        blacklist: { type: Boolean, default: false },
+        dmWelcome: {
+            status: { type: Boolean, default: false },
+            content: { type: String, default: null },
+        }
     }
 });
 module.exports = model("dbguild", documentSave); 
