@@ -13,7 +13,7 @@ module.exports = {
                .setThumbnail(message.author.displayAvatarURL({ dunamic: true }))
                .setTimestamp()
                .setColor("#9b59b6")
-               .setDescription(`**Daily**: ${Date.now() < timers.dailyCooldown ? `<:skipper_cooldown:1108750205202993162> <t:${~~(timers.dailyCooldown / 1000)}:R>` : "<:certo:1108750401764851752> | Colete agora!"}\n**Work**: ${Date.now() < timers.workCooldown ? `<:skipper_cooldown:1108750205202993162> <t:${~~(timers.workCooldown / 1000)}:R>` : "<:certo:1108750401764851752> | Colete agora!"}\n**GF**: ${Date.now() < timers.gfCooldown ? `<:skipper_cooldown:1108750205202993162> <t:${~~(timers.gfCooldown / 1000)}:R>` : "<:certo:1108750401764851752> | Colete agora!"}`)
+               .setDescription(`**Daily**: ${Date.now() < timers.dailyCooldown ? `<:Battery_Yellow:1089745568122818680> <t:${~~(timers.dailyCooldown / 1000)}:R>` : "<:Battery_Green:1089745543963623524> | Colete agora!"}\n**Work**: ${Date.now() < timers.workCooldown ? `<:Battery_Yellow:1089745568122818680> <t:${~~(timers.workCooldown / 1000)}:R>` : "<:Battery_Green:1089745543963623524> | Colete agora!"}\n**GF**: ${Date.now() < timers.gfCooldown ? `<:Battery_Yellow:1089745568122818680> <t:${~~(timers.gfCooldown / 1000)}:R>` : "<:Battery_Green:1089745543963623524> | Colete agora!"}`)
          ]
       });
    }
