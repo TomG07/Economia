@@ -9,8 +9,8 @@ module.exports = {
         message.reply({
             embeds: [
                 new Discord.EmbedBuilder()
-                    .setTitle("✨ Recompensa diária!")
-                    .setDescription(`\> ${message.author}, ganhou <:FusionCoins:1109901003572133994> **${coins} bits** + <:xp:1108743400410329138> '1XP!' de experiência em sua recompensa diária.`)
+                    .setTitle("Recompensa diária!")
+                    .setDescription(`\> ${message.author}, ganhou <:Bits:1110890676721291346> **${coins} bits** + <:xp:1108743400410329138> '1XP!' de experiência em sua recompensa diária.`)
                     .setColor("#9b59b6")
                     .setFooter({ text: `${message.author.tag}`, iconURL: `${message.author.displayAvatarURL()}` })
             ],
@@ -20,7 +20,7 @@ module.exports = {
                         .setCustomId("daily")
                         .setLabel("Volte em 24 horas!")
                         .setEmoji("<:FlowerPurple:1109899097655222272>")
-                        .setStyle(Discord.ButtonStyle.Primary)
+                        .setStyle(Discord.ButtonStyle.Secondary)
                         .setDisabled(true)
                 )]
         });
