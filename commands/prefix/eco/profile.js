@@ -36,6 +36,11 @@ module.exports = {
     context.font = '400 25px "Rubik"';
     context.fillStyle = "#ffffff";
     await fillTextWithTwemoji(context, `<:Bits:1110890676721291346> ${abreviar(userdb.eco.coins)}`, 600, 520);
+    //about
+    //name
+    context.font = '500 18px "Rubik"';
+    context.fillStyle = "#ffffff";
+    context.fillText("Anxienty realizando sonhos!", 15, 460);
     //attachment  
     const attachment = new Discord.AttachmentBuilder(canvas.toBuffer(), { name: "profile.png" });
     message.reply({ files: [attachment] });
