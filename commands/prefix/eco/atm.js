@@ -20,16 +20,16 @@ module.exports = {
                     .setTimestamp()
                     .setColor("#9b59b6")
                     .addFields({
-                        name: "<:FusionCoins:1109901003572133994> BitsCard",
+                        name: "<:Bits:1110890676721291346> BitsCard",
                         value: `**${abreviar(userdb.eco.coins)}** bits.`
                     }, {
-                        name: "🏆 Posição no ranking",
+                        name: "<:Placares:1105821202678825000> Posição no ranking",
                         value: `#️⃣${numberToEmojis(seachUserRankPosition)}`
                     }, {
                         name: "<:xp:1108743400410329138> Experiência",
                         value: `**${userdb.eco.xp}**XP!`
                     }, {
-                        name: "<:AnelDiamante:1108746236657405983> Estado Civil",
+                        name: "<:AnelDiamante:1108746236657405983> Casamento",
                         value: `${userdb.eco.marry.userId ? `Casado(a) com <@${userdb.eco.marry.userId}> <t:${~~(userdb.eco.marry.marryDate / 1000)}:R>.` : "Solteiro(a)"}`
                     })
             ]
