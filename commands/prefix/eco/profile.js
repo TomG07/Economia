@@ -10,7 +10,7 @@ module.exports = {
   await message.channel.sendTyping();   
   let member = message.mentions.members.first() || message.member;
   const userdb = await client.db.findById({ _id: member.user.id });
-  if (!userdb) return message.reply({ content: `Esse jogador **${member.user.username}** não utilizou o \n**++registrar**.` })
+  if (!userdb) return message.reply({ content: `Esse jogador **${member.user.username}** não utilizou o \n**a.registrar**.` })
      const canvas = Canvas.createCanvas(800, 600);
      const context = canvas.getContext("2d");
      //avatar

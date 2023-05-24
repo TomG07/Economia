@@ -8,9 +8,9 @@ module.exports = {
     if (member.user.bot) return message.reply({ content: `Bots não recebem pagamentos.` });
     if (member.user.id === message.author.id) return message.reply({ content: `Não pode pagar a si mesmo.` });
     const userdb = await client.db.findById({ _id: message.author.id });
-    if (!userdb) return message.reply({ content: `Você não utilizou o comando: \n**++registrar**.` });
+    if (!userdb) return message.reply({ content: `Você não utilizou o comando: \n**a.registrar**.` });
     const twouserdb = await client.db.findById({ _id: member.user.id });
-    if (!twouserdb) return message.reply({ content: `Esse jogador **${member.user.username}** não utilizou o \n**++registrar**.` })
+    if (!twouserdb) return message.reply({ content: `Esse jogador **${member.user.username}** não utilizou o \n**a.registrar**.` })
     let value = args.slice(1).join(" ");
     if (!value) return message.reply({ content: `Quantia do pagamento não informada!` });
     if (isNaN(value)) return message.reply({ content: `Somente números devem ser considerados na quantia do pagamento.` });

@@ -6,7 +6,7 @@ module.exports = {
         await message.channel.sendTyping();
         let member = message.mentions.members.first() || message.member;
         const userdb = await client.db.findById({ _id: member.user.id });
-        if (!userdb) return message.reply({ content: `Esse jogador **${member.user.username}** não utilizou o \n**++registrar**.` })
+        if (!userdb) return message.reply({ content: `Esse jogador **${member.user.username}** não utilizou o \n**a.registrar**.` })
         let coins = 0;//userdb.profile.coins;
         let xp = 0;
         let placar = await client.db.find({}).sort({ "eco.coins": -1 });

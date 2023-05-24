@@ -6,7 +6,7 @@ module.exports = {
     run: async (client, message, args) => {
         await message.channel.sendTyping()
         const userdb = await client.db.findById({ _id: message.author.id });
-        if (!userdb) return message.reply({ content: `Você não utilizou o comando: \n**++registrar**.` });
+        if (!userdb) return message.reply({ content: `Você não utilizou o comando: \n**a.registrar**.` });
         const empregos = Object.entries(jobs);
         message.reply({
             embeds: [

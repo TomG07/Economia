@@ -4,7 +4,7 @@ module.exports = {
    aliases: ["recargas"],
    run: async (client, message, args) => {
       const userdb = await client.db.findById({ _id: message.author.id });
-      if (!userdb) return message.reply({ content: `Você não utilizou o comando: \n**++registrar**.` });
+      if (!userdb) return message.reply({ content: `Você não utilizou o comando: \n**a.registrar**.` });
       let timers = userdb.eco.timers;
       message.reply({
          embeds: [
