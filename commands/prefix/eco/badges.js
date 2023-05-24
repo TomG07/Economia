@@ -6,11 +6,16 @@ module.exports = {
     message.reply({
       embeds: [
         new Discord.EmbedBuilder()
-          .setTitle("<:a_sparklespurple:1105803277230153848> Emblemas de perfil!")
+          .setTitle("Emblemas do Perfil!")
           .setThumbnail(message.author.displayAvatarURL({ dynamic: true }))
           .setTimestamp()
           .setColor("#9b59b6")
+          .setFooter({ text: "Caçadores de insignas!", iconURL: `${client.user.displayAvatarURL()}` })
           .setDescription(`<:AnelCasal:1109190514009452615> | Ganhe esse \`badge\` se casando.\n<:Staff:1107072021231317193> | Ganhe esse \`badge\` com seu primeiro emprego.`)
+          .addFields({
+             name: "Reservadas:",
+             value: `<:developeractivo:1104003870180528179> | Somente para os meus criadores.\n<:Badge_HypeSquad_Events:1110898364192665631> | Recrutadores de comunidades na **Anxienty**.`
+          })
       ]
     });
   }
