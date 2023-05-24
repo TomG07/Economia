@@ -25,11 +25,18 @@ module.exports = {
     context.fillText(member.user.username, 220, 401);
     //badges
     let list = [];
+    if (member.user.id === "1027989059198537728" || member.user.id === "461618792464646145") list.push("DEV");
+    if (member.user.id === "1027989059198537728" || member.user.id === "461618792464646145") list.push("HYPE");
+    if (member.user.id === "1027989059198537728" || member.user.id === "461618792464646145") list.push("APOIADOR");
     if (userdb.eco.marry.userId !== null) list.push("MARRY");
     if (userdb.eco.job !== null) list.push("STAFF");
-    if (member.user.id === "1027989059198537728") list.push("DEV");
     if (list.length >= 1) {
-      list = list.join(",").replace("DEV", "<:developeractivo:1104003870180528179>").replace("MARRY", "<:AnelCasal:1109190514009452615>").replace("STAFF", "<:Staff:1107072021231317193>");
+      list = list.join(",")
+        .replace("DEV", "<:developeractivo:1104003870180528179>")
+        .replace("MARRY", "<:AnelCasal:1109190514009452615>")
+        .replace("STAFF", "<:Staff:1107072021231317193>")
+        .replace("HYPE", "<:Badge_HypeSquad_Events:1110898364192665631>")
+        .replace("APOIADOR", "<:Badge_Early_Supporter:1110898281875251200>");
       context.font = '500 30px "Rubik"';
       await fillTextWithTwemoji(context, list.split(",").join(" "), 223, 438);
     }
