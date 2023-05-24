@@ -17,7 +17,7 @@ module.exports = {
     const avatar = await Canvas.loadImage(member.user.displayAvatarURL({ extension: 'jpg', size: 4096 }));
     context.drawImage(avatar, 10, 274, 190, 190);
     //BG
-    const background = await Canvas.loadImage("https://media.discordapp.net/attachments/1062929961754841180/1110919476905517147/1684934166560.png");
+    const background = await Canvas.loadImage("https://media.discordapp.net/attachments/1062929961754841180/1110921265201553488/1684934631637.png");
     context.drawImage(background, 0, 0, canvas.width, canvas.height);
     //name
     context.font = '500 34px "Rubik"';
@@ -45,8 +45,8 @@ module.exports = {
     context.fillStyle = "#ffffff";
     await fillTextWithTwemoji(context, `<:Bits:1110890676721291346> ${abreviar(userdb.eco.coins)}`, 600, 520);
     //about
-    context.font = '500 20px "Rubik"';
-    context.fillStyle = "#111";
+    context.font = '500 23px "Rubik"';
+    context.fillStyle = "#ffffff";
     context.fillText("Anxienty realizando sonhos!", 15, 510);
     //attachment  
     const attachment = new Discord.AttachmentBuilder(canvas.toBuffer(), { name: "profile.png" });
