@@ -87,7 +87,7 @@ module.exports = {
             const input2 = interaction.options.getString("servidor");
             const guild = await client.guilds.cache.get(input2);
             if (!guild) return interaction.reply({ content: ":x: Você não informou o Id de um servidor!", ephemeral: true });
-            i.followUp({ content: `:kissing_heart: **Prontinho**! A mensagem foi desativada!`, ephemeral: true });
+            interaction.reply({ content: `:kissing_heart: **Prontinho**! A mensagem foi desativada!`, ephemeral: true });
             client.channels.cache.get("1110229810694865076").send({
                 embeds: [
                     new Discord.EmbedBuilder()
