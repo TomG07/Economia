@@ -6,7 +6,7 @@ module.exports = {
         await message.channel.sendTyping();
         let guild = client.guilds.cache.find(guild => guild.id === args[0]) || message.guild;
         const guilddb = await client.gd.findById({ _id: guild.id, });
-        if (!guilddb) return message.reply({ content: "Servidor não registrado." })
+        if (!guilddb) return message.reply({ content: "Servidor não registrado." });
         message.reply({
             embeds: [
                 new Discord.EmbedBuilder()

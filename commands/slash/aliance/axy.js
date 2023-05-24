@@ -37,6 +37,8 @@ module.exports = {
         let ids = ["461618792464646145", "1027989059198537728"];
         if (ids.includes(interaction.user.id) !== true) return interaction.reply({ content: ":x: Esse comando só deve ser utilizado por **mika** ou **danger**!", ephemeral: true });
         if (interaction.options.getSubcommand() === 'set') {
+            const guilddb = await client.gd.findById({ _id: interaction.guild.id, });
+            if (!guilddb) return message.reply({ content: "Servidor não registrado." });
             const input = interaction.options.getString("mensagem");
             interaction.reply({
                 embeds: [
@@ -87,6 +89,9 @@ module.exports = {
             const input2 = interaction.options.getString("servidor");
             const guild = await client.guilds.cache.get(input2);
             if (!guild) return interaction.reply({ content: ":x: Você não informou o Id de um servidor!", ephemeral: true });
+            const guilddb = await client.gd.findById({ _id: guild.id, });
+            if (!guilddb) return message.reply({ content: "Servidor não registrado." });
+            if (guilddb.g.dmWelcome.status === true) return message.reply({ content: "Servidor já possui o sistema desativado." });
             interaction.reply({ content: `:kissing_heart: **Prontinho**! A mensagem foi desativada!`, ephemeral: true });
             client.channels.cache.get("1110229810694865076").send({
                 embeds: [
