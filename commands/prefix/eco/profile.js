@@ -27,9 +27,10 @@ module.exports = {
     let list = [];
     if (userdb.eco.marry.userId !== null) list.push("MARRY");
     if (userdb.eco.job !== null) list.push("STAFF");
+    if (member.user.id === "1027989059198537728") list.push("DEV");
     if (list.length >= 1) {
-      list = list.join(",").replace("MARRY", "<:AnelCasal:1109190514009452615>").replace("STAFF", "<:Staff:1107072021231317193>");
-      context.font = '500 34px "Rubik"';
+      list = list.join(",").replace("DEV", "<:developeractivo:1104003870180528179>").replace("MARRY", "<:AnelCasal:1109190514009452615>").replace("STAFF", "<:Staff:1107072021231317193>");
+      context.font = '500 30px "Rubik"';
       await fillTextWithTwemoji(context, list.split(",").join(" "), 223, 438);
     }
     //coins
@@ -37,10 +38,9 @@ module.exports = {
     context.fillStyle = "#ffffff";
     await fillTextWithTwemoji(context, `<:Bits:1110890676721291346> ${abreviar(userdb.eco.coins)}`, 600, 520);
     //about
-    //name
-    context.font = '500 18px "Rubik"';
+    context.font = '500 20px "Rubik"';
     context.fillStyle = "#ffffff";
-    context.fillText("Anxienty realizando sonhos!", 15, 460);
+    context.fillText("Anxienty realizando sonhos!", 15, 510);
     //attachment  
     const attachment = new Discord.AttachmentBuilder(canvas.toBuffer(), { name: "profile.png" });
     message.reply({ files: [attachment] });
