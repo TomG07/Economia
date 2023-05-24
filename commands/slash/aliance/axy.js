@@ -85,6 +85,7 @@ module.exports = {
                         .setTimestamp()
                 ]
             });
+            await client.gd.updateOne({ _id: guild.id, }, { $set: { "g.dmWelcome.status": true, "g.dmWelcome.content": input, } });
         } else if (interaction.options.getSubcommand() === 'off') {
             const input2 = interaction.options.getString("servidor");
             const guild = await client.guilds.cache.get(input2);
@@ -103,6 +104,7 @@ module.exports = {
                         .setTimestamp()
                 ]
             });
+            await client.gd.updateOne({ _id: guild.id, }, { $set: { "g.dmWelcome.status": false, } });
         }
 
     }
