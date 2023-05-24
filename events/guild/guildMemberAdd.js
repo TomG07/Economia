@@ -4,9 +4,9 @@ module.exports = {
     name: Discord.Events.GuildMemberAdd,
     once: false,
     async execute(member) {
-        const guild = await client.gd.findById({ _id: member.guild.id, });
-        if (!guild) return;
-        if (guild.g.dmWelcome !== true) return;
+        const dbguild = await client.gd.findById({ _id: member.guild.id, });
+        if (!dbguild) return;
+        if (dbguild.g.dmWelcome !== true) return;
 
     }
 }
