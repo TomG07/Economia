@@ -4,11 +4,11 @@ module.exports = {
     description: "[Anxienty] Defina a mensagem Dm",
     type: Discord.ApplicationCommandType.ChatInput,
     options: [{
-        name: "set",
+        name: "div",
         description: "[Anxienty] Defina a mensagem Dm",
         type: Discord.ApplicationCommandOptionType.SubcommandGroup,
         options: [{
-            name: "div",
+            name: "set",
             description: "[Anxienty] Defina a mensagem Dm",
             type: Discord.ApplicationCommandOptionType.Subcommand,
             options: [{
@@ -17,6 +17,18 @@ module.exports = {
                 type: Discord.ApplicationCommandOptionType.String,
                 min_length: 20,
                 max_length: 2450,
+                required: true,
+            }],
+        }, {
+            name: "off",
+            description: "[Anxienty] Desativa a mensagem Dm",
+            type: Discord.ApplicationCommandOptionType.Subcommand,
+            options: [{
+                name: "servidor",
+                description: "Qual o ID do servidor?",
+                type: Discord.ApplicationCommandOptionType.String,
+                min_length: 20,
+                max_length: 20,
                 required: true,
             }],
         }],
@@ -52,9 +64,9 @@ module.exports = {
                 coletou.stop();
                 if (i.customId === "wpv") {
                     try {
-                      await interaction.member.send({ content: `✅ | **Anxienty todos os direitos reservados!**\n\n${input}` });
+                        await interaction.member.send({ content: `✅ | **Anxienty todos os direitos reservados!**\n\n${input}` });
                     } catch (err) {
-                      return interaction.channel.send({ content: `🧐 Erro! Seu privado tá fechado?` });
+                        return interaction.channel.send({ content: `🧐 Erro! Seu privado tá fechado?` });
                     }
                     i.followUp({ content: `:kissing_heart: **Prontinho**! Confira seu privado!`, ephemeral: true });
                 }
@@ -65,7 +77,7 @@ module.exports = {
                 new Discord.EmbedBuilder()
                     .setAuthor({ name: `${interaction.user.username}`, iconURL: `${interaction.user.displayAvatarURL({ dynamic: true })}` })
                     .setColor("#9b59b6")
-                    .setDescription(`\> <:Editar:1105250558509596722> O mod ${interaction.user} setou a **mensagem de DM** no servidor \`${interaction.guild.name} - (${interaction.guild.id})\`.`)
+                    .setDescription(`\> <:d_newmembers:1106397642252099594> O mod ${interaction.user} setou a **mensagem de DM** no servidor \`${interaction.guild.name} - (${interaction.guild.id})\`.`)
                     .setFooter({ text: "Anxienty todos os direitos reservados!", iconURL: `${client.user.displayAvatarURL()}` })
                     .setTimestamp()
             ]
