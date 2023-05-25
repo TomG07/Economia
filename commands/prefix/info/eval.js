@@ -11,7 +11,7 @@ module.exports = {
     inputEmbed.setAuthor({ name: `${message.author.tag}`, iconURL: `${message.author.displayAvatarURL()}` })
     inputEmbed.setTitle("Entrada")
     inputEmbed.setColor("#c44762");
-    inputEmbed.setFooter({ text: "Tools 🌸", iconURL: `${kaiya.user.displayAvatarURL()}` })
+    inputEmbed.setFooter({ text: "Tools 🌸", iconURL: `${client.user.displayAvatarURL()}` })
     await message.guild.members.fetch();
     inputEmbed.setDescription(`${Discord.codeBlock("js", expression)}`);
     try {
