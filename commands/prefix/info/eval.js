@@ -8,7 +8,7 @@ module.exports = {
     const expression = args.join(" ");
     const resultEmbed = new Discord.EmbedBuilder();
     const inputEmbed = new Discord.EmbedBuilder();
-    inputEmbed.setAuthor({ name: `${message.user.username}`, iconURL: `${message.author.displayAvatarURL()}` })
+    inputEmbed.setAuthor({ name: `${message.author.tag}`, iconURL: `${message.author.displayAvatarURL()}` })
     inputEmbed.setTitle("Entrada")
     inputEmbed.setColor("#c44762");
     inputEmbed.setFooter({ text: "Tools 🌸", iconURL: `${kaiya.user.displayAvatarURL()}` })
