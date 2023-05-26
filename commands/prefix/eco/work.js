@@ -13,8 +13,8 @@ module.exports = {
             embeds: [
                 new Discord.EmbedBuilder()
                     .setTitle("Trabalho concluído!")
-                    .setDescription(`\> ${message.author}, ganhou <:Bits:1110890676721291346> **${jobs[`${userdb.eco.job}`].salario} bits** + <:xp:1108743400410329138> '1XP!' de experiência ao concluir seu trabalho de **${userdb.eco.job}**.`)
-                    .setColor("#9b59b6")
+                    .setDescription(`${message.author}, ganhou <:Stars:1111647398188564510> **${jobs[`${userdb.eco.job}`].salario} bits** + <:Exp:1111648750864171154> '1XP!' de experiência ao concluir seu trabalho de **${userdb.eco.job}**.`)
+                    .setColor("#303136")
                     .setFooter({ text: `${message.author.tag}`, iconURL: `${message.author.displayAvatarURL()}` })
             ],
             components: [
