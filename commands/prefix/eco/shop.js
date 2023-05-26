@@ -44,7 +44,7 @@ module.exports = {
                     if (userdb.eco.farm.owner === true) return message.reply({ content: `Voce já tem uma fazenda!` });
                     if (userdb.eco.coins < x.split("-")[1]) return message.reply({ content: `Saldo insuficiente!` });
                     int.edit({ content: `${i.user}, Você comprou uma fazenda por **10k de bits**.`, components: [] });
-                    await client.db.updateOne({ _id: message.author.id }, { $set: { "eco.farm.status": true, }, $inc: { "eco.coins": -20000, }, });
+                    await client.db.updateOne({ _id: message.author.id }, { $set: { "eco.farm.owner": true, }, $inc: { "eco.coins": -20000, }, });
                 }
             });
         });
