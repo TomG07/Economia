@@ -20,7 +20,7 @@ module.exports = {
             components: [
                 new Discord.ActionRowBuilder()
                     .addComponents(
-                        new Discord.StringSelectMenuOptionBuilder()
+                        new Discord.StringSelectMenuBuilder()
                             .setCustomId('wshop')
                             .setPlaceholder('Comprar')
                             .setMinValues(1)
@@ -33,6 +33,19 @@ module.exports = {
                             )
                     )
             ], fetchReply: true
+        }).then((int) => {
+            const coletou = int.createMessageComponentCollector({ time: 36000 });
+            coletou.on('collect', async (i) => {
+                await i.deferUpdate();
+                if (i.customId === "wshop") {
+                    coletou.stop();
+                    if (i.user.id !== message.author.id) return i.followUp({ content: `Essa decisão não é sua!`, ephemeral: true });
+                    const x = i.values[0];
+                    if (userdb.eco.coins < x.split("-")[1]) return message.reply({ content: `Saldo insuficiente!` });
+                    int.edit({ content: `${i.user}, Você comprou uma fazenda por **10k de bits**.`, components: [] });
+                    //await client.db.updateOne({ _id: message.author.id }, { $inc: { "eco.coins": -value, }, });
+                }
+            });
         });
     }
 }

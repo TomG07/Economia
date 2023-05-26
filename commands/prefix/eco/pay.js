@@ -41,7 +41,7 @@ module.exports = {
           await client.db.updateOne({ _id: i.user.id }, { $inc: { "eco.coins": value, }, });
           await client.db.updateOne({ _id: message.author.id }, { $inc: { "eco.coins": -value, }, });
         }
-      })
+      });
     });
   }
 }
