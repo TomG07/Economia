@@ -17,7 +17,7 @@ module.exports = {
     const avatar = await Canvas.loadImage(member.user.displayAvatarURL({ extension: 'jpg', size: 4096 }));
     context.drawImage(avatar, 10, 274, 190, 190);
     //BG
-    const background = await Canvas.loadImage("https://media.discordapp.net/attachments/1062929961754841180/1110921265201553488/1684934631637.png");
+    const background = await Canvas.loadImage("https://media.discordapp.net/attachments/1062929961754841180/1111678590258520124/1685115140862.png");
     context.drawImage(background, 0, 0, canvas.width, canvas.height);
     //name
     context.font = '500 34px "Rubik"';
@@ -43,7 +43,7 @@ module.exports = {
     //coins
     context.font = '400 25px "Rubik"';
     context.fillStyle = "#ffffff";
-    await fillTextWithTwemoji(context, `<:Bits:1110890676721291346> ${abreviar(userdb.eco.coins)}`, 600, 520);
+    await fillTextWithTwemoji(context, `<:Stars:1111647398188564510> ${abreviar(userdb.eco.coins)}`, 600, 520);
     //about
     context.font = '500 23px "Rubik"';
     context.fillStyle = "#ffffff";
