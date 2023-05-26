@@ -11,9 +11,9 @@ module.exports = {
         message.reply({
             embeds: [
                 new Discord.EmbedBuilder()
-                    .setTitle("😳 Sapequinha..!")
-                    .setDescription(`\> ${message.author}, ganhou <:Bits:1110890676721291346> **${coins} bits** + <:xp:1108743400410329138> '1XP!' de experiência ao fazer **GF** com <@${userdb.eco.marry.userId}>.`)
-                    .setColor("#9b59b6")
+                    .setTitle("Sapequinha..!")
+                    .setDescription(`${message.author}, ganhou <:Stars:1111647398188564510> **${coins} bits** + <:Stars:1111647398188564510> '1XP!' de experiência ao fazer **GF** com <@${userdb.eco.marry.userId}>.`)
+                    .setColor("#303136")
                     .setFooter({ text: `${message.author.tag}`, iconURL: `${message.author.displayAvatarURL()}` })
             ],
             components: [
