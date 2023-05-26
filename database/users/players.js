@@ -15,32 +15,32 @@ const documentSave = new Schema({
             seeds: {
                 batata: {
                     count: { type: Number, default: 0 },
-                    max: 10,
-                    coins: 300,
+                    max: { type: Number, default: 10 },
+                    coins: { type: Number, default: 300 },
                     cooldown: { type: Number, default: 0 },
                 },
                 arroz: {
                     count: { type: Number, default: 0 },
-                    max: 20,
-                    coins: 200,
+                    max: { type: Number, default: 10 },
+                    coins: { type: Number, default: 200 },
                     cooldown: { type: Number, default: 0 },
                 },
                 trigo: {
                     count: { type: Number, default: 0 },
-                    max: 16,
+                    max: { type: Number, default: 12 },
                     coins: 170,
-                    cooldown: { type: Number, default: 0 },
+                    cooldown: { type: Number, default: 100 },
                 },
                 milho: {
                     count: { type: Number, default: 0 },
-                    max: 15,
-                    coins: 150,
+                    max: { type: Number, default: 10 },
+                    coins: { type: Number, default: 150 },
                     cooldown: { type: Number, default: 0 },
                 },
                 cenoura: {
                     count: { type: Number, default: 0 },
-                    max: 5,
-                    coins: 50,
+                    max: { type: Number, default: 5 },
+                    coins: { type: Number, default: 50 },
                     cooldown: { type: Number, default: 0 },
                 },
             }
