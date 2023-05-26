@@ -11,7 +11,7 @@ module.exports = {
                     .setTitle("<:FlowerPurple:1109899097655222272> Shop!")
                     .setThumbnail(message.author.displayAvatarURL({ dunamic: true }))
                     .setTimestamp()
-                    .setColor("#9b59b6")
+                    .setColor("#303136")
                     .addFields({
                         name: ":ox: Fazenda",
                         value: "Preço: <:Bits:1110890676721291346> **20,000 bits**"

@@ -9,7 +9,7 @@ module.exports = {
           .setTitle("Emblemas do Perfil!")
           .setThumbnail(message.author.displayAvatarURL({ dynamic: true }))
           .setTimestamp()
-          .setColor("#9b59b6")
+          .setColor("#303136")
           .setFooter({ text: "Caçadores de insignas!", iconURL: `${client.user.displayAvatarURL()}` })
           .setDescription(`<:AnelCasal:1109190514009452615> | Ganhe esse \`badge\` se casando.\n<:Staff:1107072021231317193> | Ganhe esse \`badge\` com seu primeiro emprego.`)
           .addFields({

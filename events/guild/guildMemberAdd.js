@@ -7,6 +7,8 @@ module.exports = {
         const dbguild = await client.gd.findById({ _id: member.guild.id, });
         if (!dbguild) return;
         if (dbguild.g.dmWelcome !== true) return;
-
+        if (dbguild.g.dmWelcome === true) {
+            member.send({ content: `${dbguild.g.dmWelcome.content}` }).catch(() => { return; })
+        }
     }
 }
