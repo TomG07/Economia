@@ -26,14 +26,14 @@ module.exports = {
                             .setMaxValues(1)
                             .addOptions(
                                 new Discord.StringSelectMenuOptionBuilder()
-                                    .setLabel('Batata 2x')
+                                    .setLabel('Plantar (2x) Batata')
                                     .setEmoji("🚜")
-                                    .setDescription('Plantar 2 lotes por 300 bits')
+                                    .setDescription('Plante [2] lotes no custo de 300 bits')
                                     .setValue('batata-2-300'),
                                 new Discord.StringSelectMenuOptionBuilder()
-                                    .setLabel('Batata 4x')
+                                    .setLabel('Plantar (4x) Batata')
                                     .setEmoji("🚜")
-                                    .setDescription('Plantar 4 lotes por 600 bits')
+                                    .setDescription('Plante [4] lotes no custo de 600 bits')
                                     .setValue('batata-4-600'),
                             )
                     )
