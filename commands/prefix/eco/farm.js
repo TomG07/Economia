@@ -46,9 +46,11 @@ module.exports = {
                     const x = i.values[0];
                     let semente = userdb.eco.farm.seeds[`${x.split("-")[0]}`];
                     if (semente.count >= semente.max) return message.reply({ content: `Voce já lotou seus lote de ${x.split("-")[0]}!` });
-                    if (userdb.eco.coins < semente.coins) return message.reply({ content: `Saldo insuficiente!` });
+                    if (userdb.eco.coins < x.split("-")[2]) return message.reply({ content: `Saldo insuficiente!` });
                     int.edit({ content: `<:1_Correto:1079943018477523004> ${i.user}, Voce plantou **${x.split("-")[1]} lotes** de **${x.split("-")[0]}** com sucesso.`, embeds: [], components: [] });
-                    // await client.db.updateOne({ _id: message.author.id }, { $inc: { "eco.coins": -20000, "": 90 } });
+                    if (x.split("-")[0] === "batata") {
+                        await client.db.updateOne({ _id: message.author.id }, { $inc: { "eco.coins": -x.split("-")[2], "eco.farm.seeds.batata": x.split("-")[1] }, $set: { "eco.farm.seeds.batata.cooldown": Date.now() + 7200000, } });
+                    }
                 }
             });
         });
