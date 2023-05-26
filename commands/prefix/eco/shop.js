@@ -41,10 +41,10 @@ module.exports = {
                     coletou.stop();
                     if (i.user.id !== message.author.id) return i.followUp({ content: `Essa decisão não é sua!`, ephemeral: true });
                     const x = i.values[0];
-                    if (userdb.eco.farm.status === true) return message.reply({ content: `Voce já tem uma fazenda!` });
+                    if (userdb.eco.farm.owner === true) return message.reply({ content: `Voce já tem uma fazenda!` });
                     if (userdb.eco.coins < x.split("-")[1]) return message.reply({ content: `Saldo insuficiente!` });
                     int.edit({ content: `${i.user}, Você comprou uma fazenda por **10k de bits**.`, components: [] });
-                    await client.db.updateOne({ _id: message.author.id }, { $set: { "eco.farm.status": true, }, $inc: { "eco.coins": -10000, }, });
+                    await client.db.updateOne({ _id: message.author.id }, { $set: { "eco.farm.status": true, }, $inc: { "eco.coins": -20000, }, });
                 }
             });
         });
