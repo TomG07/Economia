@@ -27,8 +27,9 @@ module.exports = {
                             .setMaxValues(1)
                             .addOptions(
                                 new Discord.StringSelectMenuOptionBuilder()
-                                    .setLabel('Fazenda')
-                                    .setDescription('Comprar uma fazenda')
+                                    .setLabel('Comprar uma Fazenda')
+                                    .setEmoji("💰")
+                                    .setDescription('Compre uma fazenda para platar suas sementes')
                                     .setValue('farm-20000')
                             )
                     )
@@ -41,7 +42,7 @@ module.exports = {
                     coletou.stop();
                     if (i.user.id !== message.author.id) return i.followUp({ content: `Essa decisão não é sua!`, ephemeral: true });
                     const x = i.values[0];
-                    if (userdb.eco.farm.owner === true) return message.reply({ content: `Voce já tem uma fazenda!` });
+                    if (userdb.eco.farm.owner === true) return message.reply({ content: `Você já possui uma fazenda!` });
                     if (userdb.eco.coins < x.split("-")[1]) return message.reply({ content: `Saldo insuficiente!` });
                     int.edit({ content: `<:1_Correto:1079943018477523004> ${i.user}, Você comprou uma fazenda por **10k de bits**.`, embeds: [], components: [] });
                     await client.db.updateOne({ _id: message.author.id }, { $set: { "eco.farm.owner": true, }, $inc: { "eco.coins": -20000, }, });
