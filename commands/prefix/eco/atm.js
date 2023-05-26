@@ -18,15 +18,15 @@ module.exports = {
                     .setTitle("Saldo do jogador!")
                     .setThumbnail(member.user.displayAvatarURL({ dynamic: true }))
                     .setTimestamp()
-                    .setColor("#9b59b6")
+                    .setColor("#303136")
                     .addFields({
-                        name: "<:Bits:1110890676721291346> BitsCard",
+                        name: "<:Stars:1111647398188564510> BitsCard",
                         value: `**${abreviar(userdb.eco.coins)}** bits.`
                     }, {
                         name: "<:Placares:1105821202678825000> Posição no ranking",
                         value: `#️⃣${numberToEmojis(seachUserRankPosition)}`
                     }, {
-                        name: "<:xp:1108743400410329138> Experiência",
+                        name: "<:Exp:1111648750864171154> Experiência",
                         value: `**${userdb.eco.xp}**XP!`
                     }, {
                         name: "<:AnelDiamante:1108746236657405983> Casamento",
