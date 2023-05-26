@@ -14,11 +14,11 @@ module.exports = {
     let value = args.slice(1).join(" ");
     if (!value) return message.reply({ content: `Quantia do pagamento não informada!` });
     if (isNaN(value)) return message.reply({ content: `Somente números devem ser considerados na quantia do pagamento.` });
-    if (value < 100) return message.reply({ content: `Você só pode fazer pagamentos com quantias maiores que **100 diamantes**.` });
+    if (value < 100) return message.reply({ content: `Você só pode fazer pagamentos com quantias maiores que **100 bits**.` });
     if (value > 50000) return message.reply({ content: `Você só pode transferir quantias maiores que **50k** de uma vez só.` });
     if (userdb.eco.coins < value) return message.reply({ content: `Saldo insuficiente!` });
     message.reply({
-      content: `<:diamantes:1109086535439110164> **|** ${message.author}, deseja transferir **${value} diamantes** para sua conta.`,
+      content: `<:Stars:1111647398188564510> **|** ${message.author}, deseja transferir **${value} bits** para sua conta.`,
       components: [
         new Discord.ActionRowBuilder().addComponents(
           new Discord.ButtonBuilder()

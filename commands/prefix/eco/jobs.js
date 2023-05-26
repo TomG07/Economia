@@ -18,7 +18,7 @@ module.exports = {
                     }).join("\n")}`)
                     .setColor("#303136")
                     .addFields({
-                        name: `<:xp:1108743400410329138> Atualmente sua experiência é:`,
+                        name: `<:Exp:1111648750864171154> Atualmente sua experiência é:`,
                         value: `${userdb.eco.xp}XP!`
                     })
                     .setThumbnail(message.author.displayAvatarURL({ dynamic: true }))
