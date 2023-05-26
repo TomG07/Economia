@@ -11,8 +11,8 @@ module.exports = {
             embeds: [
                 new Discord.EmbedBuilder()
                     .setTitle("Recompensa diária!")
-                    .setDescription(`\> ${message.author}, ganhou <:Bits:1110890676721291346> **${coins} bits** + <:xp:1108743400410329138> '1XP!' de experiência em sua recompensa diária.`)
-                    .setColor("#9b59b6")
+                    .setDescription(`${message.author}, ganhou <:Stars:1111647398188564510> **${coins} bits** + <:Exp:1111648750864171154> '1XP!' de experiência em sua recompensa diária.`)
+                    .setColor("#303136")
                     .setFooter({ text: `${message.author.tag}`, iconURL: `${message.author.displayAvatarURL()}` })
             ],
             components: [
