@@ -49,7 +49,7 @@ module.exports = {
                     if (userdb.eco.coins < x.split("-")[2]) return message.reply({ content: `Saldo insuficiente!` });
                     int.edit({ content: `<:1_Correto:1079943018477523004> ${i.user}, Voce plantou **${x.split("-")[1]} lotes** de **${x.split("-")[0]}** com sucesso.`, embeds: [], components: [] });
                     if (x.split("-")[0] === "batata") {
-                        await client.db.updateOne({ _id: message.author.id }, { $inc: { "eco.coins": -x.split("-")[2], "eco.farm.seeds.batata": x.split("-")[1] }, $set: { "eco.farm.seeds.batata.cooldown": Date.now() + 7200000, } });
+                        await client.db.updateOne({ _id: message.author.id }, { $inc: { "eco.coins": -x.split("-")[2], "eco.farm.seeds.batata.count": x.split("-")[1] }, $set: { "eco.farm.seeds.batata.cooldown": Date.now() + 7200000, } });
                     }
                 }
             });
