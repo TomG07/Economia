@@ -28,8 +28,8 @@ const documentSave = new Schema({
                 trigo: {
                     count: { type: Number, default: 0 },
                     max: { type: Number, default: 12 },
-                    coins: 170,
-                    cooldown: { type: Number, default: 100 },
+                    coins: { type: Number, default: 100 },
+                    cooldown: { type: Number, default: 0 },
                 },
                 milho: {
                     count: { type: Number, default: 0 },
