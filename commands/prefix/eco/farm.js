@@ -27,10 +27,12 @@ module.exports = {
                             .addOptions(
                                 new Discord.StringSelectMenuOptionBuilder()
                                     .setLabel('Batata 2x')
+                                    .setEmoji("🚜")
                                     .setDescription('Plantar 2 lotes por 300 bits')
                                     .setValue('batata-2-300'),
                                 new Discord.StringSelectMenuOptionBuilder()
                                     .setLabel('Batata 4x')
+                                    .setEmoji("🚜")
                                     .setDescription('Plantar 4 lotes por 600 bits')
                                     .setValue('batata-4-600'),
                             )
