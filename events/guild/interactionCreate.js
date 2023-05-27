@@ -11,14 +11,14 @@ module.exports = {
       if (interaction.customId.startsWith("r")) {
         let guild = await client.guilds.cache.get(interaction.customId.split("-")[1]);
         //if (!guild) return;
-        interaction.message.edit({ content: "<:Check:1106590979529637938> Ticket fechado!", embeds: [], components: [] });
+        interaction.message.edit({ content: `📩 | **_Ticket fechado__**! Essa solicitaçao foi avaliada pelo(a) **${interaction.user.username}**.`, embeds: [], components: [] });
         interaction.reply({
           embeds: [
             new Discord.EmbedBuilder()
               .setTitle("<a:Reizinho:1109791282575966239> Servidor reprovado!")
               .setThumbnail(interaction.user.displayAvatarURL({ dunamic: true }))
               .setTimestamp()
-              .setColor("#9b59b6")
+              .setColor("#303136")
               .addFields({
                 name: "<:Remover:1105625912600436776> Servidor Nome",
                 value: `${guild.name}`
@@ -37,20 +37,20 @@ module.exports = {
             new Discord.EmbedBuilder()
               .setAuthor({ name: `${interaction.user.username}`, iconURL: `${interaction.user.displayAvatarURL({ dynamic: true })}` })
               .setColor("#303136")
-              .setDescription(`\> <:Remover:1105625912600436776> O mod ${interaction.user} reprovou o servidor \`${guild.name} - (${guild.id})\` em sua análise.`)
+              .setDescription(`<:Remover:1105625912600436776> O recrutador ${interaction.user} reprovou o servidor \`${guild.name} - (${guild.id})\` em sua análise.`)
               .setTimestamp()
           ]
         });
       } else if (interaction.customId.startsWith("a")) {
         let guild = await client.guilds.cache.get(interaction.customId.split("-")[1]);
-        interaction.message.edit({ content: "<:Check:1106590979529637938> Ticket fechado!", embeds: [], components: [] });
+        interaction.message.edit({ content: `📩 | **_Ticket fechado__**! Essa solicitaçao foi avaliada pelo(a) **${interaction.user.username}**.`, embeds: [], components: [] });
         interaction.reply({
           embeds: [
             new Discord.EmbedBuilder()
               .setTitle("<a:Reizinho:1109791282575966239> Servidor reprovado!")
               .setThumbnail(interaction.user.displayAvatarURL({ dunamic: true }))
               .setTimestamp()
-              .setColor("#9b59b6")
+              .setColor("#303136")
               .addFields({
                 name: "<:Check:1106590979529637938> Servidor Nome",
                 value: `${guild.name}`
@@ -69,7 +69,7 @@ module.exports = {
             new Discord.EmbedBuilder()
               .setAuthor({ name: `${interaction.user.username}`, iconURL: `${interaction.user.displayAvatarURL({ dynamic: true })}` })
               .setColor("#9b59b6")
-              .setDescription(`\> <:Check:1106590979529637938> O mod ${interaction.user} aprovou o servidor \`${guild.name} - (${guild.id})\` em sua análise.`)
+              .setDescription(`<:Check:1106590979529637938> O recrutador ${interaction.user} aprovou o servidor \`${guild.name} - (${guild.id})\` em sua análise.`)
               .setTimestamp()
               .setFooter({ text: "Anxienty todos os direitos reservados!", iconURL: `${client.user.displayAvatarURL()}` })                               
           ]
