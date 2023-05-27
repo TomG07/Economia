@@ -6,9 +6,9 @@ module.exports = {
         await message.channel.sendTyping();
         if (!message.member.permissions.has(Discord.PermissionFlagsBits.ManageGuild)) return message.reply({ content: `Você não possui a permissão: \`Gerenciar Servidor\`` });
         let guilddb = (await client.gd.findById({ _id: `${message.guild.id}`, })) || { g: { status: false, partner: false, blacklist: false }, }
-        if (guilddb.g.blacklist === true) return message.reply({ content: ":x: Servidor na blacklist!" });
+        if (guilddb.g.blacklist === true) return message.reply({ content: "Esse servidor se encontra na blacklist da Anxienty!" });
         if (message.guild.memberCount < 150 && guilddb.g.partner !== true) return message.reply({ content: "Esse servidor não possui **150 membros** que requisitamos anteriomente, somente parceiros podem pular esse requisito!" });
-        if (guilddb.g.status === true) return message.reply({ content: ":x: Servidor já registrado!" });
+        if (guilddb.g.status === true) return message.reply({ content: "Esse servidor já possue registro na Anxienty!" });
         const invite = await message.channel.createInvite({ maxUses: 0, maxAge: 0 }).catch(err => null);
         if (!invite) return message.reply({ content: `Vish.. Eu não tenho permissão de **criar convites** nesse canal <#${message.channel.id}>!` });
         message.reply({
@@ -77,7 +77,7 @@ module.exports = {
                                         value: `\`${i.guild.id}\``
                                     }, {                                      
                                         name: "Servidor Dono(a)",
-                                        value: `\`${i.guild.ownerId}\` | ${inlineCode(await client.users.fetch(i.guild.ownerId).then(x => x.tag))}`
+                                        value: `\`${i.guild.ownerId}\` | ${Discord.inlineCode(await client.users.fetch(i.guild.ownerId).then(x => x.tag))}`
                                     }, {
                                         name: "Servidor Criado",
                                         value: `<t:${parseInt(i.guild.createdTimestamp / 1000)}:f> (<t:${parseInt(i.guild.createdTimestamp / 1000)}:R>)`,
