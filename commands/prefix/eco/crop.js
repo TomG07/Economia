@@ -25,8 +25,11 @@ module.exports = {
                     coletou.stop();
                     if (i.user.id !== message.author.id) return i.followUp({ content: `Essa decisão não cabe a vc!`, ephemeral: true });
                     //if (checar.eco.coins < value) return message.reply({ content: `Saldo insuficiente!` });
-                    int.edit({ content: `${i.user}, Você colheu **${userdb.eco.farm.seeds.batata.count} batatas** da sua fazenda.`, components: [] });
-                    // await client.db.updateOne({ _id: i.user.id }, { $inc: { "eco.coins": value, }, });
+                    let size = userdb.eco.farm.seeds.batata.count;
+                    if (size <= 0) return;
+                    int.edit({ content: `${i.user}, Você colheu **${size} batatas** da sua fazenda.`, components: [] });
+                      await client.db.updateOne({ _id: i.user.id }, { $inc: { "eco.coins": 2, "eco.farm.seeds.batata.count": -size, }, });
+                    }
                 }
             });
         });
