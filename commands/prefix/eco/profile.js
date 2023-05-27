@@ -17,7 +17,9 @@ module.exports = {
     const avatar = await Canvas.loadImage(member.user.displayAvatarURL({ extension: 'jpg', size: 4096 }));
     context.drawImage(avatar, 10, 274, 190, 190);
     //BG
-    const background = await Canvas.loadImage("https://media.discordapp.net/attachments/1062929961754841180/1111678590258520124/1685115140862.png");
+    let bg = "https://media.discordapp.net/attachments/1062929961754841180/1111678590258520124/1685115140862.png";
+    if (member.user.id === "1014244324772413462") bg = "https://media.discordapp.net/attachments/1062929961754841180/1112077966705442836/1685210382326.png";
+    const background = await Canvas.loadImage(bg);
     context.drawImage(background, 0, 0, canvas.width, canvas.height);
     //name
     context.font = '500 34px "Rubik"';
@@ -27,7 +29,7 @@ module.exports = {
     let list = [];
     if (member.user.id === "1027989059198537728" || member.user.id === "461618792464646145") list.push("DEV");
     if (member.user.id === "1027989059198537728" || member.user.id === "461618792464646145") list.push("HYPE");
-    if (member.user.id === "1027989059198537728" || member.user.id === "461618792464646145") list.push("APOIADOR");
+    if (member.user.id === "1027989059198537728" || member.user.id === "461618792464646145" || member.user.id === "1014244324772413462") list.push("APOIADOR");
     if (userdb.eco.marry.userId !== null) list.push("MARRY");
     if (userdb.eco.job !== null) list.push("STAFF");
     if (list.length >= 1) {
