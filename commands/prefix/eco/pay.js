@@ -18,14 +18,14 @@ module.exports = {
     if (value > 50000) return message.reply({ content: `Você só pode transferir quantias maiores que **50k** de uma vez só.` });
     if (userdb.eco.coins < value) return message.reply({ content: `Saldo insuficiente!` });
     message.reply({
-      content: `<:Stars:1111647398188564510> **|** ${message.author}, deseja transferir **${value} bits** para sua conta.`,
+      content: `<:Stars:1111647398188564510> **|** ${message.author}, deseja transferir **${abreviar(value)} bits** para a sua conta, confimar?`,
       components: [
         new Discord.ActionRowBuilder().addComponents(
           new Discord.ButtonBuilder()
             .setCustomId("pay")
             .setLabel("Sim, aceitar")
             .setStyle(Discord.ButtonStyle.Success)
-            .setDisabled(true)
+            .setDisabled(false)
         )]
     }).then((int) => {
       const coletou = int.createMessageComponentCollector({ time: 36000 });
@@ -33,15 +33,21 @@ module.exports = {
         await i.deferUpdate();
         if (i.customId === "pay") {
           coletou.stop();
-          if (i.user.id !== member.user.id) return i.followUp({ content: `Essa decisão não é sua!`, ephemeral: true });
+          if (i.user.id !== member.user.id) return i.followUp({ content: `Essa decisão não cabe a vc.`, ephemeral: true });
           const checar = await client.db.findById({ _id: message.author.id });
           if (!checar) return message.reply({ content: `Esse jogador **${message.author.username}** não utilizou o \n**++registrar**.` });
           if (checar.eco.coins < value) return message.reply({ content: `Saldo insuficiente!` });
-          int.edit({ content: `${i.user} aceitou a transferência de ${message.author}.`, components: [] });
+          int.edit({ content: `${i.user} aceitou a transferência de **<:Stars:1111647398188564510> ${abreviar(value)} bits** de ${message.author}.`, components: [] });
           await client.db.updateOne({ _id: i.user.id }, { $inc: { "eco.coins": value, }, });
           await client.db.updateOne({ _id: message.author.id }, { $inc: { "eco.coins": -value, }, });
         }
       });
     });
   }
+}
+function abreviar(number, precision = 2) {
+    return number.toLocaleString("en-US", {
+        notation: "compact",
+        maximumFractionDigits: precision,
+    });
 }
