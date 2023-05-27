@@ -7,23 +7,23 @@ module.exports = {
         message.reply({
             embeds: [
                 new Discord.EmbedBuilder()
-                    .setTitle("Minhas informações")
+                    .setTitle("Minhas informações!")
                     .setThumbnail(client.user.displayAvatarURL())
-                    .setColor("#9b59b6")
+                    .setColor("#303136")
                     .addFields({
-                        name: "👑 Donos",
+                        name: "<:k_cmtyOwner:1106396096332300298> Creator(s)",
                         value: `${user.username} (Id: \`461618792464646145\`) & MikaCat (Id: \`1027989059198537728\`)`
                     }, {
-                        name: "💻 Minha versão",
-                        value: "1.0.2"
+                        name: "<:k_cmtyOwner:1106396096332300298> Minha versão",
+                        value: "beta-1.1.2"
                     }, {
-                        name: "📚 Livraria",
+                        name: "<:k_cmtyOwner:1106396096332300298> Livraria",
                         value: "`Discord.js`"
                     }, {
-                        name: "⚙ Prefixo",
-                        value: "`++`"
+                        name: "<:k_cmtyOwner:1106396096332300298> Prefixo",
+                        value: "`a.`"
                     }, {
-                        name: "🗂 Total de comandos",
+                        name: "<:k_cmtyOwner:1106396096332300298> Total de comandos",
                         value: `${client.commands.size}`
                     })
                     .setTimestamp()
