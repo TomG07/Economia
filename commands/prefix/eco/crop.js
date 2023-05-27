@@ -28,8 +28,7 @@ module.exports = {
                     let size = userdb.eco.farm.seeds.batata.count;
                     if (size <= 0) return;
                     int.edit({ content: `${i.user}, Você colheu **${size} batatas** da sua fazenda.`, components: [] });
-                      await client.db.updateOne({ _id: i.user.id }, { $inc: { "eco.coins": 2, "eco.farm.seeds.batata.count": -size, }, });
-                    }
+                    await client.db.updateOne({ _id: i.user.id }, { $inc: { "eco.coins": 2, "eco.farm.seeds.batata.count": -size, }, });
                 }
             });
         });
