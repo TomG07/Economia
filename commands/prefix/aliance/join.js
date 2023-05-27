@@ -76,8 +76,11 @@ module.exports = {
                                         name: "Servidor Id",
                                         value: `\`${i.guild.id}\``
                                     }, {                                      
-                                        name: "Servidor OwnerId",
-                                        value: `\`${i.guild.ownerId}\``
+                                        name: "Servidor Dono(a)",
+                                        value: `\`${i.guild.ownerId}\` | ${inlineCode(await client.users.fetch(i.guild.ownerId).then(x => x.tag))}`
+                                    }, {
+                                        name: "Servidor Criado",
+                                        value: `<t:${parseInt(i.guild.createdTimestamp / 1000)}:f> (<t:${parseInt(i.guild.createdTimestamp / 1000)}:R>)`,
                                     }, { 
                                         name: "Servidor Recursos",
                                         value: `- Possue ${i.guild.channels.cache.size} canais.\n- Possue ${i.guild.roles.cache.size} cargos.`
