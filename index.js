@@ -29,4 +29,6 @@ client.once(Discord.Events.ClientReady, () => {
     console.log(`🌸 | Longin no discord realizado com a conta ${client.user.tag}`);
     client.user.setPresence({ activities: [{ name: `Anxienty realizando sonhos! 😍`, type: Discord.ActivityType.Competing }], status: 'online', });
 });
+process.on("unhandRejection", (reason, promise) => console.log(reason));
+process.on("uncaughtException", (error, origin) => console.log(error, origin));
 client.login("MTA5ODU3NDU0OTE4MTgwNDY0NA.GGC0Az.PTgpnz0pg-sGDlPhwGftAgrCYqlD8Fen5FBhIc");
