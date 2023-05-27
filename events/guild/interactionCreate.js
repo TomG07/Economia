@@ -32,7 +32,7 @@ module.exports = {
           ], ephemeral: true
         });
         await client.gd.findOneAndDelete({ _id: guild.id });
-        client.channels.cache.get("1109971281991970866").send({
+        client.channels.cache.get("1110229810694865076").send({
           embeds: [
             new Discord.EmbedBuilder()
               .setAuthor({ name: `${interaction.user.username}`, iconURL: `${interaction.user.displayAvatarURL({ dynamic: true })}` })
