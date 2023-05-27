@@ -79,8 +79,8 @@ module.exports = {
                 embeds: [
                     new Discord.EmbedBuilder()
                         .setAuthor({ name: `${interaction.user.username}`, iconURL: `${interaction.user.displayAvatarURL({ dynamic: true })}` })
-                        .setColor("#9b59b6")
-                        .setDescription(`\> <:d_newmembers:1106397642252099594> O mod ${interaction.user} setou a **mensagem de DM** no servidor \`${interaction.guild.name} - (${interaction.guild.id})\`.`)
+                        .setColor("#303136")
+                        .setDescription(`<:d_newmembers:1106397642252099594> O recrutador ${interaction.user} setou a **mensagem de DM** no servidor \`${interaction.guild.name} - (${interaction.guild.id})\`.`)
                         .setFooter({ text: "Anxienty todos os direitos reservados!", iconURL: `${client.user.displayAvatarURL()}` })
                         .setTimestamp()
                 ]
@@ -98,8 +98,8 @@ module.exports = {
                 embeds: [
                     new Discord.EmbedBuilder()
                         .setAuthor({ name: `${interaction.user.username}`, iconURL: `${interaction.user.displayAvatarURL({ dynamic: true })}` })
-                        .setColor("#9b59b6")
-                        .setDescription(`\> <:d_newmembers:1106397642252099594> O mod ${interaction.user} desativou a **mensagem de DM** no servidor \`${interaction.guild.name} - (${interaction.guild.id})\`.`)
+                        .setColor("#303136")
+                        .setDescription(`<:d_newmembers:1106397642252099594> O recrutador ${interaction.user} desativou a **mensagem de DM** no servidor \`${interaction.guild.name} - (${interaction.guild.id})\`.`)
                         .setFooter({ text: "Anxienty todos os direitos reservados!", iconURL: `${client.user.displayAvatarURL()}` })
                         .setTimestamp()
                 ]
