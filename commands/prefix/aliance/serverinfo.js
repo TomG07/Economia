@@ -25,7 +25,7 @@ module.exports = {
                         value: `<t:${~~(guilddb.g.sendDate / 1000)}:R>`
                     }, {
                         name: "<:FlowerPurple:1109899097655222272> Blacklist",
-                        value: `\`${guilddb.g.blacklist ? "Sim" : "Não"}\``
+                        value: `${guilddb.g.blacklist ? "✅ | Sim" : "❌ | Não"}`
                     }, {
                         name: "<:FlowerPurple:1109899097655222272> Aprovado pelo(a)",
                         value: `<@${guilddb.g.approvedBy}>`
@@ -34,10 +34,10 @@ module.exports = {
                         value: `<t:${~~(guilddb.g.approvedDate / 1000)}:R>`
                     }, {
                         name: "<:FlowerPurple:1109899097655222272> Parceiro da Anxienty",
-                        value: `\`${guilddb.g.partner ? "✅ | Sim" : "❌ | Não"}\``
+                        value: `${guilddb.g.partner ? "✅ | Sim" : "❌ | Não"}`
                     }, {
                         name: "<:FlowerPurple:1109899097655222272> Mensagem no Privado",
-                        value: `\`${guilddb.g.dmWelcome.status ? "✅ | Ativada" : "❌ | Desativada"}\``
+                        value: `${guilddb.g.dmWelcome.status ? "✅ | Ativada" : "❌ | Desativada"}`
                     })
             ]
         });
