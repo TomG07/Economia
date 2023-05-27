@@ -11,11 +11,11 @@ module.exports = {
       if (interaction.customId.startsWith("r")) {
         let guild = await client.guilds.cache.get(interaction.customId.split("-")[1]);
         //if (!guild) return;
-        interaction.message.edit({ content: `📩 | **_Ticket fechado__**! Essa solicitaçao foi avaliada pelo(a) **${interaction.user.username}**.`, embeds: [], components: [] });
+        interaction.message.edit({ content: `📩 | **__Ticket fechado__**! A solicitação do servidor (${guild.name}-${guild.id}) foi avaliada pelo(a) **${interaction.user.username}**.`, embeds: [], components: [] });
         interaction.reply({
           embeds: [
             new Discord.EmbedBuilder()
-              .setTitle("<a:Reizinho:1109791282575966239> Servidor reprovado!")
+              .setTitle("Servidor - Reprovado!")
               .setThumbnail(interaction.user.displayAvatarURL({ dunamic: true }))
               .setTimestamp()
               .setColor("#303136")
@@ -43,11 +43,11 @@ module.exports = {
         });
       } else if (interaction.customId.startsWith("a")) {
         let guild = await client.guilds.cache.get(interaction.customId.split("-")[1]);
-        interaction.message.edit({ content: `📩 | **_Ticket fechado__**! Essa solicitaçao foi avaliada pelo(a) **${interaction.user.username}**.`, embeds: [], components: [] });
+        interaction.message.edit({ content: `📩 | **__Ticket fechado__**! A solicitação do servidor (${guild.name}-${guild.id}) foi avaliada pelo(a) **${interaction.user.username}**.`, embeds: [], components: [] });
         interaction.reply({
           embeds: [
             new Discord.EmbedBuilder()
-              .setTitle("<a:Reizinho:1109791282575966239> Servidor reprovado!")
+              .setTitle("Servidor - Aprovado!")
               .setThumbnail(interaction.user.displayAvatarURL({ dunamic: true }))
               .setTimestamp()
               .setColor("#303136")
