@@ -68,7 +68,7 @@ module.exports = {
           embeds: [
             new Discord.EmbedBuilder()
               .setAuthor({ name: `${interaction.user.username}`, iconURL: `${interaction.user.displayAvatarURL({ dynamic: true })}` })
-              .setColor("#9b59b6")
+              .setColor("#303136")
               .setDescription(`<:Check:1106590979529637938> O recrutador ${interaction.user} aprovou o servidor \`${guild.name} - (${guild.id})\` em sua análise.`)
               .setTimestamp()
               .setFooter({ text: "Anxienty todos os direitos reservados!", iconURL: `${client.user.displayAvatarURL()}` })                               
