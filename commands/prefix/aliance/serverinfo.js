@@ -13,10 +13,13 @@ module.exports = {
                     .setTitle("Informações do servidor na Anxienty!")
                     .setThumbnail(message.author.displayAvatarURL({ dynamic: true }))
                     .setFooter({ text: "Anxienty todos os direitos reservados!", iconURL: `${client.user.displayAvatarURL()}` })
-                    .setColor("#9b59b6")
+                    .setColor("#303136")
                     .addFields({
                         name: "<:FlowerPurple:1109899097655222272> Nome do Servidor",
                         value: `\`${guild.name}\``
+                    }, {
+                        name: "<:FlowerPurple:1109899097655222272> Enviado pelo(a)",
+                        value: `<@${guilddb.g.repUser}>`
                     }, {
                         name: "<:FlowerPurple:1109899097655222272> Enviado",
                         value: `<t:${~~(guilddb.g.sendDate / 1000)}:R>`
@@ -24,10 +27,7 @@ module.exports = {
                         name: "<:FlowerPurple:1109899097655222272> Blacklist",
                         value: `\`${guilddb.g.blacklist ? "Sim" : "Não"}\``
                     }, {
-                        name: "<:FlowerPurple:1109899097655222272> Representante",
-                        value: `<@${guilddb.g.repUser}>`
-                    }, {
-                        name: "<:FlowerPurple:1109899097655222272> Aprovado por",
+                        name: "<:FlowerPurple:1109899097655222272> Aprovado pelo(a)",
                         value: `<@${guilddb.g.approvedBy}>`
                     }, {
                         name: "<:FlowerPurple:1109899097655222272> Aprovado",
