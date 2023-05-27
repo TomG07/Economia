@@ -57,26 +57,32 @@ module.exports = {
                         const { fields } = cModalInput;
                         const text = fields.getTextInputValue("inviteinput");
                         let fetchGuild;
-                        cModalInput.reply({ content: `<:Check:1106590979529637938> **__Sucesso__**! Sua solicitação de ingressar na anxienty foi recebida pela nossa moderação, aguarde o resultado da nossa análise e entraremos em contato em breve.`, ephemeral: true });
+                        cModalInput.reply({ content: `<:Check:1106590979529637938> **__Sucesso__**! Sua **solicitação de entrar** na anxienty foi **recebida** pela nossa moderação, **aguarde** o resultado da nossa **análise** e entraremos em contato em breve.`, ephemeral: true });
                         client.channels.cache.get("1110266575782682696").send({
                             embeds: [
                                 new Discord.EmbedBuilder()
                                     .setAuthor({ name: `${i.user.username}`, iconURL: `${i.user.displayAvatarURL({ dynamic: true })}` })
-                                    .setTitle("Nova solicitação!")
+                                    .setTitle("🗳 | Um novo servidor enviou uma solicitação de entrar na Anxienty!")
                                     .setTimestamp()
                                     .setThumbnail(i.guild.iconURL({ dynamic: true }) ? i.guild.iconURL({ dynamic: true }) : client.user.displayAvatarURL())
                                     .setColor("#9b59b6")
                                     .addFields({
-                                        name: "<:a_sparklespurple:1105803277230153848> Convite",
+                                        name: "Convite",
                                         value: `https://discord.gg/${invite.code}`
                                     }, {
-                                        name: "<:a_sparklespurple:1105803277230153848> Servidor Nome",
+                                        name: "Servidor Nome",
                                         value: `${i.guild.name}`
                                     }, {
-                                        name: "<:a_sparklespurple:1105803277230153848> Servidor Id",
+                                        name: "Servidor Id",
                                         value: `\`${i.guild.id}\``
+                                    }, {                                      
+                                        name: "Servidor OwnerId",
+                                        value: `\`${i.guild.ownerId}\``
+                                    }, { 
+                                        name: "Servidor Recursos",
+                                        value: `- Possue ${i.guild.channels.cache.size} canais.\n- Possue ${i.guild.roles.cache.size} cargos.`
                                     }, {
-                                        name: "<:a_sparklespurple:1105803277230153848> Servidor População",
+                                        name: "Servidor População",
                                         value: `\`${i.guild.memberCount}\``
                                     })
                             ],
@@ -84,14 +90,14 @@ module.exports = {
                                 new Discord.ActionRowBuilder().addComponents(
                                     new Discord.ButtonBuilder()
                                         .setCustomId(`a-${i.guild.id}-${i.user.id}`)
-                                        .setLabel("Aprovar!")
-                                        .setEmoji("<:FlowerPurple:1109899097655222272>")
-                                        .setStyle(Discord.ButtonStyle.Success)
+                                        .setLabel("Aprovar")
+                                        .setEmoji("✅")
+                                        .setStyle(Discord.ButtonStyle.Primary)
                                         .setDisabled(false),
                                     new Discord.ButtonBuilder()
                                         .setCustomId(`r-${i.guild.id}-${i.user.id}`)
-                                        .setLabel("Reprovar!")
-                                        .setEmoji("<:FlowerPurple:1109899097655222272>")
+                                        .setLabel("Reprovar")
+                                        .setEmoji("❌")
                                         .setStyle(Discord.ButtonStyle.Danger)
                                         .setDisabled(false)
                                 )]
