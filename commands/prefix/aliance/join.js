@@ -4,19 +4,19 @@ module.exports = {
     aliases: ["participar", "form", "entrar"],
     run: async (client, message, args) => {
         await message.channel.sendTyping();
-        if (!message.member.permissions.has(Discord.PermissionFlagsBits.ManageGuild)) return message.reply({ content: `Você não tem a permissão: \`Gerenciar Servidor\`` });
+        if (!message.member.permissions.has(Discord.PermissionFlagsBits.ManageGuild)) return message.reply({ content: `Você não possui a permissão: \`Gerenciar Servidor\`` });
         let guilddb = (await client.gd.findById({ _id: `${message.guild.id}`, })) || { g: { status: false, partner: false, blacklist: false }, }
         if (guilddb.g.blacklist === true) return message.reply({ content: ":x: Servidor na blacklist!" });
-        if (message.guild.memberCount < 150 && guilddb.g.partner !== true) return message.reply({ content: ":x: Servidor não possui 150 membros!" });
+        if (message.guild.memberCount < 150 && guilddb.g.partner !== true) return message.reply({ content: "Esse servidor não possui **150 membros** que requisitamos anteriomente, somente parceiros podem pular esse requisito!" });
         if (guilddb.g.status === true) return message.reply({ content: ":x: Servidor já registrado!" });
         const invite = await message.channel.createInvite({ maxUses: 0, maxAge: 0 }).catch(err => null);
-        if (!invite) return message.reply({ content: ":x: Estou sem permissão de criar convite nesse canal!" });
+        if (!invite) return message.reply({ content: `Vish.. Eu não tenho permissão de **criar convites** nesse canal <#${message.channel.id}>!` });
         message.reply({
             embeds: [
                 new Discord.EmbedBuilder()
-                    .setTitle("Participar da **Anxienty**!")
-                    .setTimestamp()
-                    .setDescription("\> **Requisitos:**\nTer mais de 150 membros.\nRetenção acima de 15%. (Membros online)\nEstar de acordo com nossas [ToS](https://discord.com/channels/1008736077625970780/1091444609093214341).")
+                    .setTitle("Entre na **Anxienty** e desfrute de nossos recursos!")
+                    .setThumbnail(message.author.displayAvatarURL({ dynamic: true }))
+                    .setDescription("\> ✅ **__Requisitos__:**\nServidor com mais de 150 membros.\nRetenção acima de 15%. (Membros online)\nEstar de acordo com nossas [ToS](https://discord.com/channels/1008736077625970780/1091444609093214341).")
                     .setColor("#9b59b6")
             ],
             components: [
@@ -34,7 +34,7 @@ module.exports = {
                 // await i.deferUpdate();
                 if (i.customId === "join") {
                     if (i.user.id !== message.author.id) return;
-                    int.edit({ components: [] });
+                    int.edit({ content: `${i.user}, Sua solicitação foi recebida, basta **__confirmar__** que aceita nossos termos!`, embeds: [], components: [] });
                     coletou.stop();
                     //i.followUp({ content: "Isso não é seu!", ephemeral: true })
                     const modal = new Discord.ModalBuilder()
@@ -57,7 +57,7 @@ module.exports = {
                         const { fields } = cModalInput;
                         const text = fields.getTextInputValue("inviteinput");
                         let fetchGuild;
-                        cModalInput.reply({ content: `<:Check:1106590979529637938> Sucesso!`, ephemeral: true });
+                        cModalInput.reply({ content: `<:Check:1106590979529637938> **__Sucesso__**! Sua solicitação de ingressar na anxienty foi recebida pela nossa moderação, aguarde o resultado da nossa análise e entraremos em contato em breve.`, ephemeral: true });
                         client.channels.cache.get("1110266575782682696").send({
                             embeds: [
                                 new Discord.EmbedBuilder()
@@ -106,8 +106,8 @@ module.exports = {
                             embeds: [
                                 new Discord.EmbedBuilder()
                                     .setAuthor({ name: `${i.user.username}`, iconURL: `${i.user.displayAvatarURL({ dynamic: true })}` })
-                                    .setColor("#9b59b6")
-                                    .setDescription(`\> <:Editar:1105250558509596722> O usuário ${i.user} enviou o servidor \`${i.guild.name} - (${i.guild.id})\` para análise.`)
+                                    .setColor("#303136")
+                                    .setDescription(`<:Editar:1105250558509596722> O usuário ${i.user} enviou o servidor \`${i.guild.name} - (${i.guild.id})\` para análise.`)
                                     .setFooter({ text: "Anxienty todos os direitos reservados!", iconURL: `${client.user.displayAvatarURL()}` })                               
                                     .setTimestamp()
                             ]
