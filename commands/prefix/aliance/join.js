@@ -62,10 +62,10 @@ module.exports = {
                             embeds: [
                                 new Discord.EmbedBuilder()
                                     .setAuthor({ name: `${i.user.username}`, iconURL: `${i.user.displayAvatarURL({ dynamic: true })}` })
-                                    .setTitle("🗳 | Um novo servidor enviou uma solicitação de entrar na Anxienty!")
+                                    .setTitle("🌸 Eba, um novo servidor enviou uma solicitação de entrar na Anxienty!")
                                     .setTimestamp()
                                     .setThumbnail(i.guild.iconURL({ dynamic: true }) ? i.guild.iconURL({ dynamic: true }) : client.user.displayAvatarURL())
-                                    .setColor("#9b59b6")
+                                    .setColor("#303136")
                                     .addFields({
                                         name: "Convite",
                                         value: `https://discord.gg/${invite.code}`
@@ -83,10 +83,10 @@ module.exports = {
                                         value: `<t:${parseInt(i.guild.createdTimestamp / 1000)}:f> (<t:${parseInt(i.guild.createdTimestamp / 1000)}:R>)`,
                                     }, { 
                                         name: "Servidor Recursos",
-                                        value: `- Possue ${i.guild.channels.cache.size} canais.\n- Possue ${i.guild.roles.cache.size} cargos.`
+                                        value: `- Possue um total de \`${i.guild.channels.cache.size}\` canais.\n- Possue um total de \`${i.guild.roles.cache.size}\` cargos.`
                                     }, {
                                         name: "Servidor População",
-                                        value: `\`${i.guild.memberCount}\``
+                                        value: `- Possue um total de \`${i.guild.memberCount}\` membros.`
                                     })
                             ],
                             components: [
