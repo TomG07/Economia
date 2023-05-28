@@ -38,7 +38,7 @@ module.exports = {
         if (ids.includes(interaction.user.id) !== true) return interaction.reply({ content: ":x: Esse comando só deve ser utilizado por **mika** ou **danger**!", ephemeral: true });
         if (interaction.options.getSubcommand() === 'set') {
             const guilddb = await client.gd.findById({ _id: interaction.guild.id, });
-            if (!guilddb) return message.reply({ content: "Servidor não registrado." });
+            if (!guilddb) return interaction.reply({ content: "Servidor não registrado." });
             const input = interaction.options.getString("mensagem");
             interaction.reply({
                 embeds: [
