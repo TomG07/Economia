@@ -37,7 +37,7 @@ module.exports = {
           const checar = await client.db.findById({ _id: message.author.id });
           if (!checar) return message.reply({ content: `Esse jogador **${message.author.username}** não utilizou o \n**++registrar**.` });
           if (checar.eco.coins < value) return message.reply({ content: `Saldo insuficiente!` });
-          int.edit({ content: `${i.user} aceitou a transferência de **<:Stars:1111647398188564510> ${abreviar(value)} bits** de ${message.author}.`, components: [] });
+          int.edit({ content: `<:pix:1112785378135507094> ${i.user} aceitou a transferência de **<:Stars:1111647398188564510> ${abreviar(value)} bits** de ${message.author}.`, components: [] });
           await client.db.updateOne({ _id: i.user.id }, { $inc: { "eco.coins": value, }, });
           await client.db.updateOne({ _id: message.author.id }, { $inc: { "eco.coins": -value, }, });
         }
