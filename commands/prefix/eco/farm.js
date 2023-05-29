@@ -13,7 +13,8 @@ module.exports = {
                     .setThumbnail(message.author.displayAvatarURL({ dunamic: true }))
                     .setTimestamp()
                     .setColor("#303136")
-                    .setDescription(`${message.author}, essa é sua fazenda plante algo nela uilizando o painel.`)
+                    .setDescription(`${message.author}, essa é sua fazenda plante algo nela uilizando o menu abaixo.`)
+                    .addFields({ name: "<:pix:1112785378135507094> Custo do terreno:", value: "Pagou a vista **<:Stars:1111647398188564510> 20k de bits** nessa propriedade." })
                     .setImage("https://media.discordapp.net/attachments/1111358828282388532/1111613494245199923/0bd3cb289b1209b614923f09afc58e5d.png?width=1080&height=479")
             ],
             components: [
