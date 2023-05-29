@@ -47,7 +47,7 @@ module.exports = {
                     if (i.user.id !== message.author.id) return i.followUp({ content: `Essa decisão não é sua!`, ephemeral: true });
                     const x = i.values[0];
                     let semente = userdb.eco.farm.seeds[`${x.split("-")[0]}`];
-                    let calcular = Math.floor(semente.count + x.split("-")[1]);
+                    let calcular = semente.count + Number(`${x.split("-")[1]}`);
                     if (calcular >= semente.max) return message.reply({ content: `\`[${calcular}/${semente.max}\`] Você iria passar o limite de seus lotes de ${x.split("-")[0]}, realize a colheita utilizando o comando:\n**a.colher**` });
                     if (semente.count >= semente.max) return message.reply({ content: `Você já lotou os seus lote de ${x.split("-")[0]}, realize a colheita utilizando o comando:\n**a.colher**` });
                     if (userdb.eco.coins < x.split("-")[2]) return message.reply({ content: `Saldo insuficiente!` });
