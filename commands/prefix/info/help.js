@@ -11,7 +11,7 @@ module.exports = {
                     .setFooter({ text: "Anxienty todos os direitos reservados!", iconURL: `${client.user.displayAvatarURL()}` })
                     .addFields({
                         name: "<:FlowerPurple:1109899097655222272> Economia",
-                        value: "`saldo`, `daily`, `empregos`, `cd`, `perfil`, `emblemas`, `casar`, `gf`, `divorciar`, `trabalhar`, `top`, `pagar`"
+                        value: "`saldo`, `daily`, `empregos`, `cd`, `perfil`, `emblemas`, `casar`, `gf`, `divorciar`, `trabalhar`, `top`, `pagar`, `fazenda` , `colher`, `loja`"
                     }, {
                         name: "<:FlowerPurple:1109899097655222272> Utilidades",
                         value: "`ajuda`, `botinfo`, `verificar`"
