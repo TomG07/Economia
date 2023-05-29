@@ -27,7 +27,7 @@ module.exports = {
                     //if (checar.eco.coins < value) return message.reply({ content: `Saldo insuficiente!` });
                     let size = userdb.eco.farm.seeds.batata.count;
                     if (size <= 0) return;
-                    int.edit({ content: `${i.user}, Você colheu **${size} batatas** da sua fazenda.`, components: [] });
+                    int.edit({ content: `<:1_Correto:1079943018477523004> ${i.user}, Você colheu **${size} batatas** da sua fazenda.`, components: [] });
                     await client.db.updateOne({ _id: i.user.id }, { $inc: { "eco.coins": 2, "eco.farm.seeds.batata.count": -size, }, });
                 }
             });
