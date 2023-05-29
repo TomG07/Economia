@@ -51,7 +51,7 @@ module.exports = {
                         i.followUp({ content: `${i.user}, Você foi contradado como **${x.split("-")[0]}** e agora seu salário é de **${x.split("-")[2]} diamantes.**`, ephemeral: false });
                     } else {
                         await client.db.updateOne({ _id: i.user.id }, { $set: { "eco.job": x.split("-")[0], }, $push: { "eco.badges": "STAFF", }, });
-                        i.followUp({ content: `${i.user}, Você foi contradado como **${x.split("-")[0]}** e agora seu salário é de **${x.split("-")[2]} diamantes** e você ganhou um novo emblema <:Staff:1107072021231317193>, utilize o comando:\n\`++perfil\``, ephemeral: false });
+                        i.followUp({ content: `${i.user}, Você foi contradado como **${x.split("-")[0]}** e agora seu salário é de **${x.split("-")[2]} diamantes** e você recebeu um novo emblema (<:Staff:1107072021231317193>) em seu perfil, utilize o comando:\n\`a.perfil\``, ephemeral: false });
                     }
                 }
             });
