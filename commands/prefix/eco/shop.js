@@ -14,7 +14,7 @@ module.exports = {
                     .setColor("#303136")
                     .addFields({
                         name: ":ox: Fazenda",
-                        value: "Preço: <:Bits:1110890676721291346> **20,000 bits**"
+                        value: "Preço: <:Stars:1111647398188564510> **20,000 bits**"
                     })
             ],
             components: [
@@ -28,7 +28,7 @@ module.exports = {
                             .addOptions(
                                 new Discord.StringSelectMenuOptionBuilder()
                                     .setLabel('Comprar uma Fazenda')
-                                    .setEmoji("💰")
+                                    .setEmoji("<:pix:1112785378135507094>")
                                     .setDescription('Compre uma fazenda para platar suas sementes')
                                     .setValue('farm-20000')
                             )
@@ -44,7 +44,7 @@ module.exports = {
                     const x = i.values[0];
                     if (userdb.eco.farm.owner === true) return message.reply({ content: `Você já possui uma fazenda!` });
                     if (userdb.eco.coins < x.split("-")[1]) return message.reply({ content: `Saldo insuficiente!` });
-                    int.edit({ content: `<:1_Correto:1079943018477523004> ${i.user}, Você comprou uma fazenda por **10k de bits**.`, embeds: [], components: [] });
+                    int.edit({ content: `<:pix:1112785378135507094> ${i.user}, Você comprou uma fazenda por **<:Stars:1111647398188564510> 20k de bits**.`, embeds: [], components: [] });
                     await client.db.updateOne({ _id: message.author.id }, { $set: { "eco.farm.owner": true, }, $inc: { "eco.coins": -20000, }, });
                 }
             });
