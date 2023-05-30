@@ -55,7 +55,7 @@ module.exports = {
                         if (userdb.eco.coins < x.split("-")[1]) return message.reply({ content: `Saldo insuficiente!` });
                         int.edit({ content: `<:pix:1112785378135507094> ${i.user}, Você comprou uma fazenda por **<:Stars:1111647398188564510> 20k de bits**.`, embeds: [], components: [] });
                         await client.db.updateOne({ _id: message.author.id }, { $set: { "eco.farm.owner": true, }, $inc: { "eco.coins": -20000, }, });
-                    } else if (x.split("-")[0] === "card") {
+                    } else if (x.split("-")[0] === "car") {
                         if (i.user.id !== message.author.id) return i.followUp({ content: `Essa decisão não é sua!`, ephemeral: true });
                         if (userdb.eco.car === true) return message.reply({ content: `Você já possui um carro!` });
                         if (userdb.eco.coins < x.split("-")[1]) return message.reply({ content: `Saldo insuficiente!` });
