@@ -17,7 +17,7 @@ module.exports = {
                         value: "Preço: <:Stars:1111647398188564510> **20,000 bits**"
                     }, {
                         name: ":red_car: Carro",
-                        value: "Preço: <:Stars:1111647398188564510> *15,000 bits**"
+                        value: "Preço: <:Stars:1111647398188564510> **15,000 bits**"
                     })
             ],
             components: [
