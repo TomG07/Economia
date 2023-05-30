@@ -36,6 +36,26 @@ module.exports = {
                                     .setEmoji("🚜")
                                     .setDescription('Plante [4] lotes no custo de 600 bits')
                                     .setValue('batata-4-600'),
+                                new Discord.StringSelectMenuOptionBuilder()
+                                    .setLabel('Plantar (2x) Trigo')
+                                    .setEmoji("🚜")
+                                    .setDescription('Plante [2] lotes no custo de 400 bits')
+                                    .setValue('trigo-2-400'),
+                                new Discord.StringSelectMenuOptionBuilder()
+                                    .setLabel('Plantar (6x) Trigo')
+                                    .setEmoji("🚜")
+                                    .setDescription('Plante [6] lotes no custo de 800 bits')
+                                    .setValue('trigo-6-800'),
+                                new Discord.StringSelectMenuOptionBuilder()
+                                    .setLabel('Plantar (2x) Milho')
+                                    .setEmoji("🚜")
+                                    .setDescription('Plante [2] lotes no custo de 180 bits')
+                                    .setValue('milho-2-180'),
+                                new Discord.StringSelectMenuOptionBuilder()
+                                    .setLabel('Plantar (5x) Milho')
+                                    .setEmoji("🚜")
+                                    .setDescription('Plante [5] lotes no custo de 500 bits')
+                                    .setValue('milho-5-500'),
                             )
                     )
             ], fetchReply: true
@@ -54,7 +74,17 @@ module.exports = {
                     if (userdb.eco.coins < x.split("-")[2]) return message.reply({ content: `Saldo insuficiente!` });
                     int.edit({ content: `<:1_Correto:1079943018477523004> ${i.user}, Você plantou **${x.split("-")[1]} lotes** de **${x.split("-")[0]}** com sucesso.`, embeds: [], components: [] });
                     if (x.split("-")[0] === "batata") {
-                        await client.db.updateOne({ _id: message.author.id }, { $inc: { "eco.coins": -x.split("-")[2], "eco.farm.seeds.batata.count": x.split("-")[1] }, $set: { "eco.farm.seeds.batata.cooldown": Date.now() + 7200000, } });
+                        let valores = Number(`${x.split("-")[2]}`);
+                        let quantias = Number(`${x.split("-")[1]}`);
+                        await client.db.updateOne({ _id: message.author.id }, { $inc: { "eco.coins": -valores, "eco.farm.seeds.batata.count": quantias, }, $set: { "eco.farm.seeds.batata.cooldown": Date.now() + 7200000, } });
+                    } else if (x.split("-")[0] === "trigo") {
+                        let valores = Number(`${x.split("-")[2]}`);
+                        let quantias = Number(`${x.split("-")[1]}`);
+                        await client.db.updateOne({ _id: message.author.id }, { $inc: { "eco.coins": -valores, "eco.farm.seeds.trigo.count": quantias, }, $set: { "eco.farm.seeds.trigo.cooldown": Date.now() + 7200000, } });
+                    } else if (x.split("-")[0] === "milho") {
+                        let valores = Number(`${x.split("-")[2]}`);
+                        let quantias = Number(`${x.split("-")[1]}`);
+                        await client.db.updateOne({ _id: message.author.id }, { $inc: { "eco.coins": -valores, "eco.farm.seeds.milho.count": quantias, }, $set: { "eco.farm.seeds.milho.cooldown": Date.now() + 7200000, } });
                     }
                 }
             });
