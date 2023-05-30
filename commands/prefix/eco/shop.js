@@ -15,6 +15,9 @@ module.exports = {
                     .addFields({
                         name: ":ox: Fazenda",
                         value: "Preço: <:Stars:1111647398188564510> **20,000 bits**"
+                    }, {
+                        name: ":red_car: Carro",
+                        value: "Preço: <:Stars:1111647398188564510> *15,000 bits**"
                     })
             ],
             components: [
@@ -30,7 +33,12 @@ module.exports = {
                                     .setLabel('Comprar uma Fazenda')
                                     .setEmoji("<:pix:1112785378135507094>")
                                     .setDescription('Compre uma fazenda para platar suas sementes')
-                                    .setValue('farm-20000')
+                                    .setValue('farm-20000'),
+                                new Discord.StringSelectMenuOptionBuilder()
+                                    .setLabel('Comprar um Carro')
+                                    .setEmoji("<:pix:1112785378135507094>")
+                                    .setDescription('Compre um carro para fazer picos de motorista')
+                                    .setValue('car-15000')
                             )
                     )
             ], fetchReply: true
@@ -40,12 +48,20 @@ module.exports = {
                 await i.deferUpdate();
                 if (i.customId === "wshop") {
                     coletou.stop();
-                    if (i.user.id !== message.author.id) return i.followUp({ content: `Essa decisão não é sua!`, ephemeral: true });
                     const x = i.values[0];
-                    if (userdb.eco.farm.owner === true) return message.reply({ content: `Você já possui uma fazenda!` });
-                    if (userdb.eco.coins < x.split("-")[1]) return message.reply({ content: `Saldo insuficiente!` });
-                    int.edit({ content: `<:pix:1112785378135507094> ${i.user}, Você comprou uma fazenda por **<:Stars:1111647398188564510> 20k de bits**.`, embeds: [], components: [] });
-                    await client.db.updateOne({ _id: message.author.id }, { $set: { "eco.farm.owner": true, }, $inc: { "eco.coins": -20000, }, });
+                    if (x.split("-")[0] === "farm") {
+                        if (i.user.id !== message.author.id) return i.followUp({ content: `Essa decisão não é sua!`, ephemeral: true });
+                        if (userdb.eco.farm.owner === true) return message.reply({ content: `Você já possui uma fazenda!` });
+                        if (userdb.eco.coins < x.split("-")[1]) return message.reply({ content: `Saldo insuficiente!` });
+                        int.edit({ content: `<:pix:1112785378135507094> ${i.user}, Você comprou uma fazenda por **<:Stars:1111647398188564510> 20k de bits**.`, embeds: [], components: [] });
+                        await client.db.updateOne({ _id: message.author.id }, { $set: { "eco.farm.owner": true, }, $inc: { "eco.coins": -20000, }, });
+                    } else if (x.split("-")[0] === "card") {
+                        if (i.user.id !== message.author.id) return i.followUp({ content: `Essa decisão não é sua!`, ephemeral: true });
+                        if (userdb.eco.car === true) return message.reply({ content: `Você já possui um carro!` });
+                        if (userdb.eco.coins < x.split("-")[1]) return message.reply({ content: `Saldo insuficiente!` });
+                        int.edit({ content: `<:pix:1112785378135507094> ${i.user}, Você comprou um carro por **<:Stars:1111647398188564510> 15k de bits**.`, embeds: [], components: [] });
+                        await client.db.updateOne({ _id: message.author.id }, { $set: { "eco.car": true, }, $inc: { "eco.coins": -15000, }, });
+                    }
                 }
             });
         });

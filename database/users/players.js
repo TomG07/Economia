@@ -10,6 +10,7 @@ const documentSave = new Schema({
             userId: { type: String, default: null },
             marryDate: { type: Number, default: 0 },
         },
+        car: { type: Boolean, default: false },
         farm: {
             owner: { type: Boolean, default: false },
             seeds: {
@@ -49,6 +50,7 @@ const documentSave = new Schema({
             dailyCooldown: { type: Number, default: 0 },
             workCooldown: { type: Number, default: 0 },
             gfCooldown: { type: Number, default: 0 },
+            uberCooldown: { type: Number, default: 0 },
         }
     }
 });
