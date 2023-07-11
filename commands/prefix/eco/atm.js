@@ -14,22 +14,22 @@ module.exports = {
         message.reply({
             embeds: [
                 new Discord.EmbedBuilder()
-                    .setAuthor({ name: `${message.author.tag}`, iconURL: `${message.author.displayAvatarURL()}` })
+                    .setAuthor({ name: `${message.author.username}`, iconURL: `${message.author.displayAvatarURL()}` })
                     .setTitle("Saldo do jogador!")
                     .setThumbnail(member.user.displayAvatarURL({ dynamic: true }))
                     .setTimestamp()
                     .setColor("#303136")
                     .addFields({
-                        name: "<:Stars:1111647398188564510> BitsCard",
-                        value: `**${abreviar(userdb.eco.coins)}** bits.`
+                        name: "<:money:1119274556352385046> Carteira:",
+                        value: `**${abreviar(userdb.eco.coins)}** euros.`
                     }, {
-                        name: "<:Placares:1105821202678825000> Posição no ranking",
+                        name: "<:Placares:1105821202678825000> Posição no Ranking:",
                         value: `#️⃣${numberToEmojis(seachUserRankPosition)}`
                     }, {
-                        name: "<:Exp:1111648750864171154> Experiência",
+                        name: "<:Emoji_GraficoSubiu:1116338129377448016> Experiência:",
                         value: `**${userdb.eco.xp}**XP!`
                     }, {
-                        name: "<:AnelDiamante:1108746236657405983> Casamento",
+                        name: "<:marryme:1118146499700850709> Estado Civil:",
                         value: `${userdb.eco.marry.userId ? `Casado(a) com <@${userdb.eco.marry.userId}> <t:${~~(userdb.eco.marry.marryDate / 1000)}:R>.` : "Solteiro(a)"}`
                     })
             ]
