@@ -11,7 +11,7 @@ module.exports = {
                     .setFooter({ text: `${client.user.username}`, iconURL: `${client.user.displayAvatarURL()}` })
                     .addFields({
                         name: "💰 Economia:",
-                        value: "`saldo`, `daily`, `empregos`, `cd`, `perfil`, `emblemas`, `casar`, `gf`, `divorciar`, `trabalhar`, `top`, `pagar`, `fazenda` , `colher`, `loja`"
+                        value: "`saldo`, `daily`, `empregos`, `cd`, `perfil`, `emblemas`, `casar`, `gf`, `divorciar`, `trabalhar`, `top`, `pagar`, `fazenda` , `colher`, `loja`, `rep`"
                     }, {
                         name: "📚 Utilidades:",
                         value: "`ajuda`, `botinfo`, `verificar`"
