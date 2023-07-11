@@ -1,4 +1,9 @@
 const Discord = require("discord.js");
+const ms = require("../../../util/ms");
+const Canvas = require("canvas");
+Canvas.registerFont("assets/fonts/SourceCodePro-VariableFont_wght.ttf", { family: "Source Code Pro", });
+Canvas.registerFont("assets/fonts/Rubik-VariableFont_wght.ttf", { family: "Rubik", });
+const wait = require('node:timers/promises').setTimeout;
 module.exports = {
     name: "crop",
     aliases: ["colher", "safra"],
@@ -6,8 +11,52 @@ module.exports = {
         const userdb = await client.db.findOne({ _id: message.author.id });
         if (!userdb) return message.reply({ content: `${message.author}, Você deve se registrar com o comando: \n**ny!registrar**.` });
         if (userdb.eco.farm.owner !== true) return message.reply({ content: `${message.author}, Você não tem uma fazenda! Compre utilizando o comando: \n**ny!loja**.` });
-        message.reply({
-            content: `<:fazenda:1112066431585091654> __**Sua fazenda**__!\n\n<:plantacao:1112066775509635162> \`Platação de Batata\`: ${userdb.eco.farm.seeds.batata.count >= 1 ? `\n\> Lotes: [${userdb.eco.farm.seeds.batata.count}]\n\> Colher: ${Date.now() < userdb.eco.farm.seeds.batata.cooldown ? `<:Battery_Yellow:1089745568122818680> <t:${~~(userdb.eco.farm.seeds.batata.cooldown / 1000)}:R>` : "<:Battery_Green:1089745543963623524> | Colete agora!"}` : "Lote vazio!"}\n\n<:plantacao:1112066775509635162> \`Platação de Trigo\`: ${userdb.eco.farm.seeds.trigo.count >= 1 ? `\n\> Lotes: [${userdb.eco.farm.seeds.trigo.count}]\n\> Colher: ${Date.now() < userdb.eco.farm.seeds.trigo.cooldown ? `<:Battery_Yellow:1089745568122818680> <t:${~~(userdb.eco.farm.seeds.trigo.cooldown / 1000)}:R>` : "<:Battery_Green:1089745543963623524> | Colete agora!"}` : "Lote vazio!"}\n\n<:plantacao:1112066775509635162> \`Platação de Batata\`: ${userdb.eco.farm.seeds.milho.count >= 1 ? `\n\> Lotes: [${userdb.eco.farm.seeds.milho.count}]\n\> Colher: ${Date.now() < userdb.eco.farm.seeds.milho.cooldown ? `<:Battery_Yellow:1089745568122818680> <t:${~~(userdb.eco.farm.seeds.milho.cooldown / 1000)}:R>` : "<:Battery_Green:1089745543963623524> | Colete agora!"}` : "Lote vazio!"}`,
+        let timestampBatata = "Lote vazio!";
+        if (userdb.farm.seeds.batata.cooldown !== 0 && userdb.farm.seeds.batata.count >= 1) {
+            let check1 = userdb.farm.seeds.batata.cooldown - Date.now();
+            timestampBatata = `${Date.now() < userdb.farm.seeds.batata.cooldown ? `${ms(check1).hours}h ${ms(check1).minutes}m ${ms(check1).seconds}s` : "Colher agora!"}`;
+        }
+        //trigo
+        let timestampTrigo = "Lote vazio!";
+        if (userdb.farm.seeds.trigo.cooldown !== 0 && userdb.farm.seeds.trigo.count >= 1) {
+            let check2 = userdb.farm.seeds.trigo.cooldown - Date.now();
+            timestampTrigo = `${Date.now() < userdb.farm.seeds.trigo.cooldown ? `${ms(check2).hours}h ${ms(check2).minutes}m ${ms(check2).seconds}s` : "Colher agora!"}`;
+        }
+        //milho
+        let timestampMilho = "Lote vazio!";
+        if (userdb.farm.seeds.milho.cooldown !== 0 && userdb.farm.seeds.milho.count >= 1) {
+            let check3 = userdb.farm.seeds.milho.cooldown - Date.now();
+            timestampMilho = `${Date.now() < userdb.farm.seeds.milho.cooldown ? `${ms(check3).hours}h ${ms(check3).minutes}m ${ms(check3).seconds}s` : "Colher agora!"}`;
+        }
+        // msg
+        const msg = await message.reply('<a:carregando:1118129946158706708> Gerando terreno, aguarde..');
+        await wait(4000);
+        //create canvas
+        const canvas = Canvas.createCanvas(800, 300);
+        const ctx = canvas.getContext("2d");
+        //avatar
+        const avatar = await Canvas.loadImage(message.author.displayAvatarURL({ extension: 'jpg', size: 4096 }));
+        ctx.drawImage(avatar, 60, 45, 207, 206);
+        //template
+        const template = await Canvas.loadImage("https://media.discordapp.net/attachments/1118956763656507393/1119752823182213160/IMG_20230617_191558.png");
+        ctx.drawImage(template, 0, 0, canvas.width, canvas.height);
+        //milho
+        ctx.font = '500 19px "Rubik"';
+        ctx.fillStyle = "#111";
+        ctx.fillText(`${timestampMilho}`, 440, 102);
+        //batata
+        ctx.font = '500 19px "Rubik"';
+        ctx.fillStyle = "#111";
+        ctx.fillText(`${timestampBatata}`, 440, 167);
+        //trigo
+        ctx.font = '500 19px "Rubik"';
+        ctx.fillStyle = "#111";
+        ctx.fillText(`${timestampTrigo}`, 440, 243);
+        //reply
+        const attachment = new Discord.AttachmentBuilder(canvas.toBuffer(), { name: 'farms.png' });
+        message.edit({
+            content: `${message.author}`,
+            files: [attachment],
             components: [
                 new Discord.ActionRowBuilder().addComponents(
                     new Discord.ButtonBuilder()
