@@ -1,7 +1,7 @@
 const Discord = require("discord.js");
 module.exports = {
    name: "cd",
-   aliases: ["recargas"],
+   aliases: ["recargas", "tempos", "intervalos", "tempo"],
    run: async (client, message, args) => {
       const userdb = await client.db.findOne({ _id: message.author.id });
       if (!userdb) return message.reply({ content: `${message.author}, Você deve se registrar com o comando: \n**ny!registrar**.` });
@@ -9,11 +9,11 @@ module.exports = {
       message.reply({
          embeds: [
             new Discord.EmbedBuilder()
-               .setTitle("<:FlowerPurple:1109899097655222272> Tempo das suas coletas!")
+               .setTitle("Intervalos!")
                .setThumbnail(message.author.displayAvatarURL({ dunamic: true }))
                .setTimestamp()
                .setColor("#303136")
-               .setDescription(`**daily**: ${Date.now() < timers.dailyCooldown ? `<:Battery_Yellow:1089745568122818680> <t:${~~(timers.dailyCooldown / 1000)}:R>` : "<:Battery_Green:1089745543963623524> | Colete agora!"}\n**work**: ${Date.now() < timers.workCooldown ? `<:Battery_Yellow:1089745568122818680> <t:${~~(timers.workCooldown / 1000)}:R>` : "<:Battery_Green:1089745543963623524> | Colete agora!"}\n**GF**: ${Date.now() < timers.gfCooldown ? `<:Battery_Yellow:1089745568122818680> <t:${~~(timers.gfCooldown / 1000)}:R>` : "<:Battery_Green:1089745543963623524> | Colete agora!"}\n**corrida**: ${Date.now() < timers.uberCooldown ? `<:Battery_Yellow:1089745568122818680> <t:${~~(timers.uberCooldown / 1000)}:R>` : "<:Battery_Green:1089745543963623524> | Colete agora!"}`)
+               .setDescription(`- **Daily**: ${Date.now() < timers.dailyCooldown ? `<:cooldown:1118919475442487316> | <t:${~~(timers.dailyCooldown / 1000)}:R>` : "<:Check:1118513881107660923> | Colete agora!"}\n- **Work**: ${Date.now() < timers.workCooldown ? `<:cooldown:1118919475442487316> | <t:${~~(timers.workCooldown / 1000)}:R>` : "<:Check:1118513881107660923> Colete agora!"}\n- **GF**: ${Date.now() < timers.gfCooldown ? `<:cooldown:1118919475442487316> | <t:${~~(timers.gfCooldown / 1000)}:R>` : "<:Check:1118513881107660923> | Colete agora!"}\n- **Rep**: ${Date.now() < timers.uberCooldown ? `<:cooldown:1118919475442487316> | <t:${~~(timers.uberCooldown / 1000)}:R>` : "<:Check:1118513881107660923> | Colete agora!"}`)
          ]
       });
    }
