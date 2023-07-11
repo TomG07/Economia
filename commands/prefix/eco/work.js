@@ -6,8 +6,8 @@ module.exports = {
     run: async (client, message, args) => {
         const userdb = await client.db.findOne({ _id: message.author.id });
         if (!userdb) return message.reply({ content: `${message.author}, Você deve se registrar com o comando: \n**ny!registrar**.` });
-        if (Date.now() < userdb.eco.timers.workCooldown) return message.reply({ content: `Você se encontra em modo de recarga, tente novamente <t:${~~(userdb.eco.timers.workCooldown / 1000)}:R>.` });
-        if (userdb.eco.job == null) return message.reply({ content: `Você não tem um **emprego** utilize o comando: \n**a.empregos**.` })
+        if (Date.now() < userdb.eco.timers.workCooldown) return message.reply({ content: `⏰ **|** ${message.author},Você se encontra em modo de recarga, tente novamente <t:${~~(userdb.eco.timers.workCooldown / 1000)}:R>.` });
+        if (userdb.eco.job == null) return message.reply({ content: `${message.author}, Você não tem um **emprego**! Para ser contratado utilize o comando: \n**ny!empregos**.` })
         let coins = Math.floor(Math.random() * 100) + 250;
         message.reply({
             embeds: [
