@@ -6,7 +6,7 @@ module.exports = {
         await message.channel.sendTyping();
         let member = message.mentions.members.first() || message.member;
         const userdb = await client.db.findById({ _id: member.user.id });
-        if (!userdb) return message.reply({ content: `Esse jogador **${member.user.username}** não utilizou o \n**a.registrar**.` })
+        if (!userdb) return message.reply({ content: `${message.author}, Esse jogador **__${member.user.username}__** deve fazer o registro com o comando:\n**ny!registrar**.` })
         let coins = 0;//userdb.profile.coins;
         let xp = 0;
         let placar = await client.db.find({}).sort({ "eco.coins": -1 });
@@ -23,7 +23,7 @@ module.exports = {
                         name: "<:money:1119274556352385046> Carteira:",
                         value: `**${abreviar(userdb.eco.coins)}** euros.`
                     }, {
-                        name: "<:Placares:1105821202678825000> Posição no Ranking:",
+                        name: "<:cards:1119298011105857641> Posição no Ranking:",
                         value: `#️⃣${numberToEmojis(seachUserRankPosition)}`
                     }, {
                         name: "<:Emoji_GraficoSubiu:1116338129377448016> Experiência:",
