@@ -6,20 +6,20 @@ module.exports = {
     run: async (client, message, args) => {
         await message.channel.sendTyping()
         const userdb = await client.db.findById({ _id: message.author.id });
-        if (!userdb) return message.reply({ content: `Você não utilizou o comando: \n**a.registrar**.` });
+        if (!userdb) return message.reply({ content: `${message.author}, Você deve se registrar com o comando: \n**ny!registrar**.` });
         const empregos = Object.entries(jobs);
         message.reply({
             embeds: [
                 new Discord.EmbedBuilder()
-                    .setAuthor({ name: `${message.author.tag}`, iconURL: `${message.author.displayAvatarURL()}` })
+                    .setAuthor({ name: `${message.author.username}`, iconURL: `${message.author.displayAvatarURL()}` })
                     .setTitle("Painel de Empregos!")
                     .setDescription(`${empregos.map(([key, value]) => {
-                        return `\> <:Staff:1107072021231317193> **Trabalhar de ${key}**\nSalário: \`${value.salario}\`\nRequisito: \`${value.exp}XP! de experiência.\` `
+                        return `\> <:Inventario:1128316648223412284> **Emprego ${key}**\nSalário: \`${value.salario}\`\nRequisito: \`${value.exp}XP! de experiência.\` `
                     }).join("\n")}`)
                     .setColor("#303136")
                     .addFields({
-                        name: `<:Exp:1111648750864171154> Atualmente sua experiência é:`,
-                        value: `${userdb.eco.xp}XP!`
+                        name: `<:Emoji_GraficoSubiu:1116338129377448016> Experiência:`,
+                        value: `Você tem **__${userdb.eco.xp}XP__**!`
                     })
                     .setThumbnail(message.author.displayAvatarURL({ dynamic: true }))
             ], components: [
@@ -44,8 +44,8 @@ module.exports = {
                 if (i.user.id !== message.author.id) return;
                 if (i.customId === "jobs") {
                     let x = i.values[0];
-                    if (userdb.eco.xp < x.split("-")[1]) return i.followUp({ content: `${i.user}, Você não possui **${x.split("-")[1]} de experiêcia**, continue realizando suas tarefas para conseguir mais xp.`, ephemeral: true });
-                    if (userdb.eco.job === x.split("-")[0]) return i.followUp({ content: `${i.user}, Você já se encontra nesse emprego.`, ephemeral: true });
+                    if (userdb.eco.xp < x.split("-")[1]) return i.followUp({ content: `${i.user}, Você não tem **${x.split("-")[1]} de experiêcia**! Continue realizando suas tarefas para conseguir mais xp.`, ephemeral: true });
+                    if (userdb.eco.job === x.split("-")[0]) return i.followUp({ content: `${i.user}, Você já se encontra nesse emprego!`, ephemeral: true });
                     if (userdb.eco.job !== null) {
                         await client.db.updateOne({ _id: i.user.id }, { $set: { "eco.job": x.split("-")[0], }, });
                         i.followUp({ content: `${i.user}, Você foi contradado como **${x.split("-")[0]}** e agora seu salário é de **${x.split("-")[2]} diamantes.**`, ephemeral: false });
