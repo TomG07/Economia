@@ -30,4 +30,4 @@ client.once(Discord.Events.ClientReady, () => {
 //i55
 process.on("unhandRejection", (reason, promise) => console.log(reason));
 process.on("uncaughtException", (error, origin) => console.log(error, origin));
-client.login("MTA5ODU3NDU0OTE4MTgwNDY0NA.GGC0Az.PTgpnz0pg-sGDlPhwGftAgrCYqlD8Fen5FBhIc");
+client.login("MTEyODMwNjAzODMzNzE4Mzc5NQ.GszoXo.uLt3HKLMMjvDrjyPBOePIuQJqv5EqzjxMPOx8I");
