@@ -50,7 +50,7 @@ const documentSave = new Schema({
             dailyCooldown: { type: Number, default: 0 },
             workCooldown: { type: Number, default: 0 },
             gfCooldown: { type: Number, default: 0 },
-            uberCooldown: { type: Number, default: 0 },
+            repCooldown: { type: Number, default: 0 },
         }
     }
 });
