@@ -1,9 +1,9 @@
 const Discord = require("discord.js");
 module.exports = {
-    name: "car",
-    aliases: ["uber", "taxi", "corrida"],
+    name: "rep",
+    aliases: ["reputação", "medalha", "curtir"],
     run: async (client, message, args) => {
-        const userdb = await client.db.findById({ _id: message.author.id });
+        const userdb = await client.db.findOne({ _id: message.author.id });
         if (!userdb) return message.reply({ content: `Você não utilizou o comando: \n**a.registrar**.` });
         if (Date.now() < userdb.eco.timers.uberCooldown) return message.reply({ content: `Você se encontra em modo de recarga, tente novamente <t:${~~(userdb.eco.timers.uberCooldown / 1000)}:R>.` });
         if (userdb.eco.car !== true) return message.reply({ content: `Você não tem um **carro**, compre utilizando o comando: \n**a.loja**.` })
