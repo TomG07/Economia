@@ -22,7 +22,7 @@ module.exports = {
                     .addComponents(
                         new Discord.StringSelectMenuBuilder()
                             .setCustomId('wplant')
-                            .setPlaceholder('Plantar')
+                            .setPlaceholder('Plantar novo lote')
                             .setMinValues(1)
                             .setMaxValues(1)
                             .addOptions(

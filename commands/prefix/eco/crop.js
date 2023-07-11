@@ -3,9 +3,9 @@ module.exports = {
     name: "crop",
     aliases: ["colher", "safra"],
     run: async (client, message, args) => {
-        const userdb = await client.db.findById({ _id: message.author.id });
-        if (!userdb) return message.reply({ content: `Você não utilizou o comando: \n**a.registrar**.` });
-        if (userdb.eco.farm.owner !== true) return message.reply({ content: `Você não possue uma fazenda, compre utilizando o comando: \n**a.loja**.` });
+        const userdb = await client.db.findOne({ _id: message.author.id });
+        if (!userdb) return message.reply({ content: `${message.author}, Você deve se registrar com o comando: \n**ny!registrar**.` });
+        if (userdb.eco.farm.owner !== true) return message.reply({ content: `${message.author}, Você não tem uma fazenda! Compre utilizando o comando: \n**ny!loja**.` });
         message.reply({
             content: `<:fazenda:1112066431585091654> __**Sua fazenda**__!\n\n<:plantacao:1112066775509635162> \`Platação de Batata\`: ${userdb.eco.farm.seeds.batata.count >= 1 ? `\n\> Lotes: [${userdb.eco.farm.seeds.batata.count}]\n\> Colher: ${Date.now() < userdb.eco.farm.seeds.batata.cooldown ? `<:Battery_Yellow:1089745568122818680> <t:${~~(userdb.eco.farm.seeds.batata.cooldown / 1000)}:R>` : "<:Battery_Green:1089745543963623524> | Colete agora!"}` : "Lote vazio!"}\n\n<:plantacao:1112066775509635162> \`Platação de Trigo\`: ${userdb.eco.farm.seeds.trigo.count >= 1 ? `\n\> Lotes: [${userdb.eco.farm.seeds.trigo.count}]\n\> Colher: ${Date.now() < userdb.eco.farm.seeds.trigo.cooldown ? `<:Battery_Yellow:1089745568122818680> <t:${~~(userdb.eco.farm.seeds.trigo.cooldown / 1000)}:R>` : "<:Battery_Green:1089745543963623524> | Colete agora!"}` : "Lote vazio!"}\n\n<:plantacao:1112066775509635162> \`Platação de Batata\`: ${userdb.eco.farm.seeds.milho.count >= 1 ? `\n\> Lotes: [${userdb.eco.farm.seeds.milho.count}]\n\> Colher: ${Date.now() < userdb.eco.farm.seeds.milho.cooldown ? `<:Battery_Yellow:1089745568122818680> <t:${~~(userdb.eco.farm.seeds.milho.cooldown / 1000)}:R>` : "<:Battery_Green:1089745543963623524> | Colete agora!"}` : "Lote vazio!"}`,
             components: [

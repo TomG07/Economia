@@ -26,7 +26,7 @@ module.exports = {
                 new Discord.ActionRowBuilder().addComponents(
                     new Discord.StringSelectMenuBuilder()
                         .setCustomId("jobs")
-                        .setPlaceholder("Selecione")
+                        .setPlaceholder("Escolha um emprego")
                         .setMaxValues(1)
                         .setMinValues(1)
                         .addOptions(empregos.map(([key, value]) => {
@@ -41,17 +41,17 @@ module.exports = {
             const coletou = int.createMessageComponentCollector({ time: 36000 });
             coletou.on("collect", async (i) => {
                 await i.deferUpdate();
-                if (i.user.id !== message.author.id) return;
+                if (i.user.id !== message.author.id) return i.followUp({ content: `:x: Não é o usuário que executou o comando!`, ephemeral: true });
                 if (i.customId === "jobs") {
                     let x = i.values[0];
                     if (userdb.eco.xp < x.split("-")[1]) return i.followUp({ content: `${i.user}, Você não tem **${x.split("-")[1]} de experiêcia**! Continue realizando suas tarefas para conseguir mais xp.`, ephemeral: true });
                     if (userdb.eco.job === x.split("-")[0]) return i.followUp({ content: `${i.user}, Você já se encontra nesse emprego!`, ephemeral: true });
                     if (userdb.eco.job !== null) {
                         await client.db.updateOne({ _id: i.user.id }, { $set: { "eco.job": x.split("-")[0], }, });
-                        i.followUp({ content: `${i.user}, Você foi contradado como **${x.split("-")[0]}** e agora seu salário é de **${x.split("-")[2]} diamantes.**`, ephemeral: false });
+                        i.followUp({ content: `${i.user}, Você foi contradado como **${x.split("-")[0]}** e agora seu salário é de **${x.split("-")[2]} euros.**`, ephemeral: false });
                     } else {
                         await client.db.updateOne({ _id: i.user.id }, { $set: { "eco.job": x.split("-")[0], }, $push: { "eco.badges": "STAFF", }, });
-                        i.followUp({ content: `${i.user}, Você foi contradado como **${x.split("-")[0]}** e agora seu salário é de **${x.split("-")[2]} diamantes** e você recebeu um novo emblema (<:Staff:1107072021231317193>) em seu perfil, utilize o comando:\n\`a.perfil\``, ephemeral: false });
+                        i.followUp({ content: `${i.user}, Você foi contradado como **${x.split("-")[0]}** e agora seu salário é de **${x.split("-")[2]} euros** e você resgatou um novo emblema (<:Staff:1107072021231317193>) em seu perfil, utilize o comando:\n\`a.perfil\``, ephemeral: false });
                     }
                 }
             });
