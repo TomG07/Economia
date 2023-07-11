@@ -25,7 +25,7 @@ require('./handlers/commandsManager')(client);
 require('./handlers/eventsManager')(client);
 client.once(Discord.Events.ClientReady, () => {
     console.log(`🌸 | Longin no discord realizado com a conta ${client.user.tag}`);
-    client.user.setPresence({ activities: [{ name: `Anxienty realizando sonhos! 😍`, type: Discord.ActivityType.Competing }], status: 'online', });
+    client.user.setPresence({ activities: [{ name: `Mundo de sonhos!`, type: Discord.ActivityType.Competing }], status: 'online', });
 });
 //i55
 process.on("unhandRejection", (reason, promise) => console.log(reason));
