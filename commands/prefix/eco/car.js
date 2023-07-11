@@ -3,15 +3,15 @@ module.exports = {
     name: "rep",
     aliases: ["reputação", "medalha", "curtir"],
     run: async (client, message, args) => {
-        let member = message.mentions.members.first();
-        if (!member) return message.reply({ content: `Você deve mencionar o usuário que vai pagar.` });
-    if (member.user.bot) return message.reply({ content: `Bots não recebem pagamentos.` });
-    if (member.user.id === message.author.id) return message.reply({ content: `Não pode pagar a si mesmo.` });
-    const userdb = await client.db.findOne({ _id: message.author.id });
-    if (!userdb) return message.reply({ content: `${message.author}, Você deve se registrar com o comando: \n**ny!registrar**.` });
-    const twouserdb = await client.db.findById({ _id: member.user.id });
-    if (!twouserdb) return message.reply({ content: `${message.author}, Esse jogador **__${member.user.username}__** deve fazer o registro com o comando:\n**ny!registrar**.` })
-message.reply({
+     let member = message.mentions.members.first() || message.guild.members.cache.find(member => member.user.id === args[0]);;
+        if (!member) return message.reply({ content: `${message.author}, Você deve mencionar o usuário que vai receber essa reputação.` });
+        if (member.user.bot) return message.reply({ content: `${message.author}, Bots não recebem reputações.` });
+        if (member.user.id === message.author.id) return message.reply({ content: `${message.author}, Não pode dar uma reputação si mesmo.` });
+        const userdb = await client.db.findOne({ _id: message.author.id });
+        if (!userdb) return message.reply({ content: `${message.author}, Você deve se registrar com o comando: \n**ny!registrar**.` });
+        const twouserdb = await client.db.findOne({ _id: member.user.id });
+        if (!twouserdb) return message.reply({ content: `${message.author}, Esse jogador **__${member.user.username}__** deve fazer o registro com o comando:\n**ny!registrar**.` })
+        message.reply({
             embeds: [
                 new Discord.EmbedBuilder()
                     .setTitle("Corrida concluído!")
