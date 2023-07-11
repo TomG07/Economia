@@ -22,7 +22,7 @@ module.exports = {
                     .setAuthor({ name: `${message.author.username}`, iconURL: `${message.author.displayAvatarURL()}` })
             ]
         });
-        await cliient.db.updateOne({ _id: member.user.id }, { $inc: { "eco.reps": 1 }, });
+        await client.db.updateOne({ _id: member.user.id }, { $inc: { "eco.reps": 1 }, });
         await client.db.updateOne({ _id: message.author.id }, { $set: { "eco.timers.repCooldown": Date.now() + 7600000, }, });
     }
 }
