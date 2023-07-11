@@ -3,19 +3,19 @@ module.exports = {
     name: "farm",
     aliases: ["plantar", "fazenda"],
     run: async (client, message, args) => {
-        const userdb = await client.db.findById({ _id: message.author.id });
-        if (!userdb) return message.reply({ content: `Você não utilizou o comando: \n**a.registrar**.` });
-        if (userdb.eco.farm.owner !== true) return message.reply({ content: `Você não possue uma fazenda, compre utilizando o comando: \n**a.loja**.` });
+        const userdb = await client.db.findOne({ _id: message.author.id });
+        if (!userdb) return message.reply({ content: `${message.author}, Você deve se registrar com o comando: \n**ny!registrar**.` });
+        if (userdb.eco.farm.owner !== true) return message.reply({ content: `${message.author}, Você não tem uma fazenda! Compre utilizando o comando: \n**ny!loja**.` });
         message.reply({
             embeds: [
                 new Discord.EmbedBuilder()
-                    .setTitle("<:FlowerPurple:1109899097655222272> Fazendinha!")
+                    .setTitle("<:Fazenda:1118670191509913780> Fazendinha!")
                     .setThumbnail(message.author.displayAvatarURL({ dunamic: true }))
                     .setTimestamp()
                     .setColor("#303136")
                     .setDescription(`${message.author}, essa é sua fazenda plante algo nela uilizando o menu abaixo.`)
-                    .addFields({ name: "<:pix:1112785378135507094> Custo do terreno:", value: "Pagou a vista **<:Stars:1111647398188564510> 20k de bits** nessa propriedade." })
-                    .setImage("https://media.discordapp.net/attachments/1111358828282388532/1111613494245199923/0bd3cb289b1209b614923f09afc58e5d.png?width=1080&height=479")
+                    .addFields({ name: "Tempo de colheita:", value: "- Todos os seus lotes referentes ao novo plantio terão seu tempo de **crescimento resetados** e atualizados." })
+                    .setImage("https://media.discordapp.net/attachments/1113783795942961204/1126613681447387327/images_1.jpg")
             ],
             components: [
                 new Discord.ActionRowBuilder()
@@ -29,32 +29,32 @@ module.exports = {
                                 new Discord.StringSelectMenuOptionBuilder()
                                     .setLabel('Plantar (2x) Batata')
                                     .setEmoji("🚜")
-                                    .setDescription('Plante [2] lotes no custo de 300 bits')
+                                    .setDescription('Plante [2] lotes no custo de 300 euros.')
                                     .setValue('batata-2-300'),
                                 new Discord.StringSelectMenuOptionBuilder()
                                     .setLabel('Plantar (4x) Batata')
                                     .setEmoji("🚜")
-                                    .setDescription('Plante [4] lotes no custo de 600 bits')
+                                    .setDescription('Plante [4] lotes no custo de 600 euros.')
                                     .setValue('batata-4-600'),
                                 new Discord.StringSelectMenuOptionBuilder()
                                     .setLabel('Plantar (2x) Trigo')
                                     .setEmoji("🚜")
-                                    .setDescription('Plante [2] lotes no custo de 400 bits')
+                                    .setDescription('Plante [2] lotes no custo de 400 euros.')
                                     .setValue('trigo-2-400'),
                                 new Discord.StringSelectMenuOptionBuilder()
                                     .setLabel('Plantar (6x) Trigo')
                                     .setEmoji("🚜")
-                                    .setDescription('Plante [6] lotes no custo de 800 bits')
+                                    .setDescription('Plante [6] lotes no custo de 800 euros.')
                                     .setValue('trigo-6-800'),
                                 new Discord.StringSelectMenuOptionBuilder()
                                     .setLabel('Plantar (2x) Milho')
                                     .setEmoji("🚜")
-                                    .setDescription('Plante [2] lotes no custo de 180 bits')
+                                    .setDescription('Plante [2] lotes no custo de 180 euros.')
                                     .setValue('milho-2-180'),
                                 new Discord.StringSelectMenuOptionBuilder()
                                     .setLabel('Plantar (5x) Milho')
                                     .setEmoji("🚜")
-                                    .setDescription('Plante [5] lotes no custo de 500 bits')
+                                    .setDescription('Plante [5] lotes no custo de 500 euros.')
                                     .setValue('milho-5-500'),
                             )
                     )
@@ -65,14 +65,14 @@ module.exports = {
                 await i.deferUpdate();
                 if (i.customId === "wplant") {
                     coletou.stop();
-                    if (i.user.id !== message.author.id) return i.followUp({ content: `Essa decisão não é sua!`, ephemeral: true });
+                    if (i.user.id !== message.author.id) return i.followUp({ content: `:x: Não é o usuário que executou o comando!`, ephemeral: true });
                     const x = i.values[0];
                     let semente = userdb.eco.farm.seeds[`${x.split("-")[0]}`];
                     let calcular = semente.count + Number(`${x.split("-")[1]}`);
-                    if (calcular >= semente.max) return message.reply({ content: `\`[${calcular}/${semente.max}\`] Você iria passar o limite de seus lotes de ${x.split("-")[0]}, realize a colheita utilizando o comando:\n**a.colher**` });
-                    if (semente.count >= semente.max) return message.reply({ content: `Você já lotou os seus lote de ${x.split("-")[0]}, realize a colheita utilizando o comando:\n**a.colher**` });
-                    if (userdb.eco.coins < x.split("-")[2]) return message.reply({ content: `Saldo insuficiente!` });
-                    int.edit({ content: `<:1_Correto:1079943018477523004> ${i.user}, Você plantou **${x.split("-")[1]} lotes** de **${x.split("-")[0]}** com sucesso.`, embeds: [], components: [] });
+                    if (calcular >= semente.max) return i.followUp({ ephemeral: true, content: `\`[${calcular}/${semente.max}\`] ${i.user}, Você iria passar o limite de seus lotes de ${x.split("-")[0]}! Realize a colheita utilizando o comando:\n**ny!colher**` });
+                    if (semente.count >= semente.max) return i.followUp({ ephemeral: true, content: `${i.user}, Você já lotou os seus lote de ${x.split("-")[0]}! Realize a colheita utilizando o comando:\n**ny!colher**` });
+                    if (userdb.eco.coins < x.split("-")[2]) return i.followUp({ ephemeral: true, content: `${i.user}, Você não tem saldo suficiente!` });
+                    int.edit({ content: `${i.user}, Você plantou **${x.split("-")[1]} lotes** de **${x.split("-")[0]}** em sua fazenda com sucesso! Você gastou **${Number(`${x.split("-")[2]}`)} euros** com a nova plantação.`, embeds: [], components: [] });
                     if (x.split("-")[0] === "batata") {
                         let valores = Number(`${x.split("-")[2]}`);
                         let quantias = Number(`${x.split("-")[1]}`);
