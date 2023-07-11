@@ -72,7 +72,7 @@ module.exports = {
                     if (calcular >= semente.max) return i.followUp({ ephemeral: true, content: `\`[${calcular}/${semente.max}\`] ${i.user}, Você iria passar o limite de seus lotes de ${x.split("-")[0]}! Realize a colheita utilizando o comando:\n**ny!colher**` });
                     if (semente.count >= semente.max) return i.followUp({ ephemeral: true, content: `${i.user}, Você já lotou os seus lote de ${x.split("-")[0]}! Realize a colheita utilizando o comando:\n**ny!colher**` });
                     if (userdb.eco.coins < x.split("-")[2]) return i.followUp({ ephemeral: true, content: `${i.user}, Você não tem saldo suficiente!` });
-                    int.edit({ content: `${i.user}, Você plantou **${x.split("-")[1]} lotes** de **${x.split("-")[0]}** em sua fazenda com sucesso! Você gastou **${Number(`${x.split("-")[2]}`)} euros** com a nova plantação.`, embeds: [], components: [] });
+                    int.edit({ content: `<:money:1119274556352385046> **|** ${i.user}, Você plantou **${x.split("-")[1]} lotes** de **${x.split("-")[0]}** em sua fazenda com sucesso! Você gastou **${Number(`${x.split("-")[2]}`)} euros** com a nova plantação.`, embeds: [], components: [] });
                     if (x.split("-")[0] === "batata") {
                         let valores = Number(`${x.split("-")[2]}`);
                         let quantias = Number(`${x.split("-")[1]}`);
