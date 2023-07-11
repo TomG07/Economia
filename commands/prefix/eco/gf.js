@@ -5,23 +5,23 @@ module.exports = {
     run: async (client, message, args) => {
         const userdb = await client.db.findOne({ _id: message.author.id });
         if (!userdb) return message.reply({ content: `${message.author}, Você deve se registrar com o comando: \n**ny!registrar**.` });
-        if (Date.now() < userdb.eco.timers.gfCooldown) return message.reply({ content: `Você se encontra em modo de recarga, tente novamente <t:${~~(userdb.eco.timers.gfCooldown / 1000)}:R>.` });
-        if (userdb.eco.marry.userId == null) return message.reply({ content: `Você se encontra solteiro(a), se case utilizando o comando: \n**a.casar**.` });
+        if (Date.now() < userdb.eco.timers.gfCooldown) return message.reply({ content: `⏰ **|** ${message.author}, Você se encontra em modo de recarga, tente novamente <t:${~~(userdb.eco.timers.gfCooldown / 1000)}:R>.` });
+        if (userdb.eco.marry.userId == null) return message.reply({ content: `${message.author}, Você se encontra solteiro(a)! Para se casar utilize o comando: \n**ny!casar**.` });
         let coins = Math.floor(Math.random() * 150) + 300;
         message.reply({
             embeds: [
                 new Discord.EmbedBuilder()
                     .setTitle("Sapequinha..!")
-                    .setDescription(`${message.author}, ganhou <:Stars:1111647398188564510> **${coins} bits** + <:Exp:1111648750864171154> '1XP!' de experiência ao fazer **GF** com <@${userdb.eco.marry.userId}>.`)
+                    .setDescription(`<:money:1119274556352385046> **|** ${message.author}, ganhou **${coins} euros** + ⭐ '1XP!' de experiência ao fazer **GF** com <@${userdb.eco.marry.userId}>.`)
                     .setColor("#303136")
-                    .setFooter({ text: `${message.author.tag}`, iconURL: `${message.author.displayAvatarURL()}` })
+                    .setFooter({ text: `${message.author.username}`, iconURL: `${message.author.displayAvatarURL()}` })
             ],
             components: [
                 new Discord.ActionRowBuilder().addComponents(
                     new Discord.ButtonBuilder()
                         .setCustomId("gf")
                         .setLabel("Volte em 1 hora!")
-                        .setEmoji("<:FlowerPurple:1109899097655222272>")
+                        .setEmoji("🔔")
                         .setStyle(Discord.ButtonStyle.Secondary)
                         .setDisabled(true)
                 )
