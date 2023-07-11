@@ -1,4 +1,4 @@
-const Discord = require("discord.js");
+🧾const Discord = require("discord.js");
 module.exports = {
     name: "help",
     aliases: ["ajuda", "comandos"],
@@ -10,10 +10,10 @@ module.exports = {
                     .setTitle("Painel de Ajuda!")
                     .setFooter({ text: `${client.user.username}`, iconURL: `${client.user.displayAvatarURL()}` })
                     .addFields({
-                        name: "<:FlowerPurple:1109899097655222272> Economia",
+                        name: "💰 Economia:",
                         value: "`saldo`, `daily`, `empregos`, `cd`, `perfil`, `emblemas`, `casar`, `gf`, `divorciar`, `trabalhar`, `top`, `pagar`, `fazenda` , `colher`, `loja`"
                     }, {
-                        name: "<:FlowerPurple:1109899097655222272> Utilidades",
+                        name: "📚 Utilidades:",
                         value: "`ajuda`, `botinfo`, `verificar`"
                     })
                     //.setImage("https://media.discordapp.net/attachments/1062929961754841180/1110975912192778400/e6f35409643fd900051676d5cde22b2c.png")
