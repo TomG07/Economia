@@ -10,7 +10,12 @@ const documentSave = new Schema({
             userId: { type: String, default: null },
             marryDate: { type: Number, default: 0 },
         },
-        car: { type: Boolean, default: false },
+        reps: { type: Number, default: 0 },
+        premium: {
+            status: { type: Boolean, default: false },
+            timestamp: { type: Number, default: 0 },
+            expired: { type: Number, default: 0 },
+        },
         farm: {
             owner: { type: Boolean, default: false },
             seeds: {
