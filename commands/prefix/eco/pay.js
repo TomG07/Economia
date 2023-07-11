@@ -7,8 +7,8 @@ module.exports = {
     if (!member) return message.reply({ content: `Você deve mencionar o usuário que vai pagar.` });
     if (member.user.bot) return message.reply({ content: `Bots não recebem pagamentos.` });
     if (member.user.id === message.author.id) return message.reply({ content: `Não pode pagar a si mesmo.` });
-    const userdb = await client.db.findById({ _id: message.author.id });
-    if (!userdb) return message.reply({ content: `Você não utilizou o comando: \n**a.registrar**.` });
+    const userdb = await client.db.findOne({ _id: message.author.id });
+    if (!userdb) return message.reply({ content: `${message.author}, Você deve se registrar com o comando: \n**ny!registrar**.` });
     const twouserdb = await client.db.findById({ _id: member.user.id });
     if (!twouserdb) return message.reply({ content: `Esse jogador **${member.user.username}** não utilizou o \n**a.registrar**.` })
     let value = args.slice(1).join(" ");
@@ -46,8 +46,8 @@ module.exports = {
   }
 }
 function abreviar(number, precision = 2) {
-    return number.toLocaleString("en-US", {
-        notation: "compact",
-        maximumFractionDigits: precision,
-    });
+  return number.toLocaleString("en-US", {
+    notation: "compact",
+    maximumFractionDigits: precision,
+  });
 }

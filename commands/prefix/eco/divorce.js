@@ -3,8 +3,8 @@ module.exports = {
     name: "divorce",
     aliases: ["divociar", "separar", "div"],
     run: async (client, message, args) => {
-        const userdb = await client.db.findById({ _id: message.author.id });
-        if (!userdb) return message.reply({ content: `Você não utilizou o comando: \n**a.registrar**.` });
+        const userdb = await client.db.findOne({ _id: message.author.id });
+        if (!userdb) return message.reply({ content: `${message.author}, Você deve se registrar com o comando: \n**ny!registrar**.` });
         if (userdb.eco.marry.userId == null) return message.reply({ content: `Você se encontra solteiro(a), se case utilizando o comando: \n**a.casar**.` });
         let member = message.mentions.members.first();
         message.reply({

@@ -3,8 +3,8 @@ module.exports = {
    name: "cd",
    aliases: ["recargas"],
    run: async (client, message, args) => {
-      const userdb = await client.db.findById({ _id: message.author.id });
-      if (!userdb) return message.reply({ content: `Você não utilizou o comando: \n**a.registrar**.` });
+      const userdb = await client.db.findOne({ _id: message.author.id });
+      if (!userdb) return message.reply({ content: `${message.author}, Você deve se registrar com o comando: \n**ny!registrar**.` });
       let timers = userdb.eco.timers;
       message.reply({
          embeds: [

@@ -7,8 +7,8 @@ module.exports = {
         if (!member) return message.reply({ content: `Mencione a pessoa que vc quer casar!` });
         if (member.user.bot) return message.reply({ content: `Você não pode se casar com um bot.` });
         if (member.user.id === message.author.id) return message.reply({ content: `Você não pode se casar consigo mesmo!` });
-        const userdb = await client.db.findById({ _id: message.author.id });
-        if (!userdb) return message.reply({ content: `Você não utilizou o comando: \n**a.registrar**.` });
+        const userdb = await client.db.findOne({ _id: message.author.id });
+        if (!userdb) return message.reply({ content: `${message.author}, Você deve se registrar com o comando: \n**ny!registrar**.` });
         const twouserdb = await client.db.findById({ _id: member.user.id });
         if (!twouserdb) return message.reply({ content: `Esse jogador **${member.user.username}** não utilizou o \n**a.registrar**.` })
         if (userdb.eco.marry.userId !== null) return message.reply({ content: `Você já se encontra casado(a).` });
