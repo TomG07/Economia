@@ -1,4 +1,4 @@
-🧾const Discord = require("discord.js");
+const Discord = require("discord.js");
 module.exports = {
     name: "help",
     aliases: ["ajuda", "comandos"],
