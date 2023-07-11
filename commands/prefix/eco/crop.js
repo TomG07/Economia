@@ -88,7 +88,8 @@ module.exports = {
                     //if (checar.eco.coins < value) return message.reply({ content: `Saldo insuficiente!` });
                     let size = userdb.eco.farm.seeds.batata.count;
                     if (size <= 0) return;
-                    int.edit({ content: `<:1_Correto:1079943018477523004> ${i.user}, Você colheu **${size} batatas** da sua fazenda.`, components: [] });
+                    const balanceBatata = Math.floor(size * 320);
+                    int.edit({ content: `<:luana_semente:1118672573572583578> **|** ${i.user}, Você colheu **${size} batatas** da sua fazenda com sucesso e recebeu **${balanceBatata} euros**.`, components: [], files: [] });
                     await client.db.updateOne({ _id: i.user.id }, { $inc: { "eco.coins": 2, "eco.farm.seeds.batata.count": -size, }, });
                 } else if (i.customId === "wgettrigo") {
                     coletou.stop();
@@ -96,7 +97,8 @@ module.exports = {
                     //if (checar.eco.coins < value) return message.reply({ content: `Saldo insuficiente!` });
                     let size = userdb.eco.farm.seeds.trigo.count;
                     if (size <= 0) return;
-                    int.edit({ content: `<:1_Correto:1079943018477523004> ${i.user}, Você colheu **${size} trigos** da sua fazenda.`, components: [] });
+                    const balanceTrigo = Math.floor(size * 280);
+                    int.edit({ content: `<:luana_semente:1118672573572583578> **|** ${i.user}, Você colheu **${size} trigos** da sua fazenda com sucesso e recebeu **${balanceTrigo} euros**.`, components: [], files: [] });
                     await client.db.updateOne({ _id: i.user.id }, { $inc: { "eco.coins": 2, "eco.farm.seeds.trigo.count": -size, }, });
                 } else if (i.customId === "wgetmilho") {
                     coletou.stop();
@@ -104,7 +106,8 @@ module.exports = {
                     //if (checar.eco.coins < value) return message.reply({ content: `Saldo insuficiente!` });
                     let size = userdb.eco.farm.seeds.milho.count;
                     if (size <= 0) return;
-                    int.edit({ content: `<:1_Correto:1079943018477523004> ${i.user}, Você colheu **${size} milhos** da sua fazenda.`, components: [] });
+                    const balanceMilho = Math.floor(size * 320);
+                    int.edit({ content: `<:luana_semente:1118672573572583578> **|** ${i.user}, Você colheu **${size} milhos** da sua fazenda com sucesso e recebeu **${balanceMilho} euros**.`, components: [], files: [] });
                     await client.db.updateOne({ _id: i.user.id }, { $inc: { "eco.coins": 2, "eco.farm.seeds.milho.count": -size, }, });
                 }
             });

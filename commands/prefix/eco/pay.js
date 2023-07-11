@@ -10,7 +10,7 @@ module.exports = {
     const userdb = await client.db.findOne({ _id: message.author.id });
     if (!userdb) return message.reply({ content: `${message.author}, Você deve se registrar com o comando: \n**ny!registrar**.` });
     const twouserdb = await client.db.findById({ _id: member.user.id });
-    if (!twouserdb) return message.reply({ content: `Esse jogador **${member.user.username}** não utilizou o \n**a.registrar**.` })
+    if (!twouserdb) return message.reply({ content: `${message.author}, Esse jogador **__${member.user.username}__** deve fazer o registro com o comando:\n**ny!registrar**.` })
     let value = args.slice(1).join(" ");
     if (!value) return message.reply({ content: `Quantia do pagamento não informada!` });
     if (isNaN(value)) return message.reply({ content: `Somente números devem ser considerados na quantia do pagamento.` });
