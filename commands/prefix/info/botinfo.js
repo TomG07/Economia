@@ -11,14 +11,14 @@ module.exports = {
                     .setThumbnail(client.user.displayAvatarURL())
                     .setColor("#ffb6c1")
                     .addFields({
-                        name: "Creator:",
+                        name: "<:Girl:1128352238537031760> Creator:",
                         value: `${user.username}-(ID: \`1027989059198537728\`)`
                     }, {
                         name: "Versão da Bot;",
                         value: "junior-1.3.2"
                     }, {
                         name: "Livraria da Bot:",
-                        value: "`Discord.js`"
+                        value: "<:djs:1128352183981719582> `Discord.js`"
                     }, {
                         name: "Prefixo da Bot:",
                         value: "`ny!`"
