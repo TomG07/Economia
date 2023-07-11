@@ -18,12 +18,10 @@ statusdb.on("open", () => {
     console.log("📚 | Conectada ao banco de dados com sucesso.");
 });
 client.db = require("./database/users/players");
-client.gd = require("./database/guild/server");
 client.commands = new Discord.Collection();
 client.slashCommands = new Discord.Collection();
 client.aliases = new Discord.Collection();
 require('./handlers/commandsManager')(client);
-require('./handlers/slashCommandsManager')(client);
 require('./handlers/eventsManager')(client);
 client.once(Discord.Events.ClientReady, () => {
     console.log(`🌸 | Longin no discord realizado com a conta ${client.user.tag}`);
