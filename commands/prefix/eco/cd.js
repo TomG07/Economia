@@ -13,7 +13,7 @@ module.exports = {
                .setThumbnail(message.author.displayAvatarURL({ dunamic: true }))
                .setTimestamp()
                .setColor("#303136")
-               .setDescription(`- **Daily**: ${Date.now() < timers.dailyCooldown ? `<:cooldown:1118919475442487316> | <t:${~~(timers.dailyCooldown / 1000)}:R>` : "<:Check:1118513881107660923> Colete agora!"}\n- **Work**: ${Date.now() < timers.workCooldown ? `<:cooldown:1118919475442487316> | <t:${~~(timers.workCooldown / 1000)}:R>` : "<:Check:1118513881107660923> Colete agora!"}\n- **GF**: ${Date.now() < timers.gfCooldown ? `<:cooldown:1118919475442487316> | <t:${~~(timers.gfCooldown / 1000)}:R>` : "<:Check:1118513881107660923> | Colete agora!"}\n- **Rep**: ${Date.now() < timers.uberCooldown ? `<:cooldown:1118919475442487316> | <t:${~~(timers.uberCooldown / 1000)}:R>` : "<:Check:1118513881107660923> | Colete agora!"}`)
+               .setDescription(`- **Daily**: ${Date.now() < timers.dailyCooldown ? `<:cooldown:1118919475442487316> | <t:${~~(timers.dailyCooldown / 1000)}:R>` : "<:Check:1118513881107660923> Colete agora!"}\n- **Work**: ${Date.now() < timers.workCooldown ? `<:cooldown:1118919475442487316> | <t:${~~(timers.workCooldown / 1000)}:R>` : "<:Check:1118513881107660923> Colete agora!"}\n- **GF**: ${Date.now() < timers.gfCooldown ? `<:cooldown:1118919475442487316> | <t:${~~(timers.gfCooldown / 1000)}:R>` : "<:Check:1118513881107660923> Colete agora!"}\n- **Rep**: ${Date.now() < timers.uberCooldown ? `<:cooldown:1118919475442487316> | <t:${~~(timers.uberCooldown / 1000)}:R>` : "<:Check:1118513881107660923> Colete agora!"}`)
          ]
       });
    }
