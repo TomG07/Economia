@@ -54,7 +54,7 @@ module.exports = {
         ctx.fillText(`${timestampTrigo}`, 440, 243);
         //reply
         const attachment = new Discord.AttachmentBuilder(canvas.toBuffer(), { name: 'farms.png' });
-        message.edit({
+        msg.edit({
             content: `${message.author}`,
             files: [attachment],
             components: [
@@ -84,7 +84,7 @@ module.exports = {
                 await i.deferUpdate();
                 if (i.customId === "wgetbatata") {
                     coletou.stop();
-                    if (i.user.id !== message.author.id) return i.followUp({ content: `Essa decisão não cabe a vc!`, ephemeral: true });
+                    if (i.user.id !== message.author.id) return i.followUp({ content: `:x: Não é o usuário que executou o comando!`, ephemeral: true });
                     //if (checar.eco.coins < value) return message.reply({ content: `Saldo insuficiente!` });
                     let size = userdb.eco.farm.seeds.batata.count;
                     if (size <= 0) return;
