@@ -3,11 +3,15 @@ module.exports = {
     name: "rep",
     aliases: ["reputação", "medalha", "curtir"],
     run: async (client, message, args) => {
-        const userdb = await client.db.findOne({ _id: message.author.id });
-        if (!userdb) return message.reply({ content: `Você não utilizou o comando: \n**a.registrar**.` });
-        if (Date.now() < userdb.eco.timers.uberCooldown) return message.reply({ content: `Você se encontra em modo de recarga, tente novamente <t:${~~(userdb.eco.timers.uberCooldown / 1000)}:R>.` });
-        if (userdb.eco.car !== true) return message.reply({ content: `Você não tem um **carro**, compre utilizando o comando: \n**a.loja**.` })
-        message.reply({
+        let member = message.mentions.members.first();
+        if (!member) return message.reply({ content: `Você deve mencionar o usuário que vai pagar.` });
+    if (member.user.bot) return message.reply({ content: `Bots não recebem pagamentos.` });
+    if (member.user.id === message.author.id) return message.reply({ content: `Não pode pagar a si mesmo.` });
+    const userdb = await client.db.findOne({ _id: message.author.id });
+    if (!userdb) return message.reply({ content: `${message.author}, Você deve se registrar com o comando: \n**ny!registrar**.` });
+    const twouserdb = await client.db.findById({ _id: member.user.id });
+    if (!twouserdb) return message.reply({ content: `${message.author}, Esse jogador **__${member.user.username}__** deve fazer o registro com o comando:\n**ny!registrar**.` })
+message.reply({
             embeds: [
                 new Discord.EmbedBuilder()
                     .setTitle("Corrida concluído!")
