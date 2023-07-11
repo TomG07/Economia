@@ -12,21 +12,21 @@ module.exports = {
         if (!userdb) return message.reply({ content: `${message.author}, Você deve se registrar com o comando: \n**ny!registrar**.` });
         if (userdb.eco.farm.owner !== true) return message.reply({ content: `${message.author}, Você não tem uma fazenda! Compre utilizando o comando: \n**ny!loja**.` });
         let timestampBatata = "Lote vazio!";
-        if (userdb.farm.seeds.batata.cooldown !== 0 && userdb.farm.seeds.batata.count >= 1) {
-            let check1 = userdb.farm.seeds.batata.cooldown - Date.now();
-            timestampBatata = `${Date.now() < userdb.farm.seeds.batata.cooldown ? `${ms(check1).hours}h ${ms(check1).minutes}m ${ms(check1).seconds}s` : "Colher agora!"}`;
+        if (userdb.eco.farm.seeds.batata.cooldown !== 0 && userdb.eco.farm.seeds.batata.count >= 1) {
+            let check1 = userdb.eco.farm.seeds.batata.cooldown - Date.now();
+            timestampBatata = `${Date.now() < userdb.eco.farm.seeds.batata.cooldown ? `${ms(check1).hours}h ${ms(check1).minutes}m ${ms(check1).seconds}s` : "Colher agora!"}`;
         }
         //trigo
         let timestampTrigo = "Lote vazio!";
-        if (userdb.farm.seeds.trigo.cooldown !== 0 && userdb.farm.seeds.trigo.count >= 1) {
-            let check2 = userdb.farm.seeds.trigo.cooldown - Date.now();
-            timestampTrigo = `${Date.now() < userdb.farm.seeds.trigo.cooldown ? `${ms(check2).hours}h ${ms(check2).minutes}m ${ms(check2).seconds}s` : "Colher agora!"}`;
+        if (userdb.eco.farm.seeds.trigo.cooldown !== 0 && userdb.eco.farm.seeds.trigo.count >= 1) {
+            let check2 = userdb.eco.farm.seeds.trigo.cooldown - Date.now();
+            timestampTrigo = `${Date.now() < userdb.eco.farm.seeds.trigo.cooldown ? `${ms(check2).hours}h ${ms(check2).minutes}m ${ms(check2).seconds}s` : "Colher agora!"}`;
         }
         //milho
         let timestampMilho = "Lote vazio!";
-        if (userdb.farm.seeds.milho.cooldown !== 0 && userdb.farm.seeds.milho.count >= 1) {
-            let check3 = userdb.farm.seeds.milho.cooldown - Date.now();
-            timestampMilho = `${Date.now() < userdb.farm.seeds.milho.cooldown ? `${ms(check3).hours}h ${ms(check3).minutes}m ${ms(check3).seconds}s` : "Colher agora!"}`;
+        if (userdb.eco.farm.seeds.milho.cooldown !== 0 && userdb.eco.farm.seeds.milho.count >= 1) {
+            let check3 = userdb.eco.farm.seeds.milho.cooldown - Date.now();
+            timestampMilho = `${Date.now() < userdb.eco.farm.seeds.milho.cooldown ? `${ms(check3).hours}h ${ms(check3).minutes}m ${ms(check3).seconds}s` : "Colher agora!"}`;
         }
         // msg
         const msg = await message.reply('<a:carregando:1118129946158706708> Gerando terreno, aguarde..');
