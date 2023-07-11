@@ -7,7 +7,7 @@ module.exports = {
         if (!message.guild) return;
         if (message.author.bot) return;
         if (message.content == `<!@${client.user.id}>` || message.content == `<@${client.user.id}>`) return message.reply({
-            content: `${message.author}, Olá sou uma bot projetada para a **Anxienty**, meu prefix é \`a.\`, utilize \`a.ajuda\` para mostrar minha lista de comandos.`
+            content: `🌸 **|** ${message.author}, Olá sou uma bot brasileira de economia, meu prefix é \`ny!\`, utilize \`ny!ajuda\` para ver minha lista de comandos.`
         });     
     }
 }
