@@ -14,7 +14,7 @@ module.exports = {
                     .setAuthor({ name: `${message.author.username}`, iconURL: `${message.author.displayAvatarURL()}` })
                     .setTitle("Painel de Empregos!")
                     .setDescription(`${empregos.map(([key, value]) => {
-                        return `\> <:Inventario:1128316648223412284> **Emprego ${key}**\nSalário: \`${value.salario}\`\nRequisito: \`${value.exp}XP! de experiência.\` `
+                        return `\> <:Inventario:1128316648223412284> **Emprego ${key}**\nSalário: \`${value.salario} euros.\`\nRequisito: \`${value.exp}XP! de experiência.\` `
                     }).join("\n")}`)
                     .setColor("#303136")
                     .addFields({
