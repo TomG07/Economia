@@ -4,8 +4,9 @@ module.exports = {
     aliases: ["plantar", "fazenda"],
     run: async (client, message, args, prefix) => {
         const userdb = await client.db.findOne({ _id: message.author.id });
-        if (!userdb) return message.reply({ content: `${message.author}, Você deve se registrar com o comando: \n**${prefix}registrar**.` });
-        if (userdb.eco.farm.owner !== true) return message.reply({ content: `${message.author}, Você não tem uma fazenda! Compre utilizando o comando: \n**${prefix}loja**.` });
+        let p = prefix || "ny!";
+        if (!userdb) return message.reply({ content: `${message.author}, Você deve se registrar com o comando: \n**${p}registrar**.` });
+        if (userdb.eco.farm.owner !== true) return message.reply({ content: `${message.author}, Você não tem uma fazenda! Compre utilizando o comando: \n**${p}loja**.` });
         message.reply({
             embeds: [
                 new Discord.EmbedBuilder()
@@ -60,7 +61,7 @@ module.exports = {
                     )
             ], fetchReply: true
         }).then((int) => {
-            const coletou = int.createMessageComponentCollector({ time: 36000 });
+            const coletou = int.createMessageComponentCollector({ time: 79000 });
             coletou.on('collect', async (i) => {
                 await i.deferUpdate();
                 if (i.customId === "wplant") {
@@ -69,8 +70,8 @@ module.exports = {
                     const x = i.values[0];
                     let semente = userdb.eco.farm.seeds[`${x.split("-")[0]}`];
                     let calcular = semente.count + Number(`${x.split("-")[1]}`);
-                    if (calcular >= semente.max) return i.followUp({ ephemeral: true, content: `\`[${calcular}/${semente.max}\`] ${i.user}, Você iria passar o limite de seus lotes de ${x.split("-")[0]}! Realize a colheita utilizando o comando:\n**${prefix}colher**` });
-                    if (semente.count >= semente.max) return i.followUp({ ephemeral: true, content: `${i.user}, Você já lotou os seus lote de ${x.split("-")[0]}! Realize a colheita utilizando o comando:\n**${prefix}colher**` });
+                    if (calcular >= semente.max) return i.followUp({ ephemeral: true, content: `\`[${calcular}/${semente.max}\`] ${i.user}, Você iria passar o limite de seus lotes de ${x.split("-")[0]}! Realize a colheita utilizando o comando:\n**${p}colher**` });
+                    if (semente.count >= semente.max) return i.followUp({ ephemeral: true, content: `${i.user}, Você já lotou os seus lote de ${x.split("-")[0]}! Realize a colheita utilizando o comando:\n**${p}colher**` });
                     if (userdb.eco.coins < x.split("-")[2]) return i.followUp({ ephemeral: true, content: `${i.user}, Você não tem saldo suficiente!` });
                     int.edit({ content: `<:money:1119274556352385046> **|** ${i.user}, Você plantou **${x.split("-")[1]} lotes** de **${x.split("-")[0]}** em sua fazenda com sucesso! Você gastou **${Number(`${x.split("-")[2]}`)} euros** com a nova plantação.`, embeds: [], components: [] });
                     if (x.split("-")[0] === "batata") {
