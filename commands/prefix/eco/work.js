@@ -14,7 +14,7 @@ module.exports = {
             embeds: [
                 new Discord.EmbedBuilder()
                     .setTitle("Trabalho concluído!")
-                    .setDescription(`<:money:1119274556352385046> **|** ${message.author}, ganhou **${jobs[`${userdb.eco.job}`].salario} euros** + ⭐ '1XP!' de experiência após terminar seu trabalho de **${userdb.eco.job}**.`)
+                    .setDescription(`<:money:1119274556352385046> **|** ${message.author}, ganhou **${jobs[`${userdb.eco.job}`].salario} magias** + ⭐ '1XP!' de experiência após terminar seu trabalho de **${userdb.eco.job}**.`)
                     .setColor("#303136")
                     .setFooter({ text: `${message.author.username}`, iconURL: `${message.author.displayAvatarURL()}` })
             ],
