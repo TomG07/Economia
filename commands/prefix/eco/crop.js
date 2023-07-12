@@ -7,10 +7,11 @@ const wait = require('node:timers/promises').setTimeout;
 module.exports = {
     name: "crop",
     aliases: ["colher", "safra"],
-    run: async (client, message, args) => {
+    run: async (client, message, args, prefix) => {
+        let p = prefix || "ny!";
         const userdb = await client.db.findOne({ _id: message.author.id });
-        if (!userdb) return message.reply({ content: `${message.author}, Você deve se registrar com o comando: \n**ny!registrar**.` });
-        if (userdb.eco.farm.owner !== true) return message.reply({ content: `${message.author}, Você não tem uma fazenda! Compre utilizando o comando: \n**ny!loja**.` });
+        if (!userdb) return message.reply({ content: `${message.author}, Você deve se registrar com o comando: \n**${p}registrar**.` });
+        if (userdb.eco.farm.owner !== true) return message.reply({ content: `${message.author}, Você não tem uma fazenda! Compre utilizando o comando: \n**${p}loja**.` });
         let timestampBatata = "Lote vazio!";
         if (userdb.eco.farm.seeds.batata.cooldown !== 0 && userdb.eco.farm.seeds.batata.count >= 1) {
             let check1 = userdb.eco.farm.seeds.batata.cooldown - Date.now();
