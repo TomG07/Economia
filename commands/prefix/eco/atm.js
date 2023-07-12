@@ -21,7 +21,7 @@ module.exports = {
                     .setTimestamp()
                     .setColor("#2a2d30")
                     .addFields({
-                        name: "<:Magia:1128792494377803926> Carteira:",
+                        name: "<:Potion:1128800422220546168> Carteira:",
                         value: `${userdb.eco.coins > 1 ? `**${abreviar(userdb.eco.coins)}** magia(s).` : "Vazia!"}`
                     }, {
                         name: ":star: Reputações:",
