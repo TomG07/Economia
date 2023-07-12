@@ -21,7 +21,10 @@ module.exports = {
                     .setColor("#303136")
                     .addFields({
                         name: "<:money:1119274556352385046> Carteira:",
-                        value: `**${abreviar(userdb.eco.coins)}** euros.`
+                        value: `${userdb.eco.coins > 1 ? `**${abreviar(userdb.eco.coins)}** euros.` : "Vazia!"}`
+                    }, {
+                        name: ":star: Reputações:",
+                        value: `${userdb.eco.reps > 1 ? `${abreviar(userdb.eco.reps)}` : "Nenhuma!"}`
                     }, {
                         name: "<:cards:1119298011105857641> Posição no Ranking:",
                         value: `#️⃣${numberToEmojis(seachUserRankPosition)}`
