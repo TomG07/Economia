@@ -3,6 +3,7 @@ module.exports = {
     name: "botinfo",
     aliases: ["info"],
     run: async (client, message, args, prefix) => {
+        let p = prefix || "ny!";
         let user = await client.users.fetch("1027989059198537728");
         message.reply({
             embeds: [
@@ -21,7 +22,7 @@ module.exports = {
                         value: "<:djs:1128352183981719582> `Discord.js`"
                     }, {
                         name: "Prefixo da Bot:",
-                        value: `\`${prefix}\``
+                        value: `\`${p}\``
                     }, {
                         name: "Total de Comandos:",
                         value: `${client.commands.size}`
