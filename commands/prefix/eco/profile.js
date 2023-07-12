@@ -33,10 +33,10 @@ module.exports = {
     if (list.length >= 1) {
       list = list.join(",")
         .replace("DEV", "<:developeractivo:1104003870180528179>")
-        .replace("MARRY", "<:AnelCasal:1109190514009452615>")
+        .replace("MARRY", "<:anel:1119285525984063509>)
         .replace("STAFF", "<:Staff:1107072021231317193>")
-        .replace("HYPE", "<:Badge_HypeSquad_Events:1110898364192665631>")
-        .replace("APOIADOR", "<:Badge_Early_Supporter:1110898281875251200>");
+        .replace("HYPE", "<:cookies_cookie:1117568133574705184>")
+        .replace("APOIADOR", "<:Police:1128771766702051408>");
       context.font = '500 30px "Rubik"';
       await fillTextWithTwemoji(context, list.split(",").join(" "), 223, 438);
     }
