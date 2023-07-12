@@ -18,26 +18,27 @@ module.exports = {
     if (value > 50000) return message.reply({ content: `${message.author}, Você só pode transferir quantias maiores que **50k euros** de uma vez só.` });
     if (userdb.eco.coins < value) return message.reply({ content: `${message.author}, Você não tem saldo suficiente!` });
     message.reply({
-      content: `<:Stars:1111647398188564510> **|** ${message.author}, deseja transferir **${abreviar(value)} euros** para a sua conta, confimar?`,
+      content: `<:cooldown:1118919475442487316> **|** ${message.author}, deseja transferir **${abreviar(value)} euros** para a sua conta, confimar?`,
       components: [
         new Discord.ActionRowBuilder().addComponents(
           new Discord.ButtonBuilder()
             .setCustomId("pay")
-            .setLabel("Sim, aceitar")
-            .setStyle(Discord.ButtonStyle.Success)
+            .setLabel("Aceitar o pagamento")
+            .setEmoji("✅")
+            .setStyle(Discord.ButtonStyle.Primary)
             .setDisabled(false)
         )]
     }).then((int) => {
-      const coletou = int.createMessageComponentCollector({ time: 36000 });
+      const coletou = int.createMessageComponentCollector({ time: 86000 });
       coletou.on('collect', async (i) => {
         await i.deferUpdate();
+        if (i.user.id !== member.user.id) return i.followUp({ content: `${i.user}, Essa decisão não é sua!`, ephemeral: true });
         if (i.customId === "pay") {
           coletou.stop();
-          if (i.user.id !== member.user.id) return i.followUp({ content: `Essa decisão não cabe a vc.`, ephemeral: true });
-          const checar = await client.db.findById({ _id: message.author.id });
-          if (!checar) return message.reply({ content: `Esse jogador **${message.author.username}** não utilizou o \n**++registrar**.` });
-          if (checar.eco.coins < value) return message.reply({ content: `Saldo insuficiente!` });
-          int.edit({ content: `<:pix:1112785378135507094> ${i.user} aceitou a transferência de **<:Stars:1111647398188564510> ${abreviar(value)} bits** de ${message.author}.`, components: [] });
+          const checar = await client.db.findOne({ _id: message.author.id });
+          if (!checar) return message.reply({ content: `${i.user}, Você não utilizou o \n**ny!registrar**.` });
+          if (checar.eco.coins < value) return message.reply({ content: `${i.user}, Você não tem saldo suficiente!` });
+          int.edit({ content: `<:pix:1112785378135507094> ${i.user} aceitou a transferência de **${abreviar(value)} euros** de ${message.author}.`, components: [] });
           await client.db.updateOne({ _id: i.user.id }, { $inc: { "eco.coins": value, }, });
           await client.db.updateOne({ _id: message.author.id }, { $inc: { "eco.coins": -value, }, });
         }
