@@ -21,7 +21,7 @@ module.exports = {
     const fundo = await Canvas.loadImage(bg);
     context.drawImage(fundo, 192, 0, 608, 377);
     // template
-    const template = await Canvas.loadImage("https://media.discordapp.net/attachments/1113783795942961206/1128767691067494501/1689189559756.png");
+    const template = await Canvas.loadImage("https://media.discordapp.net/attachments/1113783795942961205/1128800236366745752/1689197333549.png");
     context.drawImage(template, 0, 0, canvas.width, canvas.height);
     //name
     context.font = '500 34px "Rubik"';
@@ -47,7 +47,7 @@ module.exports = {
     //coins
     context.font = '400 25px "Rubik"';
     context.fillStyle = "#ffffff";
-    await fillTextWithTwemoji(context, `${abreviar(userdb.eco.coins)} euros.`, 518, 497);
+    await fillTextWithTwemoji(context, `${abreviar(userdb.eco.coins)} magias.`, 518, 497);
     // reps
     context.font = '400 25px "Rubik"';
     context.fillStyle = "#ffe4e1";
