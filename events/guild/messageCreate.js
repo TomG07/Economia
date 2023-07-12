@@ -8,7 +8,8 @@ module.exports = {
         if (message.author.bot) return;
         // if (message.guild.id !== "1102036342172553226") return;
         if (message.channel.type == Discord.ChannelType.DM) return;
-        let prefix = "ny!";
+        let dataGuild = (await client.server.findOne({ guildId: message.guild.id })) || { config: { prefix: "ny!" } };
+        let prefix = dataGuild.config.prefix;
         if (!message.content.toLowerCase().startsWith(prefix.toLowerCase())) return;
         if (!message.content.startsWith(prefix)) return;
         const args = message.content.slice(prefix.length).trim().split(/ +/g);
