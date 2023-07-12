@@ -16,11 +16,11 @@ module.exports = {
     let value = args.slice(1).join(" ");
     if (!value) return message.reply({ content: `${message.author}, Você não informou a quantia do pagamento!` });
     if (isNaN(value)) return message.reply({ content: `${message.author}, Somente números devem ser considerados na quantia do pagamento.` });
-    if (value < 100) return message.reply({ content: `${message.author}, Você só pode fazer pagamentos com quantias maiores que **100 euros**.` });
-    if (value > 50000) return message.reply({ content: `${message.author}, Você só pode transferir quantias maiores que **50k euros** de uma vez só.` });
+    if (value < 100) return message.reply({ content: `${message.author}, Você só pode fazer pagamentos com quantias maiores que **100 magias**.` });
+    if (value > 50000) return message.reply({ content: `${message.author}, Você só pode transferir quantias maiores que **50k magias** de uma vez só.` });
     if (userdb.eco.coins < value) return message.reply({ content: `${message.author}, Você não tem saldo suficiente!` });
     message.reply({
-      content: `<:cooldown:1118919475442487316> **|** O usuário ${message.author}, deseja transferir **${abreviar(value)} euros** para a sua conta! ${member}, Você deseja confimar eesa transação?`,
+      content: `<:cooldown:1118919475442487316> **|** O usuário ${message.author}, deseja transferir **${abreviar(value)} magias** para a sua conta! ${member}, Você deseja confimar eesa transação?`,
       components: [
         new Discord.ActionRowBuilder().addComponents(
           new Discord.ButtonBuilder()
@@ -40,7 +40,7 @@ module.exports = {
           const checar = await client.db.findOne({ _id: message.author.id });
           if (!checar) return message.reply({ content: `${i.user}, Você não utilizou o \n**ny!registrar**.` });
           if (checar.eco.coins < value) return message.reply({ content: `${i.user}, Você não tem saldo suficiente!` });
-          int.edit({ content: `<:money:1119274556352385046> **|** ${i.user} aceitou a transferência de **${abreviar(value)} euros** de ${message.author}.`, components: [] });
+          int.edit({ content: `<:money:1119274556352385046> **|** ${i.user} aceitou a transferência de **${abreviar(value)} magias** de ${message.author}.`, components: [] });
           await client.db.updateOne({ _id: i.user.id }, { $inc: { "eco.coins": value, }, });
           await client.db.updateOne({ _id: message.author.id }, { $inc: { "eco.coins": -value, }, });
         }
