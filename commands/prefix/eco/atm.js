@@ -25,7 +25,7 @@ module.exports = {
                         value: `${userdb.eco.coins > 1 ? `**${abreviar(userdb.eco.coins)}** magia(s).` : "Vazia!"}`
                     }, {
                         name: ":star: Reputações:",
-                        value: `${userdb.eco.reps > 1 ? `${abreviar(userdb.eco.reps)} rep(s).` : "Nenhuma!"}`
+                        value: `${userdb.eco.reps >= 1 ? `${abreviar(userdb.eco.reps)} rep(s).` : "Nenhuma!"}`
                     }, {
                         name: "<:cards:1119298011105857641> Posição no Ranking:",
                         value: `#️⃣${numberToEmojis(seachUserRankPosition)}`
