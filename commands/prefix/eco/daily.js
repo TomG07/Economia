@@ -2,9 +2,10 @@ const Discord = require("discord.js");
 module.exports = {
     name: "daily",
     aliases: ["coletar", "caxinha"],
-    run: async (client, message, args) => {
+    run: async (client, message, args, prefix) => {
+        let p = prefix || "ny!";
         const userdb = await client.db.findOne({ _id: message.author.id });
-        if (!userdb) return message.reply({ content: `${message.author}, Você deve se registrar com o comando: \n**ny!registrar**.` });
+        if (!userdb) return message.reply({ content: `${message.author}, Você deve se registrar com o comando: \n**${p}registrar**.` });
         if (Date.now() < userdb.eco.timers.dailyCooldown) return message.reply({ content: `⏰ **|** ${message.author},Você se encontra em modo de recarga, tente novamente <t:${~~(userdb.eco.timers.dailyCooldown / 1000)}:R>.` });
         let coins = Math.floor(Math.random() * 100) + 1500;
         message.reply({
