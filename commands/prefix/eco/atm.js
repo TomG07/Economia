@@ -16,12 +16,12 @@ module.exports = {
             embeds: [
                 new Discord.EmbedBuilder()
                     .setAuthor({ name: `${message.author.username}`, iconURL: `${message.author.displayAvatarURL()}` })
-                    .setTitle("Saldo do jogador!")
+                    .setTitle("Saldo do Jogador!")
                     .setThumbnail(member.user.displayAvatarURL({ dynamic: true }))
                     .setTimestamp()
-                    .setColor("#303136")
+                    .setColor("#2a2d30")
                     .addFields({
-                        name: "<:money:1119274556352385046> Carteira:",
+                        name: "<:Magia:1128792494377803926> Carteira:",
                         value: `${userdb.eco.coins > 1 ? `**${abreviar(userdb.eco.coins)}** magia(s).` : "Vazia!"}`
                     }, {
                         name: ":star: Reputações:",
