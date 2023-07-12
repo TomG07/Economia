@@ -3,22 +3,22 @@ module.exports = {
   name: "pay",
   aliases: ["pagar", "transferir"],
   run: async (client, message, args) => {
-    let member = message.mentions.members.first();
-    if (!member) return message.reply({ content: `Você deve mencionar o usuário que vai pagar.` });
-    if (member.user.bot) return message.reply({ content: `Bots não recebem pagamentos.` });
-    if (member.user.id === message.author.id) return message.reply({ content: `Não pode pagar a si mesmo.` });
+    let member = message.mentions.members.first() || message.guild.members.cache.find(member => member.user.id === args[0]);
+    if (!member) return message.reply({ content: `${message.author}, Você deve mencionar o usuário que vai receber o pagamento.` });
+    if (member.user.bot) return message.reply({ content: `${message.author}, Os bots não recebem pagamentos.` });
+    if (member.user.id === message.author.id) return message.reply({ content: `${message.author}, Você não pode pagar a si mesmo.` });
     const userdb = await client.db.findOne({ _id: message.author.id });
     if (!userdb) return message.reply({ content: `${message.author}, Você deve se registrar com o comando: \n**ny!registrar**.` });
-    const twouserdb = await client.db.findById({ _id: member.user.id });
+    const twouserdb = await client.db.findOne({ _id: member.user.id });
     if (!twouserdb) return message.reply({ content: `${message.author}, Esse jogador **__${member.user.username}__** deve fazer o registro com o comando:\n**ny!registrar**.` })
     let value = args.slice(1).join(" ");
-    if (!value) return message.reply({ content: `Quantia do pagamento não informada!` });
-    if (isNaN(value)) return message.reply({ content: `Somente números devem ser considerados na quantia do pagamento.` });
-    if (value < 100) return message.reply({ content: `Você só pode fazer pagamentos com quantias maiores que **100 bits**.` });
-    if (value > 50000) return message.reply({ content: `Você só pode transferir quantias maiores que **50k** de uma vez só.` });
-    if (userdb.eco.coins < value) return message.reply({ content: `Saldo insuficiente!` });
+    if (!value) return message.reply({ content: `${message.author}, Você não informou a quantia do pagamento!` });
+    if (isNaN(value)) return message.reply({ content: `${message.author}, Somente números devem ser considerados na quantia do pagamento.` });
+    if (value < 100) return message.reply({ content: `${message.author}, Você só pode fazer pagamentos com quantias maiores que **100 euros**.` });
+    if (value > 50000) return message.reply({ content: `${message.author}, Você só pode transferir quantias maiores que **50k euros** de uma vez só.` });
+    if (userdb.eco.coins < value) return message.reply({ content: `${message.author}, Você não tem saldo suficiente!` });
     message.reply({
-      content: `<:Stars:1111647398188564510> **|** ${message.author}, deseja transferir **${abreviar(value)} bits** para a sua conta, confimar?`,
+      content: `<:Stars:1111647398188564510> **|** ${message.author}, deseja transferir **${abreviar(value)} euros** para a sua conta, confimar?`,
       components: [
         new Discord.ActionRowBuilder().addComponents(
           new Discord.ButtonBuilder()
