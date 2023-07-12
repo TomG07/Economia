@@ -13,7 +13,7 @@ module.exports = {
                     .setTitle("<:Fazenda:1118670191509913780> Fazendinha!")
                     .setThumbnail(message.author.displayAvatarURL({ dunamic: true }))
                     .setTimestamp()
-                    .setColor("#303136")
+                    .setColor("#2a2d30")
                     .setDescription(`${message.author}, essa é sua fazenda plante algo nela uilizando o menu abaixo.`)
                     .addFields({ name: "Tempo de colheita:", value: "- Todos os seus lotes referentes ao novo plantio terão seu tempo de **crescimento resetados** e atualizados." })
                     .setImage("https://media.discordapp.net/attachments/1113783795942961204/1126613681447387327/images_1.jpg")
@@ -73,7 +73,7 @@ module.exports = {
                     if (calcular >= semente.max) return i.followUp({ ephemeral: true, content: `\`[${calcular}/${semente.max}\`] ${i.user}, Você iria passar o limite de seus lotes de ${x.split("-")[0]}! Realize a colheita utilizando o comando:\n**${p}colher**` });
                     if (semente.count >= semente.max) return i.followUp({ ephemeral: true, content: `${i.user}, Você já lotou os seus lote de ${x.split("-")[0]}! Realize a colheita utilizando o comando:\n**${p}colher**` });
                     if (userdb.eco.coins < x.split("-")[2]) return i.followUp({ ephemeral: true, content: `${i.user}, Você não tem magias suficientes!` });
-                    int.edit({ content: `<:money:1119274556352385046> **|** ${i.user}, Você plantou **${x.split("-")[1]} lotes** de **${x.split("-")[0]}** em sua fazenda com sucesso! Você gastou **${Number(`${x.split("-")[2]}`)} magias** com a nova plantação.`, embeds: [], components: [] });
+                    int.edit({ content: `<:Fazenda:1118670191509913780> **|** ${i.user}, Você plantou **${x.split("-")[1]} lotes** de **${x.split("-")[0]}** em sua fazenda com sucesso! Você gastou **${Number(`${x.split("-")[2]}`)} magias** com a nova plantação.`, embeds: [], components: [] });
                     if (x.split("-")[0] === "batata") {
                         let valores = Number(`${x.split("-")[2]}`);
                         let quantias = Number(`${x.split("-")[1]}`);
