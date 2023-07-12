@@ -3,8 +3,8 @@ module.exports = {
     name: "farm",
     aliases: ["plantar", "fazenda"],
     run: async (client, message, args, prefix) => {
-        const userdb = await client.db.findOne({ _id: message.author.id });
         let p = prefix || "ny!";
+        const userdb = await client.db.findOne({ _id: message.author.id });
         if (!userdb) return message.reply({ content: `${message.author}, Você deve se registrar com o comando: \n**${p}registrar**.` });
         if (userdb.eco.farm.owner !== true) return message.reply({ content: `${message.author}, Você não tem uma fazenda! Compre utilizando o comando: \n**${p}loja**.` });
         message.reply({

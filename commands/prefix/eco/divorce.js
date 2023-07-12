@@ -2,19 +2,21 @@ const Discord = require("discord.js");
 module.exports = {
     name: "divorce",
     aliases: ["divociar", "separar", "div"],
-    run: async (client, message, args) => {
+    run: async (client, message, args, prefix) => {
+        let p = prefix || "ny!";
         const userdb = await client.db.findOne({ _id: message.author.id });
-        if (!userdb) return message.reply({ content: `${message.author}, Você deve se registrar com o comando: \n**ny!registrar**.` });
-        if (userdb.eco.marry.userId == null) return message.reply({ content: `Você se encontra solteiro(a), se case utilizando o comando: \n**a.casar**.` });
-        let member = message.mentions.members.first();
+        if (!userdb) return message.reply({ content: `${message.author}, Você deve se registrar com o comando: \n**${p}registrar**.` });
+        if (userdb.eco.marry.userId == null) return message.reply({ content: `${message.author}, Você se encontra solteiro(a)! Para se casar utilize o comando: \n**${p}casar**.` });
+        let marryId = userdb.eco.marry.userId;
         message.reply({
-            content: `:broken_heart: | ${member} aceita o **pedido de divorcio** de ${message.author}?`,
+            content: `:broken_heart: ** |** ${message.author} Você realmente quer se divorciar de <@${marryId}>?`,
             components: [
                 new Discord.ActionRowBuilder().addComponents(
                     new Discord.ButtonBuilder()
                         .setCustomId("nomarry")
-                        .setLabel("Sim, aceito")
-                        .setStyle(Discord.ButtonStyle.Danger)
+                        .setLabel("Sim quero divorciar")
+                        .setEmoji("✅")
+                        .setStyle(Discord.ButtonStyle.Primary)
                         .setDisabled(false)
                 )
             ],
@@ -24,9 +26,9 @@ module.exports = {
             coletou.on("collect", async (i) => {
                 await i.deferUpdate();
                 if (i.customId === "nomarry") {
-                    if (i.user.id !== member.user.id) return i.followUp({ content: `Essa decisão não é sua!`, ephemeral: true });
-                    int.edit({ content: `:sob: :ring: | ${i.user} + ${message.author} se divorciarão.`, components: [] });
-                    i.followUp({ content: `:lock: Perdeu acesso ao comando **++gf**.`, ephemeral: true });
+                    if (i.user.id !== member.user.id) return i.followUp({ content: `${i.user}, Essa decisão não é sua!`, ephemeral: true });
+                    int.edit({ content: `:sob: :ring: | ${i.user} + <@${marryId}> se divorciarão!`, components: [] });
+                    i.followUp({ content: `:lock: **|** ${i.user}, Você perdeu acesso ao comando **${p}gf**.`, ephemeral: true });
                     await client.db.updateOne({ _id: i.user.id }, { $set: { "eco.marry.userId": null, }, $pull: { "eco.badges": "MARRY" }, });
                     await client.db.updateOne({ _id: message.author.id }, { $set: { "eco.marry.userId": null, }, $pull: { "eco.badges": "MARRY" }, });
                 }
