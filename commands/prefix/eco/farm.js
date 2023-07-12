@@ -30,32 +30,32 @@ module.exports = {
                                 new Discord.StringSelectMenuOptionBuilder()
                                     .setLabel('Plantar (2x) Batata')
                                     .setEmoji("🚜")
-                                    .setDescription('Plante [2] lotes no custo de 300 euros.')
+                                    .setDescription('Plante [2] lotes no custo de 300 magias.')
                                     .setValue('batata-2-300'),
                                 new Discord.StringSelectMenuOptionBuilder()
                                     .setLabel('Plantar (4x) Batata')
                                     .setEmoji("🚜")
-                                    .setDescription('Plante [4] lotes no custo de 600 euros.')
+                                    .setDescription('Plante [4] lotes no custo de 600 magias.')
                                     .setValue('batata-4-600'),
                                 new Discord.StringSelectMenuOptionBuilder()
                                     .setLabel('Plantar (2x) Trigo')
                                     .setEmoji("🚜")
-                                    .setDescription('Plante [2] lotes no custo de 400 euros.')
+                                    .setDescription('Plante [2] lotes no custo de 400 magias.')
                                     .setValue('trigo-2-400'),
                                 new Discord.StringSelectMenuOptionBuilder()
                                     .setLabel('Plantar (6x) Trigo')
                                     .setEmoji("🚜")
-                                    .setDescription('Plante [6] lotes no custo de 800 euros.')
+                                    .setDescription('Plante [6] lotes no custo de 800 magias.')
                                     .setValue('trigo-6-800'),
                                 new Discord.StringSelectMenuOptionBuilder()
                                     .setLabel('Plantar (2x) Milho')
                                     .setEmoji("🚜")
-                                    .setDescription('Plante [2] lotes no custo de 180 euros.')
+                                    .setDescription('Plante [2] lotes no custo de 180 magias.')
                                     .setValue('milho-2-180'),
                                 new Discord.StringSelectMenuOptionBuilder()
                                     .setLabel('Plantar (5x) Milho')
                                     .setEmoji("🚜")
-                                    .setDescription('Plante [5] lotes no custo de 500 euros.')
+                                    .setDescription('Plante [5] lotes no custo de 500 magias.')
                                     .setValue('milho-5-500'),
                             )
                     )
@@ -72,8 +72,8 @@ module.exports = {
                     let calcular = semente.count + Number(`${x.split("-")[1]}`);
                     if (calcular >= semente.max) return i.followUp({ ephemeral: true, content: `\`[${calcular}/${semente.max}\`] ${i.user}, Você iria passar o limite de seus lotes de ${x.split("-")[0]}! Realize a colheita utilizando o comando:\n**${p}colher**` });
                     if (semente.count >= semente.max) return i.followUp({ ephemeral: true, content: `${i.user}, Você já lotou os seus lote de ${x.split("-")[0]}! Realize a colheita utilizando o comando:\n**${p}colher**` });
-                    if (userdb.eco.coins < x.split("-")[2]) return i.followUp({ ephemeral: true, content: `${i.user}, Você não tem saldo suficiente!` });
-                    int.edit({ content: `<:money:1119274556352385046> **|** ${i.user}, Você plantou **${x.split("-")[1]} lotes** de **${x.split("-")[0]}** em sua fazenda com sucesso! Você gastou **${Number(`${x.split("-")[2]}`)} euros** com a nova plantação.`, embeds: [], components: [] });
+                    if (userdb.eco.coins < x.split("-")[2]) return i.followUp({ ephemeral: true, content: `${i.user}, Você não tem magias suficientes!` });
+                    int.edit({ content: `<:money:1119274556352385046> **|** ${i.user}, Você plantou **${x.split("-")[1]} lotes** de **${x.split("-")[0]}** em sua fazenda com sucesso! Você gastou **${Number(`${x.split("-")[2]}`)} magias** com a nova plantação.`, embeds: [], components: [] });
                     if (x.split("-")[0] === "batata") {
                         let valores = Number(`${x.split("-")[2]}`);
                         let quantias = Number(`${x.split("-")[1]}`);
