@@ -3,11 +3,12 @@ const jobs = require("../../../util/jobs.json");
 module.exports = {
     name: "work",
     aliases: ["trabalhar", "trampo"],
-    run: async (client, message, args) => {
+    run: async (client, message, args, prefix) => {
+        let p = prefix || "ny!";
         const userdb = await client.db.findOne({ _id: message.author.id });
-        if (!userdb) return message.reply({ content: `${message.author}, Você deve se registrar com o comando: \n**ny!registrar**.` });
-        if (Date.now() < userdb.eco.timers.workCooldown) return message.reply({ content: `⏰ **|** ${message.author},Você se encontra em modo de recarga, tente novamente <t:${~~(userdb.eco.timers.workCooldown / 1000)}:R>.` });
-        if (userdb.eco.job == null) return message.reply({ content: `${message.author}, Você não tem um **emprego**! Para ser contratado utilize o comando: \n**ny!empregos**.` })
+        if (!userdb) return message.reply({ content: `${message.author}, Você deve se registrar com o comando: \n**${p}registrar**.` });
+        if (Date.now() < userdb.eco.timers.workCooldown) return message.reply({ content: `⏰ **|** ${message.author}, Você se encontra em modo de recarga, tente novamente <t:${~~(userdb.eco.timers.workCooldown / 1000)}:R>.` });
+        if (userdb.eco.job == null) return message.reply({ content: `${message.author}, Você não tem um **emprego**! Para ser contratado utilize o comando: \n**${p}empregos**.` })
         let coins = Math.floor(Math.random() * 100) + 250;
         message.reply({
             embeds: [
