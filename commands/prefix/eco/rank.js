@@ -8,13 +8,13 @@ module.exports = {
     let content = "";
     for (let i = 0; i <= 5; i++) {
       let user = await client.users.fetch(`${top[i]._id}`);
-      content += `#**${i + 1}**: ${user.username}` + `\n-Saldo: <:Stars:1111647398188564510> \`${top[i].eco.coins} bits\`` + "\n";
+      content += `__${i + 1}__. **${user.username}**` + `\n<:money:1119274556352385046> **Euros**: \`${top[i].eco.coins}\`` + "\n";
     }
     message.reply({
       embeds: [
         new Discord.EmbedBuilder()
-          .setAuthor({ name: `${message.author.tag}`, iconURL: `${message.author.displayAvatarURL({ dynamic: true })}` })
-          .setTitle("⭐ Top mais rico dos Bits!")
+          .setAuthor({ name: `${message.author.username}`, iconURL: `${message.author.displayAvatarURL({ dynamic: true })}` })
+          .setTitle("⭐ Ranking do mais ricos!")
           .setDescription(`${content}`)
           .setColor("#303136")
           .setTimestamp()
