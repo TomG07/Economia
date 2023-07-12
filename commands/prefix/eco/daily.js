@@ -1,4 +1,5 @@
 const Discord = require("discord.js");
+const abreviar = require("../../../util/abrev");
 module.exports = {
     name: "daily",
     aliases: ["coletar", "caxinha"],
@@ -12,7 +13,7 @@ module.exports = {
             embeds: [
                 new Discord.EmbedBuilder()
                     .setTitle("Daily!")
-                    .setDescription(`<:money:1119274556352385046> **|** ${message.author}, ganhou **${coins} euros** + ⭐ '1XP!' de experiência na sua recompensa diária.`)
+                    .setDescription(`<:money:1119274556352385046> **|** ${message.author}, ganhou **${abreviar(coins)} euros** + ⭐ '1XP!' de experiência na sua recompensa diária.`)
                     .setColor("#303136")
                     .setFooter({ text: `${message.author.username}`, iconURL: `${message.author.displayAvatarURL()}` })
             ],

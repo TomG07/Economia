@@ -1,4 +1,5 @@
 const Discord = require("discord.js");
+const abreviar = require("../../../util/abrev");
 module.exports = {
   name: "pay",
   aliases: ["pagar", "transferir"],
@@ -46,10 +47,4 @@ module.exports = {
       });
     });
   }
-}
-function abreviar(number, precision = 2) {
-  return number.toLocaleString("en-US", {
-    notation: "compact",
-    maximumFractionDigits: precision,
-  });
 }

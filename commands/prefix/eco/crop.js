@@ -1,5 +1,6 @@
 const Discord = require("discord.js");
 const ms = require("../../../util/ms");
+const abreviar = require("../../../util/abrev");
 const Canvas = require("canvas");
 Canvas.registerFont("assets/fonts/SourceCodePro-VariableFont_wght.ttf", { family: "Source Code Pro", });
 Canvas.registerFont("assets/fonts/Rubik-VariableFont_wght.ttf", { family: "Rubik", });
@@ -90,7 +91,7 @@ module.exports = {
                     let size = userdb.eco.farm.seeds.batata.count;
                     if (size <= 0) return;
                     const balanceBatata = Math.floor(size * 320);
-                    int.edit({ content: `<:luana_semente:1118672573572583578> **|** ${i.user}, Você colheu **${size} batatas** da sua fazenda com sucesso e recebeu **${balanceBatata} euros**.`, components: [], files: [] });
+                    int.edit({ content: `<:luana_semente:1118672573572583578> **|** ${i.user}, Você colheu **${size} batatas** da sua fazenda com sucesso e recebeu **${abreviar(balanceBatata)} euros**.`, components: [], files: [] });
                     await client.db.updateOne({ _id: i.user.id }, { $inc: { "eco.coins": 2, "eco.farm.seeds.batata.count": -size, }, });
                 } else if (i.customId === "wgettrigo") {
                     coletou.stop();
@@ -99,7 +100,7 @@ module.exports = {
                     let size = userdb.eco.farm.seeds.trigo.count;
                     if (size <= 0) return;
                     const balanceTrigo = Math.floor(size * 280);
-                    int.edit({ content: `<:luana_semente:1118672573572583578> **|** ${i.user}, Você colheu **${size} trigos** da sua fazenda com sucesso e recebeu **${balanceTrigo} euros**.`, components: [], files: [] });
+                    int.edit({ content: `<:luana_semente:1118672573572583578> **|** ${i.user}, Você colheu **${size} trigos** da sua fazenda com sucesso e recebeu **${abreviar(balanceTrigo)} euros**.`, components: [], files: [] });
                     await client.db.updateOne({ _id: i.user.id }, { $inc: { "eco.coins": 2, "eco.farm.seeds.trigo.count": -size, }, });
                 } else if (i.customId === "wgetmilho") {
                     coletou.stop();
@@ -108,11 +109,11 @@ module.exports = {
                     let size = userdb.eco.farm.seeds.milho.count;
                     if (size <= 0) return;
                     const balanceMilho = Math.floor(size * 320);
-                    int.edit({ content: `<:luana_semente:1118672573572583578> **|** ${i.user}, Você colheu **${size} milhos** da sua fazenda com sucesso e recebeu **${balanceMilho} euros**.`, components: [], files: [] });
+                    int.edit({ content: `<:luana_semente:1118672573572583578> **|** ${i.user}, Você colheu **${size} milhos** da sua fazenda com sucesso e recebeu **${abreviar(balanceMilho)} euros**.`, components: [], files: [] });
                     await client.db.updateOne({ _id: i.user.id }, { $inc: { "eco.coins": 2, "eco.farm.seeds.milho.count": -size, }, });
                 }
             });
         });
     }
 }
-//aa 
+//aa
