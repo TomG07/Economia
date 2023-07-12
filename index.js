@@ -18,6 +18,7 @@ statusdb.on("open", () => {
     console.log("📚 | Conectada ao banco de dados com sucesso.");
 });
 client.db = require("./database/users/players");
+client.server = require("./database/guild/guilds");
 client.commands = new Discord.Collection();
 client.slashCommands = new Discord.Collection();
 client.aliases = new Discord.Collection();
