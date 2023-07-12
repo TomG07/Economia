@@ -33,7 +33,7 @@ module.exports = {
     if (list.length >= 1) {
       list = list.join(",")
         .replace("DEV", "<:developeractivo:1104003870180528179>")
-        .replace("MARRY", "<:anel:1119285525984063509>)
+        .replace("MARRY", "<:anel:1119285525984063509>")
         .replace("STAFF", "<:Staff:1107072021231317193>")
         .replace("HYPE", "<:cookies_cookie:1117568133574705184>")
         .replace("APOIADOR", "<:Police:1128771766702051408>");
