@@ -4,8 +4,8 @@ module.exports = {
     aliases: ["saldo", "carteira", "diamantes", "bal"],
     run: async (client, message, args) => {
         await message.channel.sendTyping();
-        let member = message.mentions.members.first() || message.member;
-        const userdb = await client.db.findById({ _id: member.user.id });
+        let member = message.mentions.members.first() || message.guild.members.cache.find(member => member.user.id === args[0]) || message.member;
+        const userdb = await client.db.findOne({ _id: member.user.id });
         if (!userdb) return message.reply({ content: `${message.author.id !== member.user.id ? `${message.author}, Esse jogador **__${member.user.username}__**` : `${message.author}, Você`} deve fazer o registro com o comando:\n**ny!registrar**.` })
         let coins = 0;//userdb.profile.coins;
         let xp = 0;
