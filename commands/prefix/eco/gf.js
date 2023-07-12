@@ -13,7 +13,7 @@ module.exports = {
             embeds: [
                 new Discord.EmbedBuilder()
                     .setTitle("Sapequinha..!")
-                    .setDescription(`<:Magia:1128792494377803926> **|** ${message.author}, ganhou **${coins} magias** + ⭐ '1XP!' de experiência ao fazer **GF** com <@${userdb.eco.marry.userId}>.`)
+                    .setDescription(`${message.author}, ganhou **<:Potion:1128800422220546168> ${coins} magias** + ⭐ '1XP!' de experiência ao fazer **GF** com <@${userdb.eco.marry.userId}>.`)
                     .setColor("#2a2d30")
                     .setFooter({ text: `${message.author.username}`, iconURL: `${message.author.displayAvatarURL()}` })
             ],
