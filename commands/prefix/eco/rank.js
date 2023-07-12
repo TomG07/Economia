@@ -8,7 +8,7 @@ module.exports = {
     let content = "";
     for (let i = 0; i <= 5; i++) {
       let user = await client.users.fetch(`${top[i]._id}`);
-      content += `__${i + 1}__. **${user.username}**` + `\n<:Magia:1128792494377803926> **Magias**: \`${top[i].eco.coins}\`` + "\n";
+      content += `__${i + 1}__. **${user.username}**` + `\n<:Potion:1128800422220546168> **Magias**: \`${top[i].eco.coins}\`` + "\n";
     }
     message.reply({
       embeds: [
