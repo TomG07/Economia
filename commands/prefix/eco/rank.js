@@ -8,7 +8,7 @@ module.exports = {
     let content = "";
     for (let i = 0; i <= 5; i++) {
       let user = await client.users.fetch(`${top[i]._id}`);
-      content += `__${i + 1}__. **${user.username}**` + `\n<:money:1119274556352385046> **Magias**: \`${top[i].eco.coins}\`` + "\n";
+      content += `__${i + 1}__. **${user.username}**` + `\n<:Magia:1128792494377803926> **Magias**: \`${top[i].eco.coins}\`` + "\n";
     }
     message.reply({
       embeds: [
@@ -16,7 +16,7 @@ module.exports = {
           .setAuthor({ name: `${message.author.username}`, iconURL: `${message.author.displayAvatarURL({ dynamic: true })}` })
           .setTitle("⭐ Ranking do mais ricos!")
           .setDescription(`${content}`)
-          .setColor("#303136")
+          .setColor("#2a2d30")
           .setTimestamp()
       ]
     });
