@@ -13,7 +13,7 @@ module.exports = {
             embeds: [
                 new Discord.EmbedBuilder()
                     .setTitle("Daily!")
-                    .setDescription(`<:Magia:1128792494377803926> **|** ${message.author}, ganhou **${abreviar(coins)} magias** + ⭐ '1XP!' de experiência na sua recompensa diária.`)
+                    .setDescription(`${message.author}, ganhou **<:Potion:1128800422220546168> ${abreviar(coins)} magias** + ⭐ '1XP!' de experiência na sua recompensa diária.`)
                     .setColor("#2a2d30")
                     .setFooter({ text: `${message.author.username}`, iconURL: `${message.author.displayAvatarURL()}` })
             ],
