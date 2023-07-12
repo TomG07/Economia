@@ -2,9 +2,7 @@ const Discord = require("discord.js");
 module.exports = {
     name: "botinfo",
     aliases: ["info"],
-    run: async (client, message, args) => {
-        let dataGuild = (await client.server.findOne({ guildId: message.guild.id })) || { config: { prefix: "ny!" } };
-        let prefix = dataGuild.config.prefix;
+    run: async (client, message, args, prefix) => {
         let user = await client.users.fetch("1027989059198537728");
         message.reply({
             embeds: [
