@@ -26,11 +26,11 @@ module.exports = {
             coletou.on("collect", async (i) => {
                 await i.deferUpdate();
                 if (i.customId === "nomarry") {
-                    if (i.user.id !== member.user.id) return i.followUp({ content: `${i.user}, Essa decisão não é sua!`, ephemeral: true });
+                    if (i.user.id !== message.author.id) return i.followUp({ content: `${i.user}, Essa decisão não é sua!`, ephemeral: true });
                     int.edit({ content: `:sob: :ring: | ${i.user} + <@${marryId}> se divorciarão!`, components: [] });
                     i.followUp({ content: `:lock: **|** ${i.user}, Você perdeu acesso ao comando **${p}gf**.`, ephemeral: true });
                     await client.db.updateOne({ _id: i.user.id }, { $set: { "eco.marry.userId": null, }, $pull: { "eco.badges": "MARRY" }, });
-                    await client.db.updateOne({ _id: message.author.id }, { $set: { "eco.marry.userId": null, }, $pull: { "eco.badges": "MARRY" }, });
+                    await client.db.updateOne({ _id: marryId }, { $set: { "eco.marry.userId": null, }, $pull: { "eco.badges": "MARRY" }, });
                 }
             });
         });
