@@ -4,7 +4,7 @@ module.exports = {
     aliases: ["info"],
     run: async (client, message, args) => {
         let dataGuild = (await client.server.findOne({ guildId: message.guild.id })) || { config: { prefix: "ny!" } };
-        let db = dataGuild.config.prefix;
+        let prefix = dataGuild.config.prefix;
         let user = await client.users.fetch("1027989059198537728");
         message.reply({
             embeds: [
@@ -23,7 +23,7 @@ module.exports = {
                         value: "<:djs:1128352183981719582> `Discord.js`"
                     }, {
                         name: "Prefixo da Bot:",
-                        value: `\`${db.config.prefix}\``
+                        value: `\`${prefix}\``
                     }, {
                         name: "Total de Comandos:",
                         value: `${client.commands.size}`
