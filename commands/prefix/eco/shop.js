@@ -2,9 +2,10 @@ const Discord = require("discord.js");
 module.exports = {
     name: "shop",
     aliases: ["loja", "mercado"],
-    run: async (client, message, args) => {
-        const userdb = await client.db.findById({ _id: message.author.id });
-        if (!userdb) return message.reply({ content: `Você não utilizou o comando: \n**a.registrar**.` });
+    run: async (client, message, args, prefix) => {
+        let p = prefix || "ny!";
+        const userdb = await client.db.findOne({ _id: message.author.id });
+        if (!userdb) return message.reply({ content: `${message.author}, Você deve se registrar com o comando: \n**${p}registrar**.` });
         message.reply({
             embeds: [
                 new Discord.EmbedBuilder()
