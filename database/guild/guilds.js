@@ -5,4 +5,4 @@ const documentSave = new Schema({
        prefix: { type: String, default: "ny!" },
      },
 });
-module.exports = model("dbuser", documentSave);
+module.exports = model("dataservers", documentSave);
