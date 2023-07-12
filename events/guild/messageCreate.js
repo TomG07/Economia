@@ -4,7 +4,7 @@ module.exports = {
     name: Discord.Events.MessageCreate,
     once: false,
     async execute(message) {
-       // if (!message.guild) return;
+        // if (!message.guild) return;
         if (message.author.bot) return;
         // if (message.guild.id !== "1102036342172553226") return;
         if (message.channel.type == Discord.ChannelType.DM) return;
