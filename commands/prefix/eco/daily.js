@@ -14,7 +14,7 @@ module.exports = {
                 new Discord.EmbedBuilder()
                     .setTitle("Daily!")
                     .setDescription(`<:Magia:1128792494377803926> **|** ${message.author}, ganhou **${abreviar(coins)} magias** + ⭐ '1XP!' de experiência na sua recompensa diária.`)
-                    .setColor("#303136")
+                    .setColor("#2a2d30")
                     .setFooter({ text: `${message.author.username}`, iconURL: `${message.author.displayAvatarURL()}` })
             ],
             components: [
