@@ -19,7 +19,7 @@ module.exports = {
         if (!command) command = client.commands.get(client.aliases.get(cmd));
         if (!command) return;
         try {
-            command.run(client, message, args)
+            command.run(client, message, args, prefix)
         } catch (err) {
             console.error('Erro:' + err);
         }
