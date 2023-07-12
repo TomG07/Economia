@@ -16,6 +16,10 @@ module.exports = {
     //avatar
     const avatar = await Canvas.loadImage(member.user.displayAvatarURL({ extension: 'jpg', size: 4096 }));
     context.drawImage(avatar, 10, 274, 190, 190);
+    // fundo
+    let bg = "https://media.discordapp.net/attachments/1113783795942961205/1128775403327193220/pxfuel.jpg";
+    const fundo = await Canvas.loadImage(bg);
+    context.drawImage(fundo, 192, 0, 608, 377);
     // template
     const template = await Canvas.loadImage("https://media.discordapp.net/attachments/1113783795942961206/1128767691067494501/1689189559756.png");
     context.drawImage(template, 0, 0, canvas.width, canvas.height);
