@@ -21,10 +21,10 @@ module.exports = {
                     .setColor("#303136")
                     .addFields({
                         name: "<:money:1119274556352385046> Carteira:",
-                        value: `${userdb.eco.coins > 1 ? `**${abreviar(userdb.eco.coins)}** euros.` : "Vazia!"}`
+                        value: `${userdb.eco.coins > 1 ? `**${abreviar(userdb.eco.coins)}** euro(s).` : "Vazia!"}`
                     }, {
                         name: ":star: Reputações:",
-                        value: `${userdb.eco.reps > 1 ? `${abreviar(userdb.eco.reps)}` : "Nenhuma!"}`
+                        value: `${userdb.eco.reps > 1 ? `${abreviar(userdb.eco.reps)} rep(s).` : "Nenhuma!"}`
                     }, {
                         name: "<:cards:1119298011105857641> Posição no Ranking:",
                         value: `#️⃣${numberToEmojis(seachUserRankPosition)}`
