@@ -4,7 +4,7 @@ module.exports = {
    aliases: ["recargas", "tempos", "intervalos", "tempo"],
    run: async (client, message, args, prefix) => {
       let p = prefix || "ny!";
-      const userdb = await client.db.findOne({ _id: message.author.id });
+      const userdb = await client.db.findOne({ userId: `${message.guild.id}-${message.author.id}` });
       if (!userdb) return message.reply({ content: `${message.author}, Você deve se registrar com o comando: \n**${p}registrar**.` });
       let timers = userdb.eco.timers;
       message.reply({
