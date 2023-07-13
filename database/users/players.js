@@ -1,6 +1,6 @@
 const { Schema, model } = require("mongoose");
 const documentSave = new Schema({
-    _id: { type: String },
+    userId: { type: String },
     eco: {
         coins: { type: Number, default: 0 },
         xp: { type: Number, default: 0 },
