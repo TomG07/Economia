@@ -10,7 +10,7 @@ module.exports = {
       message.reply({
          embeds: [
             new Discord.EmbedBuilder()
-               .setTitle("Intervalos!")
+               .setTitle("Veja os seus intervalos!")
                .setThumbnail(message.author.displayAvatarURL({ dunamic: true }))
                .setTimestamp()
                .setColor("#303136")
