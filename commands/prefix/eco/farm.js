@@ -77,15 +77,15 @@ module.exports = {
                     if (x.split("-")[0] === "batata") {
                         let valores = Number(`${x.split("-")[2]}`);
                         let quantias = Number(`${x.split("-")[1]}`);
-                        await client.db.updateOne({ _id: message.author.id }, { $inc: { "eco.coins": -valores, "eco.farm.seeds.batata.count": quantias, }, $set: { "eco.farm.seeds.batata.cooldown": Date.now() + 7200000, } });
+                        await client.db.updateOne({ userId: `${message.guild.id}-${message.author.id}` }, { $inc: { "eco.coins": -valores, "eco.farm.seeds.batata.count": quantias, }, $set: { "eco.farm.seeds.batata.cooldown": Date.now() + 7200000, } });
                     } else if (x.split("-")[0] === "trigo") {
                         let valores = Number(`${x.split("-")[2]}`);
                         let quantias = Number(`${x.split("-")[1]}`);
-                        await client.db.updateOne({ _id: message.author.id }, { $inc: { "eco.coins": -valores, "eco.farm.seeds.trigo.count": quantias, }, $set: { "eco.farm.seeds.trigo.cooldown": Date.now() + 7200000, } });
+                        await client.db.updateOne({ userId: `${message.guild.id}-${message.author.id}` }, { $inc: { "eco.coins": -valores, "eco.farm.seeds.trigo.count": quantias, }, $set: { "eco.farm.seeds.trigo.cooldown": Date.now() + 7200000, } });
                     } else if (x.split("-")[0] === "milho") {
                         let valores = Number(`${x.split("-")[2]}`);
                         let quantias = Number(`${x.split("-")[1]}`);
-                        await client.db.updateOne({ _id: message.author.id }, { $inc: { "eco.coins": -valores, "eco.farm.seeds.milho.count": quantias, }, $set: { "eco.farm.seeds.milho.cooldown": Date.now() + 7200000, } });
+                        await client.db.updateOne({ userId: `${message.guild.id}-${message.author.id}` }, { $inc: { "eco.coins": -valores, "eco.farm.seeds.milho.count": quantias, }, $set: { "eco.farm.seeds.milho.cooldown": Date.now() + 7200000, } });
                     }
                 }
             });
