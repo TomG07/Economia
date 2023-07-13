@@ -38,8 +38,8 @@ module.exports = {
       list = list.join(",")
         .replace("DEV", "<:developeractivo:1104003870180528179>")
         .replace("MARRY", "<:anel:1119285525984063509>")
-        .replace("STAFF", "<:Police:1128771766702051408>")
-        .replace("HYPE", "<:cookies_cookie:1117568133574705184>")
+        .replace("STAFF", "<:Inventario:1128316648223412284>")
+        .replace("HYPE", "<:Police:1128771766702051408>")
         .replace("PREMIUM", "<:Premium:1128773466980630538>");
       context.font = '500 30px "Rubik"';
       await fillTextWithTwemoji(context, list.split(",").join(" "), 223, 438);
