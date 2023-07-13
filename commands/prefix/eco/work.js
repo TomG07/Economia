@@ -29,6 +29,6 @@ module.exports = {
                 )
             ]
         });
-        await client.db.updateOne({ _id: message.author.id }, { $inc: { "eco.coins": coins, "eco.xp": 1, }, $set: { "eco.timers.workCooldown": Date.now() + 3600000, }, });
+        await client.db.updateOne({ userId: `${message.guild.id}-${message.author.id}` }, { $inc: { "eco.coins": coins, "eco.xp": 1, }, $set: { "eco.timers.workCooldown": Date.now() + 3600000, }, });
     }
 }
