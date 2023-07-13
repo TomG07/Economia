@@ -9,9 +9,9 @@ module.exports = {
     if (!member) return message.reply({ content: `${message.author}, Você deve mencionar o usuário que vai receber o pagamento.` });
     if (member.user.bot) return message.reply({ content: `${message.author}, Os bots não recebem pagamentos.` });
     if (member.user.id === message.author.id) return message.reply({ content: `${message.author}, Você não pode pagar a si mesmo.` });
-    const userdb = await client.db.findOne({ _id: message.author.id });
+    const userdb = await client.db.findOne({ userId: `${message.guild.id}-${message.author.id}` });
     if (!userdb) return message.reply({ content: `${message.author}, Você deve se registrar com o comando: \n**${p}registrar**.` });
-    const twouserdb = await client.db.findOne({ _id: member.user.id });
+    const twouserdb = await client.db.findOne({ userId: `${message.guild.id}-${member.user.id}` });
     if (!twouserdb) return message.reply({ content: `${message.author}, Esse jogador **__${member.user.username}__** deve fazer o registro com o comando:\n**${p}registrar**.` })
     let value = args.slice(1).join(" ");
     if (!value) return message.reply({ content: `${message.author}, Você não informou a quantia do pagamento!` });
@@ -41,8 +41,8 @@ module.exports = {
           if (!checar) return message.reply({ content: `${i.user}, Você não utilizou o \n**ny!registrar**.` });
           if (checar.eco.coins < value) return message.reply({ content: `${i.user}, Você não tem saldo suficiente!` });
           int.edit({ content: `<:money:1119274556352385046> **|** ${i.user} aceitou a transferência de **${abreviar(value)} magias** de ${message.author}.`, components: [] });
-          await client.db.updateOne({ _id: i.user.id }, { $inc: { "eco.coins": value, }, });
-          await client.db.updateOne({ _id: message.author.id }, { $inc: { "eco.coins": -value, }, });
+          await client.db.updateOne({ userId: `${i.guild.id}-${i.user.id}` }, { $inc: { "eco.coins": value, }, });
+          await client.db.updateOne({ userId: `${i.guild.id}-${message.author.id}` }, { $inc: { "eco.coins": -value, }, });
         }
       });
     });
