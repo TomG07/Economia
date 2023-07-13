@@ -6,6 +6,6 @@ module.exports = {
     async execute(member) {
       const data = await client.db.findOne({ userId: `${member.guild.id}-${member.user.id}` });
       if (!data) return;
-      //await client.db
+      await client.db.findOneAndDelete({ userId: `${member.guild.id}-${member.user.id}` });
     }
 }
