@@ -3,7 +3,7 @@ const jobs = require("../../../util/jobs.json");
 module.exports = {
     name: "jobs",
     aliases: ["empregos"],
-    run: async (client, message, args, prrfix) => {
+    run: async (client, message, args, prefix) => {
         await message.channel.sendTyping();
         let p = prefix || "ny!";
         const userdb = await client.db.findById({ _id: message.author.id });
