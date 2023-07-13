@@ -34,13 +34,15 @@ module.exports = {
     if (member.user.id === "1027989059198537728" || member.user.id === "461618792464646145") list.push("PREMIUM");
     if (userdb.eco.marry.userId !== null) list.push("MARRY");
     if (userdb.eco.job !== null) list.push("STAFF");
+    if (userdb.eco.farm.owner === true) list.push("FARM");
     if (list.length >= 1) {
       list = list.join(",")
         .replace("DEV", "<:developeractivo:1104003870180528179>")
         .replace("MARRY", "<:anel:1119285525984063509>")
         .replace("STAFF", "<:Inventario:1128316648223412284>")
         .replace("HYPE", "<:Police:1128771766702051408>")
-        .replace("PREMIUM", "<:Premium:1128773466980630538>");
+        .replace("PREMIUM", "<:Premium:1128773466980630538>")
+        .replace("FARM", "<:Fazenda:1118670191509913780>");
       context.font = '500 30px "Rubik"';
       await fillTextWithTwemoji(context, list.split(",").join(" "), 223, 438);
     }
