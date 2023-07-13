@@ -13,7 +13,7 @@ module.exports = {
                         name: "💰 Economia | Geral:",
                         value: "`daily`, `gf`, `trabalhar`, `pagar`, `fazenda` , `colher`, `loja`, `rep`"
                     }, {
-                        name: "💰 Economia | Social",
+                        name: "👥 Economia | Social",
                         value: "`saldo`, `cd`, `perfil`,  `empregos`, `emblemas`, `casar`, `divorciar`, `top`"
                     }, {
                         name: "📚 Utilidades | Infos:",
