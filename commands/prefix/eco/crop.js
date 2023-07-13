@@ -10,7 +10,7 @@ module.exports = {
     aliases: ["colher", "safra"],
     run: async (client, message, args, prefix) => {
         let p = prefix || "ny!";
-        const userdb = await client.db.findOne({ _id: message.author.id });
+        const userdb = await client.db.findOne({ userId: `${message.guild.id}-${message.author.id}` });
         if (!userdb) return message.reply({ content: `${message.author}, Você deve se registrar com o comando: \n**${p}registrar**.` });
         if (userdb.eco.farm.owner !== true) return message.reply({ content: `${message.author}, Você não tem uma fazenda! Compre utilizando o comando: \n**${p}loja**.` });
         let timestampBatata = "Lote vazio!";
