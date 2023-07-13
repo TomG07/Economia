@@ -30,11 +30,14 @@ module.exports = {
                         name: "📊 Posição no Ranking:",
                         value: `#️⃣${numberToEmojis(seachUserRankPosition)}`
                     }, {
-                        name: "<:Emoji_GraficoSubiu:1116338129377448016> Experiência:",
-                        value: `**${userdb.eco.xp}**XP!`
+                        name: "⚡ Experiência:",
+                        value: `__**${userdb.eco.xp}**XP__!`
                     }, {
                         name: "💍 Estado Civil:",
                         value: `${userdb.eco.marry.userId ? `Casado(a) com <@${userdb.eco.marry.userId}> <t:${~~(userdb.eco.marry.marryDate / 1000)}:R>.` : "Solteiro(a)"}`
+                    }, {
+                        name: "✏ Editor do Servidor:",
+                        value: `${userdb.guild.editor ? "Sim" : "Não"}`
                     })
             ]
         });
