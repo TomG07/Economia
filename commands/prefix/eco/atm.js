@@ -27,13 +27,13 @@ module.exports = {
                         name: ":star: Reputações:",
                         value: `${userdb.eco.reps >= 1 ? `${abreviar(userdb.eco.reps)} rep(s).` : "Nenhuma!"}`
                     }, {
-                        name: "<:cards:1119298011105857641> Posição no Ranking:",
+                        name: "📊 Posição no Ranking:",
                         value: `#️⃣${numberToEmojis(seachUserRankPosition)}`
                     }, {
                         name: "<:Emoji_GraficoSubiu:1116338129377448016> Experiência:",
                         value: `**${userdb.eco.xp}**XP!`
                     }, {
-                        name: "<:marryme:1118146499700850709> Estado Civil:",
+                        name: "💍 Estado Civil:",
                         value: `${userdb.eco.marry.userId ? `Casado(a) com <@${userdb.eco.marry.userId}> <t:${~~(userdb.eco.marry.marryDate / 1000)}:R>.` : "Solteiro(a)"}`
                     })
             ]
