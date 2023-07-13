@@ -48,10 +48,10 @@ module.exports = {
                     if (userdb.eco.xp < x.split("-")[1]) return i.followUp({ content: `${i.user}, Você não tem **${x.split("-")[1]} de experiêcia**! Continue realizando suas tarefas para conseguir mais xp.`, ephemeral: true });
                     if (userdb.eco.job === x.split("-")[0]) return i.followUp({ content: `${i.user}, Você já se encontra nesse emprego!`, ephemeral: true });
                     if (userdb.eco.job !== null) {
-                        await client.db.updateOne({ _id: i.user.id }, { $set: { "eco.job": x.split("-")[0], }, });
+                        await client.db.updateOne({ userId: `${i.guild.id}-${i.user.id}` }, { $set: { "eco.job": x.split("-")[0], }, });
                         i.followUp({ content: `${i.user}, Você foi contradado como **${x.split("-")[0]}** e agora seu salário é de **${x.split("-")[2]} magias.**`, ephemeral: false });
                     } else {
-                        await client.db.updateOne({ _id: i.user.id }, { $set: { "eco.job": x.split("-")[0], }, $push: { "eco.badges": "STAFF", }, });
+                        await client.db.updateOne({ userId: `${i.guild.id}-${i.user.id}` }, { $set: { "eco.job": x.split("-")[0], }, $push: { "eco.badges": "STAFF", }, });
                         i.followUp({ content: `${i.user}, Você foi contradado como **${x.split("-")[0]}** e agora seu salário é de **${x.split("-")[2]} magias** e você resgatou um novo emblema (<:Inventario:1128316648223412284>) em seu perfil! Veja utilizando o comando:\n\`${p}perfil\``, ephemeral: false });
                     }
                 }
