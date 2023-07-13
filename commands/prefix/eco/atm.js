@@ -6,7 +6,7 @@ module.exports = {
         await message.channel.sendTyping();
         let p = prefix || "ny!";
         let member = message.mentions.members.first() || message.guild.members.cache.find(member => member.user.id === args[0]) || message.member;
-        const userdb = await client.db.findOne({ _id: member.user.id });
+        const userdb = await client.db.findOne({ userId: `${message.guild.id}-${member.user.id}` });
         if (!userdb) return message.reply({ content: `${message.author.id !== member.user.id ? `${message.author}, Esse jogador **__${member.user.username}__**` : `${message.author}, Você`} deve fazer o registro com o comando:\n**${p}registrar**.` })
         let coins = 0;//userdb.profile.coins;
         let xp = 0;
