@@ -14,7 +14,7 @@ module.exports = {
     if (!userdb) return message.reply({ content: `${message.author.id !== member.user.id ? `${message.author}, Esse jogador **__${member.user.username}__**` : `${message.author}, Você`} deve fazer o registro com o comando:\n**${p}registrar**.` })
     let quantia = args[0]; // para facilitarmos e não ficar usando args[0]
     if (!quantia) return message.reply({ content: `${message.author}, Digite uma quantia para ser retirada!` }); // caso o usuário não escreva um número  
-    if (isNaN(quantia)) return message.reply({ content: `${message.author}, Você não definiu uma quantia válida.` });  // Se o usuario não colocar um numero ele tornará esta mensagem
+    if (isNaN(quantia)) return message.reply({ content: `${message.author}, Você não definiu uma quantia válida! Exemplo: ${p}removermagias \`valor\` \`@user\`.` });  // Se o usuario não colocar um numero ele tornará esta mensagem
     let soma = Math.floor(userdb.eco.coins - valor);
     if (quantia < 1 || soma < 1) return message.reply({ content: `${message.author}, Valor inválido por ser menor que um ou negativar o jogador!` });
     message.reply({ content: `✅ **|** ${message.author}, Você editou os valores pra "**__${member.user.username}__**" com sucesso.` });
