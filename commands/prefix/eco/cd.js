@@ -1,7 +1,7 @@
 const Discord = require("discord.js");
 module.exports = {
    name: "cd",
-   aliases: ["recargas", "tempos", "intervalos", "tempo"],
+   aliases: ["recargas", "tempos", "intervalos", "tempo", "cooldowns"],
    run: async (client, message, args, prefix) => {
       let p = prefix || "ny!";
       const userdb = await client.db.findOne({ userId: `${message.guild.id}-${message.author.id}` });
@@ -14,7 +14,7 @@ module.exports = {
                .setThumbnail(message.author.displayAvatarURL({ dunamic: true }))
                .setTimestamp()
                .setColor("#303136")
-               .setDescription(`- **Daily**: ${Date.now() < timers.dailyCooldown ? `⚡ | <t:${~~(timers.dailyCooldown / 1000)}:R>` : "✅ | __Colete agora__!"}\n- **Work**: ${Date.now() < timers.workCooldown ? `⚡ | <t:${~~(timers.workCooldown / 1000)}:R>` : "✅ | __Colete agora__!"}\n- **GF**: ${Date.now() < timers.gfCooldown ? `⚡ | <t:${~~(timers.gfCooldown / 1000)}:R>` : "✅ | __Colete agora__!"}\n- **Rep**: ${Date.now() < timers.repCooldown ? `⚡ | <t:${~~(timers.repCooldown / 1000)}:R>` : "✅ | __Colete agora__!"}`)
+               .setDescription(`- **Daily**: ${Date.now() < timers.dailyCooldown ? `⚡ | <t:${~~(timers.dailyCooldown / 1000)}:R>` : "✅ | __Colete agora__!"}\n- **Work**: ${Date.now() < timers.workCooldown ? `⚡ | <t:${~~(timers.workCooldown / 1000)}:R>` : "✅ | __Colete agora__!"}\n- **sapecar**: ${Date.now() < timers.gfCooldown ? `⚡ | <t:${~~(timers.gfCooldown / 1000)}:R>` : "✅ | __Colete agora__!"}\n- **Rep**: ${Date.now() < timers.repCooldown ? `⚡ | <t:${~~(timers.repCooldown / 1000)}:R>` : "✅ | __Colete agora__!"}`)
          ]
       });
    }
