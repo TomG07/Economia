@@ -17,5 +17,6 @@ module.exports = {
     if (isNaN(quantia)) return message.reply({ content: `${message.author}, Você não definiu uma quantia válida! Exemplo: ${p}addmagias \`valor\` \`@user\`.` });  // Se o usuario não colocar um numero ele tornará esta mensagem
     if (quantia < 1 || quantia > 99999999999) return message.reply({ content: `${message.author}, Valor inválido por ser menor que um ou infinito!` });
     message.reply({ content: `✅ **|** ${message.author}, Você editou os valores pra "**__${member.user.username}__**" com sucesso.` });
+    await client.db.updateOne({ userId: member.user.id }, { $inc: { "eco.coins": quantia }, });
   }
 }
