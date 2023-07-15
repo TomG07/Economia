@@ -21,7 +21,7 @@ module.exports = {
     const fundo = await Canvas.loadImage(bg);
     context.drawImage(fundo, 192, 0, 608, 377);
     // template
-    const template = await Canvas.loadImage("https://media.discordapp.net/attachments/1113783795942961205/1128800236366745752/1689197333549.png");
+    const template = await Canvas.loadImage("https://media.discordapp.net/attachments/1113783795942961208/1129779440151449752/1689430774478.png");
     context.drawImage(template, 0, 0, canvas.width, canvas.height);
     //name
     context.font = '500 34px "RobotoCondensed-Bold"';
