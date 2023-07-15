@@ -1,7 +1,7 @@
 const Discord = require("discord.js");
 const Canvas = require("canvas");
 Canvas.registerFont("assets/fonts/SourceCodePro-VariableFont_wght.ttf", { family: "Source Code Pro", });
-Canvas.registerFont("assets/fonts/Rubik-VariableFont_wght.ttf", { family: "Rubik", });
+Canvas.registerFont("assets/fonts/RobotoCondensed-Bold.ttf", { family: "Rubik", });
 const { fillTextWithTwemoji } = require("node-canvas-with-twemoji-and-discord-emoji")
 module.exports = {
   name: "profile",
@@ -24,8 +24,8 @@ module.exports = {
     const template = await Canvas.loadImage("https://media.discordapp.net/attachments/1113783795942961205/1128800236366745752/1689197333549.png");
     context.drawImage(template, 0, 0, canvas.width, canvas.height);
     //name
-    context.font = '500 34px "Rubik"';
-    context.fillStyle = "#ffffff";
+    context.font = '500 34px "RobotoCondensed-Bold"';
+    context.fillStyle = "#000000";
     context.fillText(member.user.username, 220, 401);
     //badges
     let list = [];
@@ -49,16 +49,16 @@ module.exports = {
       await fillTextWithTwemoji(context, list.split(",").join(" "), 223, 438);
     }
     //coins
-    context.font = '400 25px "Rubik"';
-    context.fillStyle = "#ffffff";
+    context.font = '500 25px "RobotoCondensed-Bold"';
+    context.fillStyle = "#292929";
     await fillTextWithTwemoji(context, `${abreviar(userdb.eco.coins)} magias.`, 518, 497);
     // reps
-    context.font = '400 25px "Rubik"';
-    context.fillStyle = "#ffe4e1";
+    context.font = '500 25px "RobotoCondensed-Bold"';
+    context.fillStyle = "#ff6f9c";
     await fillTextWithTwemoji(context, `${userdb.eco.reps} reps.`, 555, 560);
     //about
-    context.font = '500 23px "Rubik"';
-    context.fillStyle = "#ffffff";
+    context.font = '500 23px "RobotoCondensed-Bold"';
+    context.fillStyle = "#292929";
     context.fillText("Um mundo perfeito e divertido!", 15, 510);
     //attachment  
     const attachment = new Discord.AttachmentBuilder(canvas.toBuffer(), { name: "profile.png" });
