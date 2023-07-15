@@ -62,7 +62,7 @@ module.exports = {
                         if (userdb.eco.inv.magicwand === true) return i.followUp({ ephemeral: true, content: `${i.user}, Você já tem uma varinha!` });
                         if (userdb.eco.coins < x.split("-")[1]) return i.followUp({ ephemeral: true, content: `${i.user}, Você não tem magias suficientes!` });
                         int.edit({ content: `<:pix:1112785378135507094> ${i.user}, Você comprou uma varinha com sucesso! Total gasto foi de **15.000 de magias**.`, embeds: [], components: [] });
-                        await client.db.updateOne({ _id: message.author.id }, { $set: { "eco.magicwand": true, }, $inc: { "eco.coins": -15000, }, });
+                        await client.db.updateOne({ _id: message.author.id }, { $set: { "eco.inv.magicwand": true, }, $inc: { "eco.coins": -15000, }, });
                     }
                 }
             });
