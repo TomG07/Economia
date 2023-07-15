@@ -1,7 +1,7 @@
 const Discord = require("discord.js");
 module.exports = {
   name: "removercoins",
-  aliases: ["removmagias", "rmvmagias"],
+  aliases: ["removermagias", "rmvmagias"],
   run: async(client, message, args, prefix) => {
     let p = prefix || "ny!";
     let member = message.mentions.members.first() || message.guild.members.cache.find(member => member.user.id === args[0]);
