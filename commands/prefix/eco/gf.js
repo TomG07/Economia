@@ -1,7 +1,7 @@
 const Discord = require("discord.js");
 module.exports = {
     name: "gf",
-    aliases: ["amor"],
+    aliases: ["sapecar", "namorar"],
     run: async (client, message, args, prefix) => {
         let p = prefix || "ny!";
         const userdb = await client.db.findOne({ userId: `${message.guild.id}-${message.author.id}` });
@@ -13,7 +13,7 @@ module.exports = {
             embeds: [
                 new Discord.EmbedBuilder()
                     .setTitle("Sapequinha..!")
-                    .setDescription(`${message.author}, ganhou **<:Potion:1128800422220546168> ${coins} magias** + ⭐ '1XP!' de experiência ao fazer **GF** com <@${userdb.eco.marry.userId}>.`)
+                    .setDescription(`${message.author}, ganhou **<:Potion:1128800422220546168> ${coins} magias** + ⭐ '1XP!' de experiência sendo **sapeca** com <@${userdb.eco.marry.userId}>.`)
                     .setColor("#2a2d30")
                     .setFooter({ text: `${message.author.username}`, iconURL: `${message.author.displayAvatarURL()}` })
             ],
