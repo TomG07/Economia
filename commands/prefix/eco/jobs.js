@@ -6,7 +6,7 @@ module.exports = {
     run: async (client, message, args, prefix) => {
         await message.channel.sendTyping();
         let p = prefix || "ny!";
-        const userdb = await client.db.findById({ userId: `${message.guild.id}-${message.author.id}` });
+        const userdb = await client.db.findOne({ userId: `${message.guild.id}-${message.author.id}` });
         if (!userdb) return message.reply({ content: `${message.author}, Você deve se registrar com o comando: \n**${p}registrar**.` });
         const empregos = Object.entries(jobs);
         message.reply({
