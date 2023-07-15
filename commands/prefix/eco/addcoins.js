@@ -7,6 +7,9 @@ module.exports = {
     let member = message.mentions.members.first() || message.guild.members.cache.find(member => member.user.id === args[0]));
     if (!member) return message.reply({ content: `${message.author}, Você não informou quem será editado!` });
     if (member.user.bot) return message.reply({ content: `${message.author}, Os bots não podem ser editados!`});
+    const editores = await client.db.findOne({ userId: `${message.guild.id}-${message.author.id}` });
+    if (!editores) return message.reply({ content: `${message.author}, Você deve fazer o registro com o comando:\n**${p}registrar**.` })
+    if (editores.guild.editor !== true) return message.reply({ content: `${message.author}, Você não é um editor desse servidor!` });
     const userdb = await client.db.findOne({ userId: `${message.guild.id}-${member.user.id}` });
     if (!userdb) return message.reply({ content: `${message.author.id !== member.user.id ? `${message.author}, Esse jogador **__${member.user.username}__**` : `${message.author}, Você`} deve fazer o registro com o comando:\n**${p}registrar**.` })
     let quantia = args[0]; // para facilitarmos e não ficar usando args[0]
