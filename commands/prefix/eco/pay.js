@@ -13,8 +13,8 @@ module.exports = {
     if (!userdb) return message.reply({ content: `${message.author}, Você deve se registrar com o comando: \n**${p}registrar**.` });
     const twouserdb = await client.db.findOne({ userId: `${message.guild.id}-${member.user.id}` });
     if (!twouserdb) return message.reply({ content: `${message.author}, Esse jogador **__${member.user.username}__** deve fazer o registro com o comando:\n**${p}registrar**.` })
-    let value = args.slice(1).join(" ");
-    if (!value) return message.reply({ content: `${message.author}, Você não informou a quantia do pagamento!` });
+    let value = args[0];
+    if (!value) return message.reply({ content: `${message.author}, Você não informou a quantia do pagamento! Exemplo: ${p}pagar \`valor\` \`@user\`.` });
     if (isNaN(value)) return message.reply({ content: `${message.author}, Somente números devem ser considerados na quantia do pagamento.` });
     if (value < 100) return message.reply({ content: `${message.author}, Você só pode fazer pagamentos com quantias maiores que **100 magias**.` });
     if (value > 50000) return message.reply({ content: `${message.author}, Você só pode transferir quantias maiores que **50k magias** de uma vez só.` });
