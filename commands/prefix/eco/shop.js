@@ -10,7 +10,7 @@ module.exports = {
         message.reply({
             embeds: [
                 new Discord.EmbedBuilder()
-                    .setTitle("<:FlowerPurple:1109899097655222272> Shop!")
+                    .setTitle("Lojinha da Escola!")
                     .setThumbnail(message.author.displayAvatarURL({ dunamic: true }))
                     .setTimestamp()
                     .setColor("#ffb6c1")
@@ -52,17 +52,17 @@ module.exports = {
                     coletou.stop();
                     const x = i.values[0];
                     if (x.split("-")[0] === "farm") {
-                        if (i.user.id !== message.author.id) return i.followUp({ content: `Essa decisão não é sua!`, ephemeral: true });
-                        if (userdb.eco.farm.owner === true) return message.reply({ content: `Você já possui uma fazenda!` });
-                        if (userdb.eco.coins < x.split("-")[1]) return message.reply({ content: `Saldo insuficiente!` });
-                        int.edit({ content: `<:pix:1112785378135507094> ${i.user}, Você comprou uma fazenda por **<:Stars:1111647398188564510> 20k de bits**.`, embeds: [], components: [] });
+                        if (i.user.id !== message.author.id) return i.followUp({ ephemeral: true, content: `:x: Não é o usuário que executou o comando!` });
+                        if (userdb.eco.farm.owner === true) return i.followUp({ ephemeral: true, content: `${i.user}, Você já tem uma fazenda!` });
+                        if (userdb.eco.coins < x.split("-")[1]) return i.followUp({ ephemeral: true, content: `${i.user}, Você não tem magias suficientes!` });
+                        int.edit({ content: `<:pix:1112785378135507094> ${i.user}, Você comprou uma fazenda com sucesso! Total gasto foi de **20.000 de magias**.`, embeds: [], components: [] });
                         await client.db.updateOne({ _id: message.author.id }, { $set: { "eco.farm.owner": true, }, $inc: { "eco.coins": -20000, }, });
                     } else if (x.split("-")[0] === "car") {
-                        if (i.user.id !== message.author.id) return i.followUp({ content: `Essa decisão não é sua!`, ephemeral: true });
-                        if (userdb.eco.car === true) return message.reply({ content: `Você já possui um carro!` });
-                        if (userdb.eco.coins < x.split("-")[1]) return message.reply({ content: `Saldo insuficiente!` });
-                        int.edit({ content: `<:pix:1112785378135507094> ${i.user}, Você comprou um carro por **<:Stars:1111647398188564510> 15k de bits**.`, embeds: [], components: [] });
-                        await client.db.updateOne({ _id: message.author.id }, { $set: { "eco.car": true, }, $inc: { "eco.coins": -15000, }, });
+                        if (i.user.id !== message.author.id) return i.followUp({ ephemeral: true, content: `:x: Não é o usuário que executou o comando!` });
+                        if (userdb.eco.inv.magicwand === true) return i.followUp({ ephemeral: true, content: `${i.user}, Você já tem uma varinha!` });
+                        if (userdb.eco.coins < x.split("-")[1]) return i.followUp({ ephemeral: true, content: `${i.user}, Você não tem magias suficientes!` });
+                        int.edit({ content: `<:pix:1112785378135507094> ${i.user}, Você comprou uma varinha com sucesso! Total gasto foi de **15.000 de magias**.`, embeds: [], components: [] });
+                        await client.db.updateOne({ _id: message.author.id }, { $set: { "eco.magicwand": true, }, $inc: { "eco.coins": -15000, }, });
                     }
                 }
             });
