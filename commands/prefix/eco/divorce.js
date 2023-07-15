@@ -4,7 +4,7 @@ module.exports = {
     aliases: ["divociar", "separar", "div"],
     run: async (client, message, args, prefix) => {
         let p = prefix || "ny!";
-        const userdb = await client.db.findOne({ _id: message.author.id });
+        const userdb = await client.db.findOne({ userId: `${message.guild.id}-${message.author.id}` });
         if (!userdb) return message.reply({ content: `${message.author}, Você deve se registrar com o comando: \n**${p}registrar**.` });
         if (userdb.eco.marry.userId == null) return message.reply({ content: `${message.author}, Você se encontra solteiro(a)! Para se casar utilize o comando: \n**${p}casar**.` });
         let marryId = userdb.eco.marry.userId;
@@ -29,8 +29,8 @@ module.exports = {
                     if (i.user.id !== message.author.id) return i.followUp({ content: `${i.user}, Essa decisão não é sua!`, ephemeral: true });
                     int.edit({ content: `:sob: :ring: | ${i.user} + <@${marryId}> se divorciarão!`, components: [] });
                     i.followUp({ content: `:lock: **|** ${i.user}, Você perdeu acesso ao comando **${p}sapecar**.`, ephemeral: true });
-                    await client.db.updateOne({ _id: i.user.id }, { $set: { "eco.marry.userId": null, }, $pull: { "eco.badges": "MARRY" }, });
-                    await client.db.updateOne({ _id: marryId }, { $set: { "eco.marry.userId": null, }, $pull: { "eco.badges": "MARRY" }, });
+                    await client.db.updateOne({ userId: `${i.guild.id}-${i.author.id}` }, { $set: { "eco.marry.userId": null, }, $pull: { "eco.badges": "MARRY" }, });
+                    await client.db.updateOne({ userId: `${i.guild.id}-${marryId}` }, { $set: { "eco.marry.userId": null, }, $pull: { "eco.badges": "MARRY" }, });
                 }
             });
         });
