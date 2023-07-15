@@ -9,6 +9,10 @@ module.exports = {
     if (member.user.bot) return message.reply({ content: `${message.author}, Os bots não podem ser editados!`});
     const userdb = await client.db.findOne({ userId: `${message.guild.id}-${member.user.id}` });
     if (!userdb) return message.reply({ content: `${message.author.id !== member.user.id ? `${message.author}, Esse jogador **__${member.user.username}__**` : `${message.author}, Você`} deve fazer o registro com o comando:\n**${p}registrar**.` })
-        
+    let quantia = args[0]; // para facilitarmos e não ficar usando args[0]
+    if (!quantia) return message.reply({ content: `${message.author}, Digite uma quantia para ser adicionada!` }); // caso o usuário não escreva um número  
+    if (isNaN(quantia)) return message.reply({ content: `${message.author}, Você não definiu uma quantia válida.` });  // Se o usuario não colocar um numero ele tornará esta mensagem
+    if (quantia < 1 || quantia > 99999999999) return message.reply({ content: `${message.author}, Valor inválido por ser menor que um ou infinito!` });
+    message.reply({ content: `✅ **|** ${message.author}, Você editou os valores pra "**__${member.user.username}__**" com sucesso.` });
   }
 }
