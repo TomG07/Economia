@@ -36,7 +36,7 @@ module.exports = {
                         name: "💍 Estado Civil:",
                         value: `${userdb.eco.marry.userId ? `Casado(a) com <@${userdb.eco.marry.userId}> <t:${~~(userdb.eco.marry.marryDate / 1000)}:R>.` : "Solteiro(a)"}`
                     }, {
-                        name: "✏ Editor do Servidor:",
+                        name: "✨ Editor do Servidor:",
                         value: `${userdb.guild.editor ? "Sim" : "Não"}`
                     })
             ]
