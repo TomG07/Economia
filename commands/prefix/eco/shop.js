@@ -13,6 +13,7 @@ module.exports = {
                     .setTitle("Lojinha da Escola!")
                     .setThumbnail(message.author.displayAvatarURL({ dunamic: true }))
                     .setTimestamp()
+                    .setImage("https://media.discordapp.net/attachments/1113783795942961211/1129838806535786527/images_2_1.jpg")
                     .setColor("#ffb6c1")
                     .addFields({
                         name: "<:Fazenda:1118670191509913780> Fazenda",
