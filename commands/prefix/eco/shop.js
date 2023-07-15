@@ -3,8 +3,9 @@ module.exports = {
     name: "shop",
     aliases: ["loja", "mercado"],
     run: async (client, message, args, prefix) => {
+        await message.channel.sendTyping();
         let p = prefix || "ny!";
-        const userdb = await client.db.findOne({ _id: message.author.id });
+        const userdb = await client.db.findOne({ userId: `${message.guild.id}-${message.author.id}` });
         if (!userdb) return message.reply({ content: `${message.author}, Você deve se registrar com o comando: \n**${p}registrar**.` });
         message.reply({
             embeds: [
@@ -12,13 +13,13 @@ module.exports = {
                     .setTitle("<:FlowerPurple:1109899097655222272> Shop!")
                     .setThumbnail(message.author.displayAvatarURL({ dunamic: true }))
                     .setTimestamp()
-                    .setColor("#303136")
+                    .setColor("#ffb6c1")
                     .addFields({
-                        name: ":ox: Fazenda",
-                        value: "Preço: <:Stars:1111647398188564510> **20,000 bits**"
+                        name: "<:Fazenda:1118670191509913780> Fazenda",
+                        value: "- Preço: **20,000 magias**"
                     }, {
-                        name: ":red_car: Carro",
-                        value: "Preço: <:Stars:1111647398188564510> **15,000 bits**"
+                        name: ":magic_wand:  Varinha",
+                        value: "- Preço: **15,000 magias**"
                     })
             ],
             components: [
@@ -26,19 +27,19 @@ module.exports = {
                     .addComponents(
                         new Discord.StringSelectMenuBuilder()
                             .setCustomId('wshop')
-                            .setPlaceholder('Comprar')
+                            .setPlaceholder('Adicionar no carrinho')
                             .setMinValues(1)
                             .setMaxValues(1)
                             .addOptions(
                                 new Discord.StringSelectMenuOptionBuilder()
-                                    .setLabel('Comprar uma Fazenda')
-                                    .setEmoji("<:pix:1112785378135507094>")
+                                    .setLabel('Comprar (1x) Fazenda')
+                                    .setEmoji("<:Potion:1128800422220546168>")
                                     .setDescription('Compre uma fazenda para platar suas sementes')
                                     .setValue('farm-20000'),
                                 new Discord.StringSelectMenuOptionBuilder()
-                                    .setLabel('Comprar um Carro')
-                                    .setEmoji("<:pix:1112785378135507094>")
-                                    .setDescription('Compre um carro para fazer picos de motorista')
+                                    .setLabel('Comprar (1x) Varinha')
+                                    .setEmoji("<:Potion:1128800422220546168>")
+                                    .setDescription('Compre um varinha para fazer feitiços')
                                     .setValue('car-15000')
                             )
                     )
