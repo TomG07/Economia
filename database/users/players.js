@@ -4,9 +4,6 @@ const documentSave = new Schema({
     guild: {
         editor: { type: Boolean, default: false },
     },
-    inv: {
-        magicwand: { type: Boolean, default: false },
-    },
     eco: {
         coins: { type: Number, default: 0 },
         xp: { type: Number, default: 0 },
@@ -15,6 +12,9 @@ const documentSave = new Schema({
         marry: {
             userId: { type: String, default: null },
             marryDate: { type: Number, default: 0 },
+        },
+        inv: {
+            magicwand: { type: Boolean, default: false },
         },
         reps: { type: Number, default: 0 },
         premium: {
