@@ -17,11 +17,11 @@ module.exports = {
     const avatar = await Canvas.loadImage(member.user.displayAvatarURL({ extension: 'jpg', size: 4096 }));
     context.drawImage(avatar, 10, 274, 190, 190);
     // fundo
-    let bg = "https://media.discordapp.net/attachments/1113783795942961205/1128775403327193220/pxfuel.jpg";
+    let bg = "https://media.discordapp.net/attachments/1113783796668571658/1129784486041747556/images_1.jpg";
     const fundo = await Canvas.loadImage(bg);
     context.drawImage(fundo, 192, 0, 608, 377);
     // template
-    const template = await Canvas.loadImage("https://media.discordapp.net/attachments/1113783795942961208/1129779440151449752/1689430774478.png");
+    const template = await Canvas.loadImage("https://media.discordapp.net/attachments/1113783796668571658/1129784473857314897/1689431637579.png");
     context.drawImage(template, 0, 0, canvas.width, canvas.height);
     //name
     context.font = '500 34px "RobotoCondensed-Bold"';
@@ -59,7 +59,7 @@ module.exports = {
     //about
     context.font = '500 23px "RobotoCondensed-Bold"';
     context.fillStyle = "#292929";
-    context.fillText("Um mundo perfeito e divertido!", 15, 510);
+    context.fillText("Um mundo perfeito e divertido!", 15, 519);
     //attachment  
     const attachment = new Discord.AttachmentBuilder(canvas.toBuffer(), { name: "profile.png" });
     message.reply({ files: [attachment] });
