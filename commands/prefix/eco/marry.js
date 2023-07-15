@@ -8,9 +8,9 @@ module.exports = {
         if (!member) return message.reply({ content: `${message.author}, Você deve mencionar a pessoa que vc quer casar!` });
         if (member.user.bot) return message.reply({ content: `${message.author}, Você não pode se casar com um bot.` });
         if (member.user.id === message.author.id) return message.reply({ content: `${message.author}, Você não pode se casar consigo mesmo!` });
-        const userdb = await client.db.findOne({ _id: message.author.id });
+        const userdb = await client.db.findOne({ userId: `${message.guild.id}-${message.author.id}` });
         if (!userdb) return message.reply({ content: `${message.author}, Você deve se registrar com o comando: \n**${p}registrar**.` });
-        const twouserdb = await client.db.findOne({ _id: member.user.id });
+        const twouserdb = await client.db.findOne({ userId: `${message.guild.id}-${message.author.id}` });
         if (!twouserdb) return message.reply({ content: `${message.author}, Esse jogador **__${member.user.username}__** deve fazer o registro com o comando:\n**${p}registrar**.` })
         if (userdb.eco.marry.userId !== null) return message.reply({ content: `${message.author}, Você já se encontra casado(a)!` });
         if (twouserdb.eco.marry.userId !== null) return message.reply({ content: `${message.author}, O usuário já se encontra casado(a)!` });
@@ -35,8 +35,8 @@ module.exports = {
                     if (i.user.id !== member.user.id) return i.followUp({ content: `Essa decisão não é sua!`, ephemeral: true });
                     int.edit({ content: `:heart: :ring: | ${i.user} + ${message.author} se casarão! Felicidades ao casal.:tada:`, components: [] });
                     i.followUp({ content: `:unlock: **|** ${i.user}, Você ganhou acesso ao comando **${p}sapecar**.`, ephemeral: true });
-                    await client.db.updateOne({ _id: i.user.id }, { $set: { "eco.marry.userId": message.author.id, "eco.marry.marryDate": Date.now(), }, $push: { "eco.badges": "MARRY" }, });
-                    await client.db.updateOne({ _id: message.author.id }, { $set: { "eco.marry.userId": i.user.id, "eco.marry.marryDate": Date.now(), }, $push: { "eco.badges": "MARRY" }, });
+                    await client.db.updateOne({ userId: `${i.guild.id}-${i.user.id}` }, { $set: { "eco.marry.userId": message.author.id, "eco.marry.marryDate": Date.now(), }, $push: { "eco.badges": "MARRY" }, });
+                    await client.db.updateOne({ userId: `${i.guild.id}-${message.author.id}` }, { $set: { "eco.marry.userId": i.user.id, "eco.marry.marryDate": Date.now(), }, $push: { "eco.badges": "MARRY" }, });
                 }
             });
         });
