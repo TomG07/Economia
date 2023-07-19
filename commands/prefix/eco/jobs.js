@@ -45,7 +45,7 @@ module.exports = {
                 if (i.user.id !== message.author.id) return i.followUp({ content: `:x: Não é o usuário que executou o comando!`, ephemeral: true });
                 if (i.customId === "jobs") {
                     let x = i.values[0];
-                    if (userdb.eco.xp < x.split("-")[1]) return i.followUp({ content: `${i.user}, Você não tem **${x.split("-")[1]} de experiêcia**! Continue realizando suas tarefas para conseguir mais xp.`, ephemeral: true });
+                    if (userdb.eco.xp < x.split("-")[1]) return i.followUp({ content: `${i.user}, Você não tem **${x.split("-")[1]} de experiêcia**! Continue realizando suas tarefas para conseguir mais \`XP\`.`, ephemeral: true });
                     if (userdb.eco.job === x.split("-")[0]) return i.followUp({ content: `${i.user}, Você já se encontra nesse emprego!`, ephemeral: true });
                     if (userdb.eco.job !== null) {
                         await client.db.updateOne({ userId: `${i.guild.id}-${i.user.id}` }, { $set: { "eco.job": x.split("-")[0], }, });
