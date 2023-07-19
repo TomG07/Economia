@@ -56,14 +56,14 @@ module.exports = {
                         if (i.user.id !== message.author.id) return i.followUp({ ephemeral: true, content: `:x: Não é o usuário que executou o comando!` });
                         if (userdb.eco.farm.owner === true) return i.followUp({ ephemeral: true, content: `${i.user}, Você já tem uma fazenda!` });
                         if (userdb.eco.coins < x.split("-")[1]) return i.followUp({ ephemeral: true, content: `${i.user}, Você não tem magias suficientes!` });
-                        int.edit({ content: `<:pix:1112785378135507094> ${i.user}, Você comprou uma fazenda com sucesso! Total gasto foi de **20.000 de magias**.`, embeds: [], components: [] });
-                        await client.db.updateOne({ _id: message.author.id }, { $set: { "eco.farm.owner": true, }, $inc: { "eco.coins": -20000, }, });
+                        int.edit({ content: `✅ **|** ${i.user}, Você comprou uma fazenda com sucesso! Total gasto foi de **20.000 de magias**.`, embeds: [], components: [] });
+                        await client.db.updateOne({ userId: `${i.guild.id}-${i.user.id}` }, { $set: { "eco.farm.owner": true, }, $inc: { "eco.coins": -20000, }, });
                     } else if (x.split("-")[0] === "car") {
                         if (i.user.id !== message.author.id) return i.followUp({ ephemeral: true, content: `:x: Não é o usuário que executou o comando!` });
                         if (userdb.eco.inv.magicwand === true) return i.followUp({ ephemeral: true, content: `${i.user}, Você já tem uma varinha!` });
                         if (userdb.eco.coins < x.split("-")[1]) return i.followUp({ ephemeral: true, content: `${i.user}, Você não tem magias suficientes!` });
-                        int.edit({ content: `<:pix:1112785378135507094> ${i.user}, Você comprou uma varinha com sucesso! Total gasto foi de **15.000 de magias**.`, embeds: [], components: [] });
-                        await client.db.updateOne({ _id: message.author.id }, { $set: { "eco.inv.magicwand": true, }, $inc: { "eco.coins": -15000, }, });
+                        int.edit({ content: `✅ **|** ${i.user}, Você comprou uma varinha com sucesso! Total gasto foi de **15.000 de magias**.`, embeds: [], components: [] });
+                        await client.db.updateOne({ userId: `${i.guild.id}-${i.user.id}` }, { $set: { "eco.inv.magicwand": true, }, $inc: { "eco.coins": -15000, }, });
                     }
                 }
             });
