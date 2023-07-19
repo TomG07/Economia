@@ -10,11 +10,12 @@ module.exports = {
       message.reply({
          embeds: [
             new Discord.EmbedBuilder()
-               .setTitle("Veja os seus intervalos!")
+               .setTitle("Tempos de Espera!")
                .setThumbnail(message.author.displayAvatarURL({ dunamic: true }))
                .setTimestamp()
-               .setColor("#303136")
+               .setColor("#ffb6c1")
                .setDescription(`- **Daily**: ${Date.now() < timers.dailyCooldown ? `⚡ | <t:${~~(timers.dailyCooldown / 1000)}:R>` : "✅ | __Colete agora__!"}\n- **Work**: ${Date.now() < timers.workCooldown ? `⚡ | <t:${~~(timers.workCooldown / 1000)}:R>` : "✅ | __Colete agora__!"}\n- **Sapecar**: ${Date.now() < timers.gfCooldown ? `⚡ | <t:${~~(timers.gfCooldown / 1000)}:R>` : "✅ | __Colete agora__!"}\n- **Rep**: ${Date.now() < timers.repCooldown ? `⚡ | <t:${~~(timers.repCooldown / 1000)}:R>` : "✅ | __Colete agora__!"}`)
+               .setFooter({ text: `${message.author.username}`, iconURL: `${message.author.displayAvatarURL()}` })
          ]
       });
    }

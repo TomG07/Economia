@@ -17,7 +17,7 @@ module.exports = {
                     .setDescription(`${empregos.map(([key, value]) => {
                         return `\> <:Inventario:1128316648223412284> **Emprego ${key}**\nSalário: \`${value.salario} magias.\`\nRequisito: \`${value.exp}XP! de experiência.\` `
                     }).join("\n")}`)
-                    .setColor("#2a2d30")
+                    .setColor("#ffb6c1")
                     .addFields({
                         name: `<:Emoji_GraficoSubiu:1116338129377448016> Experiência:`,
                         value: `Você tem **__${userdb.eco.xp}XP__**!`
