@@ -36,7 +36,7 @@ module.exports = {
                     new Discord.ButtonBuilder()
                         .setCustomId("miniprofile")
                         .setLabel("Ver mais")
-                        .setEmoji("�")
+                        .setEmoji("✨")
                         .setStyle(Discord.ButtonStyle.Primary)
                         .setDisabled(false)
                 )], fetchReply: true
