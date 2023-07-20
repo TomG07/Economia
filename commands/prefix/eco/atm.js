@@ -69,7 +69,15 @@ module.exports = {
                                     name: ":moneybag: Emprego:",
                                     value: `${userdb.eco.job ? `Atualmente é \`${userdb.eco.job}\`.` : "Desempregado(a)!"}`
                                 })
-                        ]
+                        ], components: [
+                            new Discord.ActionRowBuilder().addComponents(
+                                new Discord.ButtonBuilder()
+                                    .setCustomId("miniprofile")
+                                    .setLabel("Ver mais")
+                                    .setEmoji("✨")
+                                    .setStyle(Discord.ButtonStyle.Primary)
+                                    .setDisabled(true)
+                            )]
                     });
                 }
             });
