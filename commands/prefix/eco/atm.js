@@ -46,30 +46,32 @@ module.exports = {
                 await i.deferUpdate();
                 if (i.user.id !== message.author.id) return i.followUp({ content: `${i.user}, Essa decisão não é sua!`, ephemeral: true });
                 coletou.stop();
-                int.edit({
-                    content: `${message.author}`,
-                    embeds: [
-                        new Discord.EmbedBuilder()
-                            .setAuthor({ name: `${i.user.username}`, iconURL: `${i.user.displayAvatarURL()}` })
-                            .setTitle("Saldo do Jogador!")
-                            .setThumbnail(member.user.displayAvatarURL({ dynamic: true }))
-                            .setTimestamp()
-                            .setColor("#2a2d30")
-                            .addFields({
-                                name: "⚡ Experiência:",
-                                value: `__**${userdb.eco.xp}**XP__!`
-                            }, {
-                                name: "💍 Estado Civil:",
-                                value: `${userdb.eco.marry.userId ? `Casado(a) com <@${userdb.eco.marry.userId}> <t:${~~(userdb.eco.marry.marryDate / 1000)}:R>.` : "Solteiro(a)"}`
-                            }, {
-                                name: "✨ Editor do Servidor:",
-                                value: `${userdb.guild.editor ? "Sim" : "Não"}`
-                            }, {
-                                name: ":moneybag: Emprego:",
-                                value: `${userdb.eco.job ? `Atualmente é \`${userdb.eco.job}\`.` : "Desempregado(a)!"}`
-                            })
-                    ]
-                });
+                if (i.customId === "miniprofile") {
+                    int.edit({
+                        content: `${message.author}`,
+                        embeds: [
+                            new Discord.EmbedBuilder()
+                                .setAuthor({ name: `${i.user.username}`, iconURL: `${i.user.displayAvatarURL()}` })
+                                .setTitle("Saldo do Jogador!")
+                                .setThumbnail(member.user.displayAvatarURL({ dynamic: true }))
+                                .setTimestamp()
+                                .setColor("#2a2d30")
+                                .addFields({
+                                    name: "⚡ Experiência:",
+                                    value: `__**${userdb.eco.xp}**XP__!`
+                                }, {
+                                    name: "💍 Estado Civil:",
+                                    value: `${userdb.eco.marry.userId ? `Casado(a) com <@${userdb.eco.marry.userId}> <t:${~~(userdb.eco.marry.marryDate / 1000)}:R>.` : "Solteiro(a)"}`
+                                }, {
+                                    name: "✨ Editor do Servidor:",
+                                    value: `${userdb.guild.editor ? "Sim" : "Não"}`
+                                }, {
+                                    name: ":moneybag: Emprego:",
+                                    value: `${userdb.eco.job ? `Atualmente é \`${userdb.eco.job}\`.` : "Desempregado(a)!"}`
+                                })
+                        ]
+                    });
+                }
             });
         });
     }
