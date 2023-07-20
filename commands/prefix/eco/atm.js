@@ -13,13 +13,14 @@ module.exports = {
         let placar = await client.db.find({}).sort({ "eco.coins": -1 });
         let seachUserRankPosition = placar.findIndex((x) => x.userId === `${message.guild.id}-${member.user.id}`) + 1;
         message.reply({
+            content: `${message.author}`,
             embeds: [
                 new Discord.EmbedBuilder()
                     .setAuthor({ name: `${message.author.username}`, iconURL: `${message.author.displayAvatarURL()}` })
                     .setTitle("Saldo do Jogador!")
                     .setThumbnail(member.user.displayAvatarURL({ dynamic: true }))
                     .setTimestamp()
-                    .setColor("#2a2d30")
+                    .setColor("#ffb6c1")
                     .addFields({
                         name: "<:Potion:1128800422220546168> Carteira:",
                         value: `${userdb.eco.coins > 1 ? `**${abreviar(userdb.eco.coins)}** magia(s).` : "Vazia!"}`
@@ -29,17 +30,47 @@ module.exports = {
                     }, {
                         name: "📊 Posição no Ranking:",
                         value: `#️⃣${numberToEmojis(seachUserRankPosition)}`
-                    }, {
-                        name: "⚡ Experiência:",
-                        value: `__**${userdb.eco.xp}**XP__!`
-                    }, {
-                        name: "💍 Estado Civil:",
-                        value: `${userdb.eco.marry.userId ? `Casado(a) com <@${userdb.eco.marry.userId}> <t:${~~(userdb.eco.marry.marryDate / 1000)}:R>.` : "Solteiro(a)"}`
-                    }, {
-                        name: "✨ Editor do Servidor:",
-                        value: `${userdb.guild.editor ? "Sim" : "Não"}`
                     })
-            ]
+            ], components: [
+                new Discord.ActionRowBuilder().addComponents(
+                    new Discord.ButtonBuilder()
+                        .setCustomId("miniprofile")
+                        .setLabel("Ver mais")
+                        .setEmoji("�")
+                        .setStyle(Discord.ButtonStyle.Primary)
+                        .setDisabled(false)
+                )], fetchReply: true
+        }).then((int) => {
+            const coletou = int.createMessageComponentCollector({ time: 86000 });
+            coletou.on('collect', async (i) => {
+                await i.deferUpdate();
+                if (i.user.id !== message.author.id) return i.followUp({ content: `${i.user}, Essa decisão não é sua!`, ephemeral: true });
+                coletou.stop();
+                int.edit({
+                    content: `${message.author}`,
+                    embeds: [
+                        new Discord.EmbedBuilder()
+                            .setAuthor({ name: `${i.user.username}`, iconURL: `${i.user.displayAvatarURL()}` })
+                            .setTitle("Saldo do Jogador!")
+                            .setThumbnail(member.user.displayAvatarURL({ dynamic: true }))
+                            .setTimestamp()
+                            .setColor("#2a2d30")
+                            .addFields({
+                                name: "⚡ Experiência:",
+                                value: `__**${userdb.eco.xp}**XP__!`
+                            }, {
+                                name: "💍 Estado Civil:",
+                                value: `${userdb.eco.marry.userId ? `Casado(a) com <@${userdb.eco.marry.userId}> <t:${~~(userdb.eco.marry.marryDate / 1000)}:R>.` : "Solteiro(a)"}`
+                            }, {
+                                name: "✨ Editor do Servidor:",
+                                value: `${userdb.guild.editor ? "Sim" : "Não"}`
+                            }, {
+                                name: ":moneybag: Emprego:",
+                                value: `${userdb.eco.job ? `Atualmente é \`${userdb.eco.job}\`.` : "Desempregado(a)!"}`
+                            })
+                    ]
+                });
+            });
         });
     }
 }
@@ -57,3 +88,4 @@ function abreviar(number, precision = 2) {
         maximumFractionDigits: precision,
     });
 }
+//userdb.eco.job == null
