@@ -11,7 +11,7 @@ module.exports = {
           .setTimestamp()
           .setColor("#303136")
           .setFooter({ text: "Caçadores de Insignas!", iconURL: `${client.user.displayAvatarURL()}` })
-          .setDescription(`<:AnelCasal:1109190514009452615> | Ganhe esse \`badge\` se casando.\n<:Staff:1107072021231317193> | Ganhe esse \`badge\` com seu primeiro emprego.`)
+          .setDescription(`<:anel:1119285525984063509> - Recebe essa se casando.\n<:Fazenda:1118670191509913780> - Receba essa comprando uma fazenda.`)
           .addFields({
              name: "Reservadas:",
              value: `<:developeractivo:1104003870180528179> - Somente para os meus desenvolvedores.`
