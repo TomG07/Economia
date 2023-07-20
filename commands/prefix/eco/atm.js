@@ -37,7 +37,7 @@ module.exports = {
                         .setCustomId("miniprofile")
                         .setLabel("Ver mais")
                         .setEmoji("✨")
-                        .setStyle(Discord.ButtonStyle.Primary)
+                        .setStyle(Discord.ButtonStyle.Secondary)
                         .setDisabled(false)
                 )], fetchReply: true
         }).then((int) => {
@@ -75,7 +75,7 @@ module.exports = {
                                     .setCustomId("miniprofile")
                                     .setLabel("Ver mais")
                                     .setEmoji("✨")
-                                    .setStyle(Discord.ButtonStyle.Primary)
+                                    .setStyle(Discord.ButtonStyle.Secondary)
                                     .setDisabled(true)
                             )]
                     });
