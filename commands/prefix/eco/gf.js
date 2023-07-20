@@ -10,23 +10,7 @@ module.exports = {
         if (userdb.eco.marry.userId == null) return message.reply({ content: `${message.author}, Você se encontra solteiro(a)! Para se casar utilize o comando: \n**${p}casar**.` });
         let coins = Math.floor(Math.random() * 150) + 300;
         message.reply({
-            embeds: [
-                new Discord.EmbedBuilder()
-                    .setTitle("Sapequinha..!")
-                    .setDescription(`${message.author}, ganhou **<:Potion:1128800422220546168> ${coins} magias** + ⭐ '1XP!' de experiência sendo **sapeca** com <@${userdb.eco.marry.userId}>.`)
-                    .setColor("#2a2d30")
-                    .setFooter({ text: `${message.author.username}`, iconURL: `${message.author.displayAvatarURL()}` })
-            ],
-            components: [
-                new Discord.ActionRowBuilder().addComponents(
-                    new Discord.ButtonBuilder()
-                        .setCustomId("gf")
-                        .setLabel("Volte em 1 hora!")
-                        .setEmoji("🔔")
-                        .setStyle(Discord.ButtonStyle.Secondary)
-                        .setDisabled(true)
-                )
-            ]
+            content: `*Sapequinha..!* ${message.author}, ganhou **<:Potion:1128800422220546168> ${coins} magias** + ⭐ '__1XP__!' de experiência sendo **sapeca** com <@${userdb.eco.marry.userId}>.`
         });
         await client.db.updateOne({ userId: `${message.guild.id}-${message.author.id}` }, { $inc: { "eco.coins": coins, "eco.xp": 1, }, $set: { "eco.timers.gfCooldown": Date.now() + 3600000, }, });
     }
