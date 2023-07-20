@@ -11,7 +11,7 @@ module.exports = {
         let coins = 0;//userdb.profile.coins;
         let xp = 0;
         let placar = await client.db.find({}).sort({ "eco.coins": -1 });
-        let seachUserRankPosition = placar.findIndex((x) => x._id === member.user.id) + 1;
+        let seachUserRankPosition = placar.findIndex((x) => x.userId === `${message.guild.id}-${member.user.id}`) + 1;
         message.reply({
             embeds: [
                 new Discord.EmbedBuilder()
