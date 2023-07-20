@@ -11,23 +11,7 @@ module.exports = {
         if (userdb.eco.job == null) return message.reply({ content: `${message.author}, Você não tem um **emprego**! Para ser contratado utilize o comando: \n**${p}empregos**.` })
         let coins = Math.floor(Math.random() * 100) + 250;
         message.reply({
-            embeds: [
-                new Discord.EmbedBuilder()
-                    .setTitle("Trabalho concluído!")
-                    .setDescription(`${message.author}, ganhou <:Potion:1128800422220546168> **${jobs[`${userdb.eco.job}`].salario} magias** + ⭐ '1XP!' de experiência após terminar seu trabalho de **${userdb.eco.job}**.`)
-                    .setColor("#2a2d30")
-                    .setFooter({ text: `${message.author.username}`, iconURL: `${message.author.displayAvatarURL()}` })
-            ],
-            components: [
-                new Discord.ActionRowBuilder().addComponents(
-                    new Discord.ButtonBuilder()
-                        .setCustomId("work")
-                        .setLabel("Volte em 1 hora!")
-                        .setEmoji("🔔")
-                        .setStyle(Discord.ButtonStyle.Secondary)
-                        .setDisabled(true)
-                )
-            ]
+            content: `${message.author}, ganhou <:Potion:1128800422220546168> **${jobs[`${userdb.eco.job}`].salario} magias** + ⭐ '__1XP__!' de experiência após terminar seu trabalho de **${userdb.eco.job}**.`
         });
         await client.db.updateOne({ userId: `${message.guild.id}-${message.author.id}` }, { $inc: { "eco.coins": coins, "eco.xp": 1, }, $set: { "eco.timers.workCooldown": Date.now() + 3600000, }, });
     }
