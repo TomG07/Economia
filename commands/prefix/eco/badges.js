@@ -9,12 +9,12 @@ module.exports = {
           .setTitle("Badges do Perfil!")
           .setThumbnail(message.author.displayAvatarURL({ dynamic: true }))
           .setTimestamp()
-          .setColor("#303136")
+          .setColor("#2a2d30")
           .setFooter({ text: "Caçadores de Insignas!", iconURL: `${client.user.displayAvatarURL()}` })
-          .setDescription(`<:anel:1119285525984063509> - Recebe essa se casando.\n<:Fazenda:1118670191509913780> - Receba essa comprando uma fazenda.`)
+          .setDescription(`- <:anel:1119285525984063509> - Recebe essa se casando com um usuário.\n- <:Inventario:1128316648223412284> - Receba essa ao escolher seu primeiro emprego.\n- <:Fazenda:1118670191509913780> - Receba essa comprando uma fazenda.`)
           .addFields({
              name: "Reservadas:",
-             value: `<:developeractivo:1104003870180528179> - Somente para os meus desenvolvedores.`
+             value: `<:developeractivo:1131556095685570691> - Somente para os meus desenvolvedores.`
           })
       ]
     });
