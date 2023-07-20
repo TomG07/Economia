@@ -62,7 +62,7 @@ module.exports = {
     context.fillText("Um mundo perfeito e divertido!", 15, 519);
     //attachment  
     const attachment = new Discord.AttachmentBuilder(canvas.toBuffer(), { name: "profile.png" });
-    message.reply({ files: [attachment] });
+    message.reply({ content: `${message.author}`, files: [attachment] });
   }
 }
 function abreviar(number, precision = 2) {
