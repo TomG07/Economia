@@ -11,7 +11,7 @@ const client = new Discord.Client({
 module.exports = client;
 const mongoose = require("mongoose");
 mongoose.set("strictQuery", true);
-mongoose.connect("mongodb+srv://mikaradb:uRDZ0k4Ko1qWb0kj@cluster0.6issots.mongodb.net/", { useNewUrlParser: true, useUnifiedTopology: true, });
+mongoose.connect(env.process.MONGO_URL, { useNewUrlParser: true, useUnifiedTopology: true, });
 const statusdb = mongoose.connection;
 statusdb.on("error", console.error);
 statusdb.on("open", () => {
@@ -31,4 +31,4 @@ client.once(Discord.Events.ClientReady, () => {
 //i55
 process.on("unhandRejection", (reason, promise) => console.log(reason));
 process.on("uncaughtException", (error, origin) => console.log(error, origin));
-client.login("MTEyODMwNjAzODMzNzE4Mzc5NQ.GszoXo.uLt3HKLMMjvDrjyPBOePIuQJqv5EqzjxMPOx8I");
+client.login(process.env.TOKEN);
